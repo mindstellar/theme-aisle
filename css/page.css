@@ -1,0 +1,17 @@
+.page { max-width: 760px; margin-inline: auto; padding-bottom: 72px; }
+.layout-full-width .page { max-width: none; }
+.page h1 { font-size: clamp(30px, 5vw, 44px); font-weight: 800; margin-block: 10px 24px; overflow-wrap: anywhere; }
+.page-body { font-size: 17px; line-height: 1.65; color: var(--ink); overflow-wrap: anywhere; }
+.page-body > * + * { margin-top: 1em; }
+.page-body h2 { font-size: 26px; margin-top: 1.8em; }
+.page-body h3 { font-size: 20px; margin-top: 1.5em; }
+.page-body ul, .page-body ol { padding-inline-start: 1.4em; }
+.page-body li + li { margin-top: 0.35em; }
+.page-body a { color: var(--brand); text-underline-offset: 3px; }
+.page-body img { max-width: 100%; height: auto; border-radius: var(--r-m); }
+.page-body table { width: 100%; border-collapse: collapse; font-size: 15px; }
+.page-body :is(pre, iframe, video) { max-width: 100%; }
+.page-body pre { overflow-x: auto; }
+@media (max-width: 600px) { .page-body table { display: block; overflow-x: auto; } }
+.page-body th, .page-body td { text-align: start; padding: 10px 12px; border-bottom: 1px solid var(--line); }
+.page-body blockquote { margin-inline: 0; padding-inline-start: 18px; border-inline-start: 1px solid var(--line); color: var(--muted); }

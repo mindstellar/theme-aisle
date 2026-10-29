@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="186" height="64" viewBox="0 0 186 64">
+  <!-- Aisle logo, for dark backgrounds. Edit the word, the colours or the font below, then export a PNG (see README.md). -->
+  <style>
+    @font-face { font-family: "Fraunces"; src: url("../../fonts/fraunces-latin.woff2") format("woff2"); font-weight: 100 900; }
+    .word { font-family: "Fraunces", Georgia, serif; font-weight: 700; font-size: 40px; }
+  </style>
+  <g transform="translate(2,3)">
+    <path d="M17 18v-4a11 11 0 0 1 22 0v4" fill="none" stroke="#f06292" stroke-width="4.5" stroke-linecap="round"/>
+    <path d="M5 18h46l-3.5 32a6 6 0 0 1-6 5.4H14.5a6 6 0 0 1-6-5.4z" fill="#f06292"/>
+    <path d="M15 51 24 25h3L20 51zM41 51 32 25h-3l7 26z" fill="#17141c"/>
+    <path d="M24.8 51h6.4l-1.8-10h-2.8z" fill="#17141c" opacity=".55"/>
+  </g>
+  <text class="word" x="64" y="46" fill="#f5f0f7">Aisle</text>
+</svg>

@@ -1,0 +1,93 @@
+/* Aisle cart: header badge, drawer, free-delivery meter, quantity stepper, quick add. Colours come from tokens.css. */
+
+.qty { display: inline-flex; align-items: center; border: 1px solid var(--line); border-radius: var(--r-pill); }
+.qty button { background: none; border: 0; width: 40px; height: 44px; display: grid; place-items: center; color: var(--ink); border-radius: var(--r-pill); }
+.qty button:active { background: var(--band); }
+.qty button:focus-visible { border-radius: var(--r-pill); }
+.qty output { min-width: 26px; padding-inline: 2px; text-align: center; font-weight: 600; font-variant-numeric: tabular-nums; }
+
+.card .quick { position: absolute; inset-inline: 10px; bottom: 10px; z-index: 2; opacity: 0; translate: 0 8px; transition: opacity .2s var(--ease), translate .2s var(--ease), background .18s var(--ease); padding: 10px; font-size: 14px; pointer-events: auto; }
+.card:hover .quick, .card:focus-within .quick, .card .quick:focus-visible { opacity: 1; translate: 0 0; }
+@media (hover: none), (max-width: 760px) { .card .quick { display: none; } }
+
+.cart-scrim { position: fixed; inset: 0; background: var(--scrim); z-index: 80; opacity: 0; pointer-events: none; transition: opacity .28s var(--ease); }
+.cart-scrim.on { opacity: 1; pointer-events: auto; }
+.drawer { --out: 100%; position: fixed; top: 0; inset-inline-end: 0; bottom: 0; width: min(420px, 100%); background: var(--bg); z-index: 90; display: grid; grid-template-rows: auto auto minmax(0, 1fr) auto; translate: var(--out) 0; visibility: hidden; transition: translate .3s var(--ease), visibility 0s .3s; box-shadow: var(--shadow-float); padding-top: env(safe-area-inset-top, 0px); padding-inline-end: env(safe-area-inset-right, 0px); }
+:root[dir="rtl"] .drawer { --out: -100%; }
+.drawer.on { translate: 0 0; visibility: visible; transition: translate .3s var(--ease); }
+.dr-head { grid-row: 1; display: flex; justify-content: space-between; align-items: center; padding: 18px 20px; border-bottom: 1px solid var(--line); }
+.dr-head h2 { font-size: 22px; min-width: 0; }
+.dr-head h2 .num { color: var(--muted); font-family: var(--body); font-size: 15px; font-weight: 500; letter-spacing: 0; }
+.ship-meter { grid-row: 2; padding: 14px 20px; font-size: 13px; display: grid; gap: 8px; background: var(--band); }
+.ship-meter i { height: 6px; border-radius: 6px; background: var(--line); overflow: hidden; display: block; }
+.ship-meter i b { display: block; height: 100%; background: var(--ok); transition: width .5s var(--ease); }
+.lines { grid-row: 3; overflow-y: auto; padding: 8px 20px; display: grid; align-content: start; }
+.line > :nth-child(2) { min-width: 0; overflow-wrap: anywhere; }
+.line > b { text-align: end; overflow-wrap: anywhere; max-width: 7em; }
+.line { display: grid; grid-template-columns: 72px minmax(0, 1fr) auto; gap: 14px; padding-block: 14px; border-bottom: 1px solid var(--line); align-items: start; font-size: 14px; border-radius: 10px; }
+.line.fresh { animation: fresh 1.6s var(--ease); }
+@keyframes fresh { 0%, 40% { background: var(--brand-soft); } 100% { background: transparent; } }
+.line img { width: 72px; height: 88px; object-fit: cover; border-radius: 10px; background: var(--band); }
+.line .ln-t { font-weight: 700; text-decoration: none; }
+.line .v { color: var(--muted); font-size: 13px; }
+.line .v.sold, .line .v.low { color: var(--warn); font-weight: 600; margin-top: 4px; }
+.line .struck { color: var(--muted); text-decoration: line-through; }
+.line .qty { margin-top: 8px; }
+.line .qty button { width: 32px; height: 32px; }
+.line .rm { background: none; border: 0; color: var(--muted); font-size: 13px; text-decoration: underline; padding: 4px 0; min-height: 24px; margin-top: 2px; display: block; }
+.line .rm:active { color: var(--ink); }
+@media (hover: hover) {
+  .line a.ln-t:hover { text-decoration: underline; }
+  .line .rm:hover { color: var(--ink); }
+}
+.empty { padding: 48px 20px; text-align: center; color: var(--muted); display: grid; gap: 14px; justify-items: center; }
+.empty p { max-width: 28ch; }
+.empty .ico { width: 40px; height: 40px; }
+.dr-foot { grid-row: 4; border-top: 1px solid var(--line); padding: 16px 20px calc(16px + env(safe-area-inset-bottom, 0px)); display: grid; gap: 12px; }
+.dr-foot:empty { display: none; }
+.dr-foot .note { font-size: 12px; color: var(--muted); margin-top: -6px; }
+.sumrow { display: flex; justify-content: space-between; gap: 12px; font-size: 14px; font-variant-numeric: tabular-nums; }
+.sumrow.total { font-size: 18px; font-weight: 700; }
+.sumrow span:first-child { color: var(--muted); }
+.sumrow.total span:first-child { color: var(--ink); }
+
+/* Shared fixes. This file loads on every page, so they reach the header, cards and footer too. */
+h1, h2, h3 { overflow-wrap: anywhere; }
+.grid > *, .rail > * { min-width: 0; }
+.card { grid-template-columns: minmax(0, 1fr); }
+.card a.t { overflow-wrap: anywhere; }
+.price b { font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+.price { min-width: 0; }
+.crumbs > span:last-child { min-width: 0; overflow-wrap: anywhere; }
+.foot li a { display: inline-block; padding-block: 3px; overflow-wrap: anywhere; }
+.btn:focus-visible, .iconbtn:focus-visible, .chip:focus-visible { border-radius: var(--r-pill); }
+.dots button:focus-visible { border-radius: 50%; }
+.btn:disabled { cursor: not-allowed; }
+.btn[aria-busy="true"] { cursor: progress; }
+.api-error { margin: 0; padding-block: 24px; color: var(--muted); }
+.api-error a { color: var(--brand); font-weight: 600; }
+.sec .api-error { padding-block: 0; }
+:root[dir="rtl"] .ico:has(> use[href="#i-chev"]), :root[dir="rtl"] .ico:has(> use[href="#i-truck"]), :root[dir="rtl"] .ico:has(> use[href="#i-return"]) { scale: -1 1; }
+:root[dir="rtl"] .search > .ico { left: auto; right: 15px; }
+:root[dir="rtl"] .search input { padding: 11px 44px 11px 16px; }
+:root[dir="rtl"] .count { right: auto; left: 0; }
+:root[dir="rtl"] .deal { left: auto; right: 10px; }
+:root[dir="rtl"] .card .fav { right: auto; left: 8px; }
+:root[dir="rtl"] .is-preview [data-sec].is-selected::before { left: auto; right: 0; }
+@media (hover: none) {
+  .btn-ghost:hover, .chip:hover { border-color: var(--line); }
+  .chip.on:hover { border-color: var(--ink); }
+  .btn-primary:hover { background: var(--brand); }
+  .card:hover .ph { box-shadow: none; transform: none; }
+  .card:hover .ph img { transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .drawer, .cart-scrim, .ship-meter i b { transition: none; }
+  .line.fresh, .count.bump { animation: none; }
+}
+.news > * { min-width: 0; }
+.news { grid-template-columns: minmax(0, 1fr) auto; }
+@container app (max-width: 700px) { .news { grid-template-columns: minmax(0, 1fr); } }
+.price-note { display: grid; gap: 8px; justify-items: start; margin-block: 10px; padding: 10px 12px; border-radius: var(--r-s); background: var(--band); font-size: 13px; font-weight: 600; }
+.price-note p { margin: 0; }
+.price-note .btn { padding: 6px 16px; font-size: 13px; }

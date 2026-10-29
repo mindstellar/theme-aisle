@@ -1,0 +1,178 @@
+/*
+ * Aisle design tokens. Light on :root, dark under the system setting or [data-theme="dark"].
+ * Brand presets override the three brand tokens only. Colours live here and nowhere else.
+ */
+@font-face {
+  font-family: "Bricolage Grotesque";
+  font-style: normal;
+  font-weight: 500 800;
+  font-display: swap;
+  src: url("../fonts/bricolage-grotesque-latin.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Figtree";
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url("../fonts/figtree-latin.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Fraunces";
+  font-style: normal;
+  font-weight: 400 900;
+  font-display: swap;
+  src: url("../fonts/fraunces-latin.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("../fonts/inter-latin.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Bricolage Fallback";
+  src: local("Arial"), local("Liberation Sans"), local("Helvetica");
+  size-adjust: 104.4%;
+  ascent-override: 89%;
+  descent-override: 25.9%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: "Figtree Fallback";
+  src: local("Arial"), local("Liberation Sans"), local("Helvetica");
+  size-adjust: 101.4%;
+  ascent-override: 93.7%;
+  descent-override: 24.7%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: "Fraunces Fallback";
+  src: local("Times New Roman"), local("Liberation Serif"), local("Times");
+  size-adjust: 132.8%;
+  ascent-override: 73.6%;
+  descent-override: 19.2%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: "Inter Fallback";
+  src: local("Arial"), local("Liberation Sans"), local("Helvetica");
+  size-adjust: 108.1%;
+  ascent-override: 89.6%;
+  descent-override: 22.3%;
+  line-gap-override: 0%;
+}
+
+:root {
+  color-scheme: light;
+  --bg: #ffffff;
+  --band: #f8f3f7;
+  --raised: #ffffff;
+  --ink: #1f1a2e;
+  --muted: #615a72;
+  --line: #e9e2ec;
+  --brand: #c81f5e;
+  --brand-hover: #a9164d;
+  --brand-ink: #ffffff;
+  --brand-soft: #fdeaf1;
+  --deal: #ffd23f;
+  --deal-ink: #2a2100;
+  --ok: #19784f;
+  --ok-ink: #ffffff;
+  --ok-soft: #e3f4ec;
+  --warn: #a35a00;
+  --danger: #c0262d;
+  --rating: #e09b00;
+  --star: var(--rating);
+  --bar: #1f1a2e;
+  --bar-ink: #f3eff7;
+  --shadow-card: 0 10px 24px -14px rgb(31 26 46 / .35);
+  --shadow-float: 0 24px 48px -16px rgb(31 26 46 / .35);
+  --scrim: rgb(20 16 28 / .45);
+
+  --display: "Bricolage Grotesque", "Bricolage Fallback", "Avenir Next", "Segoe UI", system-ui, sans-serif;
+  --body: "Figtree", "Figtree Fallback", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --r-s: 8px;
+  --r-thumb: 10px;
+  --r-m: 14px;
+  --r-l: 22px;
+  --r-pill: 999px;
+  --ease: cubic-bezier(.2, .8, .2, 1);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --bg: #15121c;
+    --band: #1e1a27;
+    --raised: #221d2c;
+    --ink: #f3eff7;
+    --muted: #aba3b9;
+    --line: #322c3e;
+    --brand: #ff5c93;
+    --brand-hover: #ff7aa7;
+    --brand-ink: #22070f;
+    --brand-soft: #3b1628;
+    --ok: #4cc38a;
+    --ok-ink: #08210f;
+    --ok-soft: #12301f;
+    --warn: #f0a845;
+    --danger: #ff6b6b;
+    --rating: #ffc233;
+    --bar: #0d0b12;
+    --shadow-card: 0 10px 24px -14px rgb(0 0 0 / .7);
+    --shadow-float: 0 24px 48px -16px rgb(0 0 0 / .8);
+    --scrim: rgb(0 0 0 / .6);
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #15121c;
+  --band: #1e1a27;
+  --raised: #221d2c;
+  --ink: #f3eff7;
+  --muted: #aba3b9;
+  --line: #322c3e;
+  --brand: #ff5c93;
+  --brand-hover: #ff7aa7;
+  --brand-ink: #22070f;
+  --brand-soft: #3b1628;
+  --ok: #4cc38a;
+  --ok-ink: #08210f;
+  --ok-soft: #12301f;
+  --warn: #f0a845;
+  --danger: #ff6b6b;
+  --rating: #ffc233;
+  --bar: #0d0b12;
+  --shadow-card: 0 10px 24px -14px rgb(0 0 0 / .7);
+  --shadow-float: 0 24px 48px -16px rgb(0 0 0 / .8);
+  --scrim: rgb(0 0 0 / .6);
+}
+
+/* Brand presets. Light first, then the same three tokens for dark. */
+:root[data-brand="ocean"] { --brand: #0f6fbf; --brand-hover: #0b5a9c; --brand-soft: #e4f0fb; }
+:root[data-brand="forest"] { --brand: #1d7a4f; --brand-hover: #155f3d; --brand-soft: #e2f3ea; }
+:root[data-brand="marigold"] { --brand: #ad4f00; --brand-hover: #8f4100; --brand-soft: #fdeedd; }
+:root[data-brand="plum"] { --brand: #6b3fa0; --brand-hover: #57318a; --brand-soft: #efe7f8; }
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"])[data-brand="ocean"] { --brand: #5aaef5; --brand-hover: #7cc0f8; --brand-soft: #11293f; }
+  :root:not([data-theme="light"])[data-brand="forest"] { --brand: #4cc38a; --brand-hover: #6fd3a3; --brand-soft: #12301f; }
+  :root:not([data-theme="light"])[data-brand="marigold"] { --brand: #ff9d42; --brand-hover: #ffb46b; --brand-soft: #3a2310; }
+  :root:not([data-theme="light"])[data-brand="plum"] { --brand: #b58cf0; --brand-hover: #c7a6f4; --brand-soft: #2a1b40; }
+}
+:root[data-theme="dark"][data-brand="ocean"] { --brand: #5aaef5; --brand-hover: #7cc0f8; --brand-soft: #11293f; }
+:root[data-theme="dark"][data-brand="forest"] { --brand: #4cc38a; --brand-hover: #6fd3a3; --brand-soft: #12301f; }
+:root[data-theme="dark"][data-brand="marigold"] { --brand: #ff9d42; --brand-hover: #ffb46b; --brand-soft: #3a2310; }
+:root[data-theme="dark"][data-brand="plum"] { --brand: #b58cf0; --brand-hover: #c7a6f4; --brand-soft: #2a1b40; }
+
+/* Font pairs. Bricolage + Figtree is the default; the others only change the two stacks. */
+:root[data-font="fraunces-inter"] {
+  --display: "Fraunces", "Fraunces Fallback", Georgia, "Times New Roman", serif;
+  --body: "Inter", "Inter Fallback", "Segoe UI", system-ui, -apple-system, sans-serif;
+}
+:root[data-font="fraunces-inter"] :is(h1, h2, h3, .logo, .hero-copy h1) { letter-spacing: -0.01em; }
+:root[data-font="system"] {
+  --display: system-ui, -apple-system, "Segoe UI", sans-serif;
+  --body: system-ui, -apple-system, "Segoe UI", sans-serif;
+}

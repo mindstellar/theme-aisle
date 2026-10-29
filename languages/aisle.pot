@@ -1,0 +1,1524 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Aisle 1.0.0\n"
+"Report-Msgid-Bugs-To: https://github.com/mindstellar/theme-aisle/issues\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: \n"
+
+#: cart/module.php:98
+msgid "(%d)"
+msgstr ""
+
+#: common/product/deliver.php:29
+msgid "%1$s · %2$s"
+msgstr ""
+
+#: common/chips.php:22
+msgid "%1$s to %2$s"
+msgstr ""
+
+#: search.php:110
+msgid "%d product"
+msgid_plural "%d products"
+msgstr[0] ""
+msgstr[1] ""
+
+#: common/product/reviews.php:88
+#: common/stars.php:45
+msgid "%d review"
+msgid_plural "%d reviews"
+msgstr[0] ""
+msgstr[1] ""
+
+#: common/product/reviews.php:126
+msgid "%d star"
+msgid_plural "%d stars"
+msgstr[0] ""
+msgstr[1] ""
+
+#: common/card.php:91
+#: common/product/buy.php:24
+#: common/product/buy.php:53
+msgid "%d%% off"
+msgstr ""
+
+#: common/product/buy.php:25
+#: common/product/buy.php:91
+msgid "%s, sold out"
+msgstr ""
+
+#: cart/checkout.php:80
+msgid "+%s"
+msgstr ""
+
+#: sections.php:237
+msgid "A big heading, a short text, two buttons and a photo."
+msgstr ""
+
+#: common/product/reviews.php:34
+#: common/product/reviews.php:63
+msgid "A customer"
+msgstr ""
+
+#: sections.php:281
+msgid "A grid or a row of deals, new arrivals or one category."
+msgstr ""
+
+#: sections.php:387
+msgid "A heading, one line and an e-mail field."
+msgstr ""
+
+#: sections.php:256
+msgid "A listing I choose"
+msgstr ""
+
+#: sections.php:378
+msgid "A score and up to three customer quotes."
+msgstr ""
+
+#: functions.php:758
+msgid "A short line about the shop, under the logo."
+msgstr ""
+
+#: sections.php:334
+msgid "A wide photo with a heading, a line of text and a button."
+msgstr ""
+
+#: cart/order-card.php:326
+#: common/header.php:56
+#: common/menu.php:55
+msgid "Account"
+msgstr ""
+
+#: cart/module.php:97
+msgid "Add %s more for free delivery"
+msgstr ""
+
+#: cart/module.php:88
+#: common/card.php:73
+#: common/product/buy.php:130
+#: common/product/buy.php:159
+msgid "Add to cart"
+msgstr ""
+
+#: cart/module.php:87
+#: common/product/buy.php:26
+msgid "Added"
+msgstr ""
+
+#: cart/checkout.php:143
+msgid "Address"
+msgstr ""
+
+#: functions.php:697
+msgid "Aisle"
+msgstr ""
+
+#: search.php:115
+msgid "All"
+msgstr ""
+
+#: search.php:68
+msgid "All products"
+msgstr ""
+
+#: cart/order.php:63
+msgid "All your orders"
+msgstr ""
+
+#: common/product/buy.php:28
+msgid "Already set"
+msgstr ""
+
+#: functions.php:746
+msgid "Announcement bar"
+msgstr ""
+
+#: cart/checkout.php:193
+msgid "Apply"
+msgstr ""
+
+#: common/filters.php:100
+msgid "Apply filters"
+msgstr ""
+
+#: common/filters.php:45
+msgid "Availability"
+msgstr ""
+
+#: cart/order-card.php:119
+msgid "Awaiting payment"
+msgstr ""
+
+#: maintenance.php:20
+msgid "back soon"
+msgstr ""
+
+#: 404.php:27
+#: 404.php:34
+#: cart/checkout.php:74
+#: error.php:23
+#: search.php:144
+#: search.php:146
+msgid "Back to the shop"
+msgstr ""
+
+#: sections.php:333
+msgid "Banner"
+msgstr ""
+
+#: functions.php:677
+msgid "Below the footer links."
+msgstr ""
+
+#: functions.php:713
+msgid "Brand colour"
+msgstr ""
+
+#: item.php:82
+#: page.php:34
+#: search.php:100
+msgid "Breadcrumb"
+msgstr ""
+
+#: functions.php:727
+msgid "Bricolage + Figtree (default)"
+msgstr ""
+
+#: sections.php:245
+#: sections.php:342
+#: sections.php:394
+msgid "Button label"
+msgstr ""
+
+#: sections.php:246
+#: sections.php:343
+msgid "Button link"
+msgstr ""
+
+#: cart/order-card.php:278
+msgid "Buy again"
+msgstr ""
+
+#: common/product/buy.php:131
+msgid "Buy now"
+msgstr ""
+
+#: cart/order-card.php:284
+msgid "Cancel order"
+msgstr ""
+
+#: cart/order-card.php:110
+#: cart/order-card.php:308
+msgid "Cancelled"
+msgstr ""
+
+#: common/header.php:53
+msgid "Cart"
+msgstr ""
+
+#: sections.php:217
+msgid "Cash"
+msgstr ""
+
+#: common/product/deliver.php:32
+msgid "Cash on delivery available"
+msgstr ""
+
+#: functions.php:750
+msgid "Catalogue"
+msgstr ""
+
+#: common/header.php:60
+msgid "Categories"
+msgstr ""
+
+#: sections.php:298
+msgid "Category"
+msgstr ""
+
+#: sections.php:268
+msgid "Category row"
+msgstr ""
+
+#: sections.php:349
+msgid "Centre"
+msgstr ""
+
+#: common/product/deliver.php:41
+msgid "Check"
+msgstr ""
+
+#: common/product/deliver.php:34
+msgid "Checking…"
+msgstr ""
+
+#: cart/checkout.php:115
+#: cart/checkout.php:25
+#: cart/module.php:99
+msgid "Checkout"
+msgstr ""
+
+#: cart/checkout.php:208
+msgid "Checkout needs JavaScript. Please turn it on to place your order."
+msgstr ""
+
+#: sections.php:196
+msgid "Choose a category"
+msgstr ""
+
+#: common/product/reviews.php:33
+msgid "Choose a star rating or write a review"
+msgstr ""
+
+#: common/card.php:76
+msgid "Choose options"
+msgstr ""
+
+#: cart/checkout.php:151
+msgid "City"
+msgstr ""
+
+#: search.php:176
+msgid "Clear"
+msgstr ""
+
+#: common/chips.php:62
+#: common/filters.php:102
+msgid "Clear all"
+msgstr ""
+
+#: search.php:142
+msgid "Clear the filters"
+msgstr ""
+
+#: common/menu.php:47
+msgid "Close"
+msgstr ""
+
+#: common/footer.php:76
+msgid "Close cart"
+msgstr ""
+
+#: search.php:174
+msgid "Close filters"
+msgstr ""
+
+#: common/header.php:51
+#: common/menu.php:18
+#: functions.php:702
+msgid "Colour scheme"
+msgstr ""
+
+#: cart/checkout.php:121
+msgid "Contact"
+msgstr ""
+
+#: 404.php:35
+#: common/footer.php:52
+msgid "Contact us"
+msgstr ""
+
+#: common/product/buy.php:147
+msgid "Copy link"
+msgstr ""
+
+#: common/product/buy.php:29
+msgid "Could not save that, try again"
+msgstr ""
+
+#: common/product/reviews.php:29
+msgid "Could not send your review, try again"
+msgstr ""
+
+#: cart/module.php:89
+msgid "Could not update your cart"
+msgstr ""
+
+#: common/header.php:23
+msgid "Could not update your wishlist"
+msgstr ""
+
+#: cart/checkout.php:159
+msgid "Country"
+msgstr ""
+
+#: cart/checkout.php:191
+#: cart/checkout.php:192
+msgid "Coupon code"
+msgstr ""
+
+#: cart/checkout.php:29
+msgid "Create an account"
+msgstr ""
+
+#: common/menu.php:21
+#: functions.php:706
+msgid "Dark"
+msgstr ""
+
+#: common/header.php:61
+#: common/menu.php:49
+#: sections.php:293
+msgid "Deals"
+msgstr ""
+
+#: cart/order-card.php:104
+#: cart/order-card.php:137
+msgid "Delivered"
+msgstr ""
+
+#: cart/order-card.php:104
+msgid "Delivered %s"
+msgstr ""
+
+#: cart/checkout.php:174
+#: cart/checkout.php:99
+#: sections.php:215
+msgid "Delivery"
+msgstr ""
+
+#: cart/checkout.php:130
+msgid "Delivery address"
+msgstr ""
+
+#: common/footer.php:73
+msgid "Delivery is worked out at checkout."
+msgstr ""
+
+#: common/product/details.php:30
+msgid "Details"
+msgstr ""
+
+#: cart/order-card.php:205
+msgid "Digital download"
+msgstr ""
+
+#: cart/checkout.php:100
+msgid "Discount"
+msgstr ""
+
+#: cart/order-card.php:227
+msgid "Download"
+msgstr ""
+
+#: common/product/buy.php:151
+msgid "E-mail"
+msgstr ""
+
+#: cart/checkout.php:123
+msgid "Email"
+msgstr ""
+
+#: cart/checkout.php:69
+msgid "Enter a mobile number with at least 8 digits."
+msgstr ""
+
+#: cart/checkout.php:105
+msgid "Enter a valid coupon code."
+msgstr ""
+
+#: common/product/deliver.php:27
+msgid "Enter a valid postcode."
+msgstr ""
+
+#: common/product/deliver.php:40
+msgid "Enter PIN code"
+msgstr ""
+
+#: common/product/deliver.php:40
+msgid "Enter postcode"
+msgstr ""
+
+#: common/footer.php:16
+msgid ""
+"Everyday things for your home, kitchen and wardrobe, packed with care and "
+"sent to your door."
+msgstr ""
+
+#: sections.php:355
+msgid "Featured product"
+msgstr ""
+
+#: cart/checkout.php:102
+msgid "Fee"
+msgstr ""
+
+#: cart/order-card.php:210
+msgid "File"
+msgstr ""
+
+#: search.php:122
+#: search.php:127
+#: search.php:171
+#: search.php:174
+msgid "Filters"
+msgstr ""
+
+#: functions.php:753
+msgid "Filters by option"
+msgstr ""
+
+#: functions.php:704
+msgid "Follow the visitor's device"
+msgstr ""
+
+#: functions.php:725
+msgid "Fonts"
+msgstr ""
+
+#: functions.php:676
+#: functions.php:757
+#: sections.php:447
+msgid "Footer"
+msgstr ""
+
+#: functions.php:758
+msgid "Footer note"
+msgstr ""
+
+#: functions.php:717
+msgid "Forest"
+msgstr ""
+
+#: functions.php:728
+msgid "Fraunces + Inter"
+msgstr ""
+
+#: cart/checkout.php:72
+#: common/product/deliver.php:30
+msgid "Free"
+msgstr ""
+
+#: common/product/deliver.php:31
+msgid "Free delivery on orders over %s"
+msgstr ""
+
+#: common/chips.php:21
+msgid "From %s"
+msgstr ""
+
+#: cart/checkout.php:135
+msgid "Full name"
+msgstr ""
+
+#: functions.php:809
+msgid "Full width"
+msgstr ""
+
+#: cart/order-card.php:287
+msgid "Get help"
+msgstr ""
+
+#: common/product/deliver.php:28
+msgid "Get it by %s"
+msgstr ""
+
+#: sections.php:480
+msgid "Good things, *easy to find.*"
+msgstr ""
+
+#: sections.php:305
+msgid "Grid"
+msgstr ""
+
+#: sections.php:274
+#: sections.php:286
+#: sections.php:340
+#: sections.php:362
+#: sections.php:392
+msgid "Heading"
+msgstr ""
+
+#: sections.php:242
+msgid "Heading (put *stars* around the word to colour)"
+msgstr ""
+
+#: common/footer.php:47
+msgid "Help"
+msgstr ""
+
+#: sections.php:236
+msgid "Hero banner"
+msgstr ""
+
+#: item.php:83
+#: page.php:35
+#: search.php:101
+msgid "Home"
+msgstr ""
+
+#: sections.php:430
+msgid "Home page"
+msgstr ""
+
+#: functions.php:680
+msgid "Home page sections"
+msgstr ""
+
+#: sections.php:275
+msgid "How many (3 to 12)"
+msgstr ""
+
+#: sections.php:299
+msgid "How many (4 to 12)"
+msgstr ""
+
+#: cart/order-card.php:262
+msgid "How to pay"
+msgstr ""
+
+#: common/chips.php:26
+#: common/filters.php:46
+#: common/product/buy.php:120
+#: common/product/buy.php:21
+msgid "In stock"
+msgstr ""
+
+#: cart/checkout.php:107
+#: cart/order-card.php:247
+msgid "Includes %1$s %2$s"
+msgstr ""
+
+#: cart/order-card.php:275
+msgid "Invoice"
+msgstr ""
+
+#: cart/order-card.php:311
+msgid "Items added to your cart"
+msgstr ""
+
+#: user-billing-orders.php:62
+#: wishlist.php:58
+msgid "Keep browsing"
+msgstr ""
+
+#: common/footer.php:73
+msgid "Keep shopping"
+msgstr ""
+
+#: common/footer.php:62
+msgid "Language"
+msgstr ""
+
+#: functions.php:741
+msgid "Large"
+msgstr ""
+
+#: sections.php:302
+msgid "Layout"
+msgstr ""
+
+#: sections.php:349
+msgid "Left"
+msgstr ""
+
+#: cart/module.php:93
+#: common/product/buy.php:126
+msgid "Less"
+msgstr ""
+
+#: common/menu.php:20
+#: functions.php:705
+msgid "Light"
+msgstr ""
+
+#: sections.php:369
+msgid "Line under the score"
+msgstr ""
+
+#: common/product/buy.php:145
+msgid "Link copied"
+msgstr ""
+
+#: sections.php:307
+msgid "Link text"
+msgstr ""
+
+#: sections.php:361
+msgid "Listing number"
+msgstr ""
+
+#: sections.php:260
+msgid "Listing number for the card (0 shows the first deal)"
+msgstr ""
+
+#: functions.php:734
+msgid "Logo"
+msgstr ""
+
+#: functions.php:740
+msgid "Logo height"
+msgstr ""
+
+#: functions.php:736
+msgid "Logo on dark"
+msgstr ""
+
+#: functions.php:699
+msgid "Look"
+msgstr ""
+
+#: functions.php:718
+msgid "Marigold"
+msgstr ""
+
+#: common/filters.php:41
+msgid "Max"
+msgstr ""
+
+#: functions.php:741
+msgid "Medium"
+msgstr ""
+
+#: common/header.php:41
+#: common/menu.php:44
+msgid "Menu"
+msgstr ""
+
+#: common/filters.php:40
+msgid "Min"
+msgstr ""
+
+#: cart/checkout.php:139
+msgid "Mobile"
+msgstr ""
+
+#: cart/module.php:94
+#: common/product/buy.php:128
+msgid "More"
+msgstr ""
+
+#: common/header.php:65
+#: common/menu.php:53
+#: sections.php:485
+msgid "New in"
+msgstr ""
+
+#: search.php:96
+#: sections.php:294
+msgid "Newest"
+msgstr ""
+
+#: sections.php:386
+msgid "Newsletter"
+msgstr ""
+
+#: common/pagination.php:34
+msgid "Next"
+msgstr ""
+
+#: cart/checkout.php:79
+msgid "No payment method is available right now."
+msgstr ""
+
+#: search.php:180
+msgid "No products match"
+msgstr ""
+
+#: common/menu.php:17
+msgid "No products match “%s”. Try a shorter word."
+msgstr ""
+
+#: search.php:140
+msgid "No products match."
+msgstr ""
+
+#: common/product/reviews.php:101
+#: common/product/reviews.php:107
+msgid "No reviews yet"
+msgstr ""
+
+#: sections.php:257
+msgid "None"
+msgstr ""
+
+#: wishlist.php:58
+msgid "Nothing saved yet."
+msgstr ""
+
+#: common/product/buy.php:135
+msgid "Notify me when it is back"
+msgstr ""
+
+#: functions.php:716
+msgid "Ocean"
+msgstr ""
+
+#: cart/module.php:102
+msgid "OK"
+msgstr ""
+
+#: user-billing-orders.php:65
+msgid "Older orders"
+msgstr ""
+
+#: cart/order-card.php:127
+msgid "On delivery"
+msgstr ""
+
+#: common/chips.php:29
+#: common/filters.php:47
+msgid "On sale"
+msgstr ""
+
+#: cart/order-card.php:101
+msgid "On the way"
+msgstr ""
+
+#: sections.php:295
+msgid "One category"
+msgstr ""
+
+#: functions.php:754
+msgid ""
+"One line per option, with its values after a colon. Example: Colour: "
+"Sunflower, Cherry, Navy"
+msgstr ""
+
+#: sections.php:356
+msgid "One product with a heading and a few words beside it."
+msgstr ""
+
+#: functions.php:747
+msgid "One short line above the header. Leave empty to hide the bar."
+msgstr ""
+
+#: cart/checkout.php:76
+#: cart/module.php:92
+#: common/card.php:98
+#: common/product/buy.php:116
+#: common/product/buy.php:22
+msgid "Only %d left"
+msgstr ""
+
+#: common/product/buy.php:116
+#: common/product/buy.php:23
+msgid "Only %d left in %s"
+msgstr ""
+
+#: functions.php:736
+msgid "Optional. Used when the dark scheme is on."
+msgstr ""
+
+#: cart/order-card.php:170
+msgid "Order"
+msgstr ""
+
+#: cart/order.php:56
+msgid "Order %s"
+msgstr ""
+
+#: cart/checkout.php:88
+msgid "Order %s placed"
+msgstr ""
+
+#: cart/order-card.php:309
+msgid "Order cancelled"
+msgstr ""
+
+#: cart/order.php:51
+msgid "Order not found"
+msgstr ""
+
+#: cart/checkout.php:185
+msgid "Order summary"
+msgstr ""
+
+#: cart/order-card.php:134
+msgid "Ordered"
+msgstr ""
+
+#: common/card.php:96
+#: common/product/buy.php:112
+#: common/product/buy.php:20
+msgid "Out of stock"
+msgstr ""
+
+#: common/head-seo.php:88
+#: common/head-seo.php:98
+msgid "Page not found - %s"
+msgstr ""
+
+#: common/pagination.php:21
+msgid "Pages"
+msgstr ""
+
+#: cart/order-card.php:135
+msgid "Paid"
+msgstr ""
+
+#: sections.php:219
+msgid "Parcel"
+msgstr ""
+
+#: cart/checkout.php:97
+msgid "Pay for or cancel an unpaid bank transfer order first."
+msgstr ""
+
+#: cart/order-card.php:269
+msgid "Pay now"
+msgstr ""
+
+#: cart/order-card.php:119
+msgid "Pay on delivery"
+msgstr ""
+
+#: cart/checkout.php:179
+msgid "Payment"
+msgstr ""
+
+#: cart/order-card.php:113
+msgid "Payment failed"
+msgstr ""
+
+#: sections.php:244
+#: sections.php:339
+msgid "Photo"
+msgstr ""
+
+#: common/product/gallery.php:27
+#: common/product/gallery.php:45
+msgid "Photo %d"
+msgstr ""
+
+#: cart/checkout.php:147
+#: cart/checkout.php:70
+#: common/product/deliver.php:39
+msgid "PIN code"
+msgstr ""
+
+#: cart/checkout.php:68
+#: common/product/deliver.php:26
+msgid "PIN code needs 6 digits."
+msgstr ""
+
+#: cart/checkout.php:205
+#: cart/checkout.php:82
+msgid "Place order"
+msgstr ""
+
+#: cart/order-card.php:177
+msgid "Placed"
+msgstr ""
+
+#: cart/checkout.php:81
+msgid "Placing your order…"
+msgstr ""
+
+#: functions.php:719
+msgid "Plum"
+msgstr ""
+
+#: cart/checkout.php:71
+#: common/product/deliver.php:39
+msgid "Postcode"
+msgstr ""
+
+#: cart/order-card.php:107
+msgid "Preparing"
+msgstr ""
+
+#: common/pagination.php:23
+msgid "Previous"
+msgstr ""
+
+#: common/filters.php:38
+msgid "Price"
+msgstr ""
+
+#: search.php:95
+msgid "Price: high to low"
+msgstr ""
+
+#: search.php:94
+msgid "Price: low to high"
+msgstr ""
+
+#: sections.php:251
+msgid "Product card on the photo"
+msgstr ""
+
+#: common/menu.php:15
+#: sections.php:280
+msgid "Products"
+msgstr ""
+
+#: sections.php:317
+msgid "Promise %d: icon"
+msgstr ""
+
+#: sections.php:314
+msgid "Promise %d: text"
+msgstr ""
+
+#: sections.php:313
+msgid "Promise %d: title"
+msgstr ""
+
+#: sections.php:324
+msgid "Promise row"
+msgstr ""
+
+#: cart/checkout.php:75
+#: cart/order-card.php:205
+msgid "Qty %d"
+msgstr ""
+
+#: common/product/buy.php:125
+msgid "Quantity"
+msgstr ""
+
+#: sections.php:373
+msgid "Quote %d: name and city"
+msgstr ""
+
+#: sections.php:374
+msgid "Quote %d: stars (1 to 5)"
+msgstr ""
+
+#: sections.php:372
+msgid "Quote %d: text"
+msgstr ""
+
+#: functions.php:715
+msgid "Raspberry"
+msgstr ""
+
+#: common/product/reviews.php:78
+msgid "Rate this product"
+msgstr ""
+
+#: common/product/reviews.php:35
+#: common/stars.php:19
+msgid "Rated %s out of 5"
+msgstr ""
+
+#: common/product/related.php:28
+msgid "Recently viewed"
+msgstr ""
+
+#: search.php:93
+msgid "Recommended"
+msgstr ""
+
+#: cart/order-card.php:116
+msgid "Refunded"
+msgstr ""
+
+#: cart/checkout.php:199
+#: cart/module.php:95
+#: common/chips.php:60
+msgid "Remove"
+msgstr ""
+
+#: common/header.php:22
+msgid "Removed from your wishlist"
+msgstr ""
+
+#: search.php:68
+msgid "Results for “%s”"
+msgstr ""
+
+#: cart/order-card.php:287
+msgid "Return an item"
+msgstr ""
+
+#: sections.php:216
+msgid "Returns"
+msgstr ""
+
+#: common/product/reviews.php:77
+#: sections.php:377
+msgid "Reviews"
+msgstr ""
+
+#: sections.php:349
+msgid "Right"
+msgstr ""
+
+#: sections.php:269
+msgid "Round photos of your top categories."
+msgstr ""
+
+#: common/header.php:24
+msgid "Save"
+msgstr ""
+
+#: common/card.php:79
+msgid "Save %s"
+msgstr ""
+
+#: common/header.php:21
+msgid "Saved to your wishlist"
+msgstr ""
+
+#: sections.php:368
+msgid "Score, for example 4.7"
+msgstr ""
+
+#: sections.php:305
+msgid "Scrolling row"
+msgstr ""
+
+#: common/header.php:46
+#: common/header.php:47
+msgid "Search products"
+msgstr ""
+
+#: sections.php:247
+msgid "Second button label"
+msgstr ""
+
+#: sections.php:248
+msgid "Second button link"
+msgstr ""
+
+#: sections.php:218
+msgid "Secure"
+msgstr ""
+
+#: common/menu.php:16
+msgid "See all results for “%s”"
+msgstr ""
+
+#: cart/order.php:52
+msgid "See all your orders"
+msgstr ""
+
+#: cart/checkout.php:92
+msgid "See your orders"
+msgstr ""
+
+#: common/product/reviews.php:133
+msgid "Send review"
+msgstr ""
+
+#: common/product/buy.php:145
+msgid "Share"
+msgstr ""
+
+#: cart/order-card.php:136
+msgid "Shipped"
+msgstr ""
+
+#: common/footer.php:38
+msgid "Shop"
+msgstr ""
+
+#: sections.php:486
+msgid "Shop now"
+msgstr ""
+
+#: sections.php:485
+msgid "Shop the deals"
+msgstr ""
+
+#: sections.php:261
+msgid "Short promise 1"
+msgstr ""
+
+#: sections.php:262
+msgid "Short promise 2"
+msgstr ""
+
+#: sections.php:263
+msgid "Short promise 3"
+msgstr ""
+
+#: sections.php:289
+msgid "Show"
+msgstr ""
+
+#: search.php:179
+msgid "Show %d products"
+msgstr ""
+
+#: common/product/reviews.php:115
+#: common/product/reviews.php:28
+#: search.php:162
+msgid "Show more"
+msgstr ""
+
+#: search.php:176
+msgid "Show products"
+msgstr ""
+
+#: search.php:159
+msgid "Showing %1$d of %2$d"
+msgstr ""
+
+#: functions.php:759
+msgid ""
+"Shown as small tags under the footer note, separated by commas. Example: "
+"UPI, VISA, COD"
+msgstr ""
+
+#: functions.php:734
+msgid "Shown in the header and footer. Without it the shop name is used."
+msgstr ""
+
+#: cart/checkout.php:28
+#: cart/order.php:25
+msgid "Sign in"
+msgstr ""
+
+#: cart/checkout.php:26
+msgid "Sign in to place your order. Your cart stays as it is."
+msgstr ""
+
+#: cart/order.php:24
+msgid "Sign in to see your order."
+msgstr ""
+
+#: common/product/reviews.php:138
+msgid "Sign in to write a review"
+msgstr ""
+
+#: common/header.php:33
+msgid "Skip to content"
+msgstr ""
+
+#: functions.php:741
+msgid "Small"
+msgstr ""
+
+#: cart/checkout.php:77
+#: cart/module.php:90
+msgid "Sold out"
+msgstr ""
+
+#: cart/checkout.php:78
+msgid "Some items need your attention. Change them in your cart."
+msgstr ""
+
+#: error.php:21
+msgid "Something went wrong"
+msgstr ""
+
+#: error.php:15
+msgid "Something went wrong. Please try again in a moment."
+msgstr ""
+
+#: search.php:129
+msgid "Sort"
+msgstr ""
+
+#: common/product/details.php:36
+msgid "Specifications"
+msgstr ""
+
+#: sections.php:220
+msgid "Star"
+msgstr ""
+
+#: common/footer.php:73
+msgid "Start shopping"
+msgstr ""
+
+#: cart/checkout.php:155
+msgid "State"
+msgstr ""
+
+#: cart/checkout.php:98
+#: common/footer.php:73
+msgid "Subtotal"
+msgstr ""
+
+#: common/menu.php:19
+msgid "System"
+msgstr ""
+
+#: functions.php:729
+msgid "System fonts"
+msgstr ""
+
+#: cart/checkout.php:104
+msgid "Taking you to payment…"
+msgstr ""
+
+#: cart/checkout.php:108
+msgid "tax"
+msgstr ""
+
+#: cart/checkout.php:101
+msgid "Tax"
+msgstr ""
+
+#: common/product/buy.php:136
+msgid "Tell me if the price drops"
+msgstr ""
+
+#: sections.php:243
+#: sections.php:341
+#: sections.php:363
+#: sections.php:393
+msgid "Text"
+msgstr ""
+
+#: main.php:37
+msgid "Text block"
+msgstr ""
+
+#: sections.php:346
+msgid "Text position"
+msgstr ""
+
+#: cart/order.php:58
+#: user-billing-orders.php:40
+msgid "Thank you, your order is placed."
+msgstr ""
+
+#: cart/order.php:58
+#: user-billing-orders.php:41
+msgid "Thank you, your order is placed. We will start on it when payment arrives."
+msgstr ""
+
+#: cart/checkout.php:89
+msgid "Thank you. We have your order."
+msgstr ""
+
+#: common/product/reviews.php:31
+msgid "Thanks for your review"
+msgstr ""
+
+#: common/product/reviews.php:30
+msgid "Thanks, it shows once it is approved"
+msgstr ""
+
+#: cart/checkout.php:91
+msgid "That payment method is not available. Pick another."
+msgstr ""
+
+#: sections.php:255
+msgid "The first deal"
+msgstr ""
+
+#: functions.php:731
+msgid "The fonts are served from your site. System fonts load no font file."
+msgstr ""
+
+#: functions.php:810
+msgid "The page uses the whole width of the content area."
+msgstr ""
+
+#: cart/module.php:101
+msgid "The price of %1$s changed from %2$s to %3$s."
+msgstr ""
+
+#: 404.php:32
+msgid ""
+"The product may have sold out or moved, or the link may be mistyped. Try a "
+"search or pick a category."
+msgstr ""
+
+#: functions.php:681
+msgid "The sections of the home page, top to bottom."
+msgstr ""
+
+#: maintenance.php:37
+msgid "The shop is being updated. Please check again in a few minutes."
+msgstr ""
+
+#: 404.php:24
+msgid ""
+"The shop is slow to answer. Nothing is lost and your cart is safe. Try "
+"again in a moment."
+msgstr ""
+
+#: cart/checkout.php:67
+msgid "This field is required."
+msgstr ""
+
+#: cart/module.php:91
+msgid "This item cannot be bought right now and was removed from your cart."
+msgstr ""
+
+#: 404.php:31
+msgid "This page could not be found."
+msgstr ""
+
+#: 404.php:23
+msgid "This page is not loading right now."
+msgstr ""
+
+#: cart/order-card.php:312
+msgid "Those items are no longer available"
+msgstr ""
+
+#: common/product/reviews.php:130
+msgid "Title"
+msgstr ""
+
+#: cart/checkout.php:86
+msgid "Too many tries. Wait a minute and try again."
+msgstr ""
+
+#: sections.php:446
+msgid "Top bar"
+msgstr ""
+
+#: cart/checkout.php:103
+#: cart/checkout.php:118
+#: cart/order-card.php:178
+msgid "Total"
+msgstr ""
+
+#: cart/order-card.php:272
+msgid "Track parcel"
+msgstr ""
+
+#: 404.php:26
+#: cart/checkout.php:87
+#: common/footer.php:73
+#: functions.php:174
+msgid "Try again"
+msgstr ""
+
+#: sections.php:325
+msgid "Up to four short promises with an icon, such as free delivery."
+msgstr ""
+
+#: cart/checkout.php:216
+#: cart/checkout.php:90
+msgid "View your order"
+msgstr ""
+
+#: functions.php:708
+msgid "Visitors can still switch it with the button in the header."
+msgstr ""
+
+#: cart/order-card.php:127
+msgid "Waiting"
+msgstr ""
+
+#: common/footer.php:29
+#: functions.php:759
+msgid "Ways to pay"
+msgstr ""
+
+#: cart/order-card.php:310
+msgid "We could not cancel this order. It may have been paid already."
+msgstr ""
+
+#: cart/order.php:52
+msgid "We could not find that order in your account."
+msgstr ""
+
+#: functions.php:174
+msgid "We could not load this just now."
+msgstr ""
+
+#: cart/checkout.php:83
+msgid "We could not place your order. Please try again."
+msgstr ""
+
+#: cart/checkout.php:84
+msgid "We could not price your cart. Please try again."
+msgstr ""
+
+#: cart/order-card.php:313
+msgid "We could not start the payment. Try again in a moment."
+msgstr ""
+
+#: common/product/deliver.php:33
+msgid "We do not deliver to this PIN code yet."
+msgstr ""
+
+#: maintenance.php:36
+msgid "We will be back soon"
+msgstr ""
+
+#: common/product/buy.php:27
+msgid "We will e-mail you"
+msgstr ""
+
+#: common/header.php:52
+#: functions.php:110
+#: wishlist.php:51
+msgid "Wishlist"
+msgstr ""
+
+#: cart/order-card.php:281
+#: common/product/reviews.php:120
+#: common/product/reviews.php:78
+msgid "Write a review"
+msgstr ""
+
+#: common/product/reviews.php:33
+msgid "Write your review first"
+msgstr ""
+
+#: common/chips.php:54
+msgid "Yes"
+msgstr ""
+
+#: cart/order-card.php:284
+msgid "Yes, cancel the order"
+msgstr ""
+
+#: common/product/reviews.php:32
+msgid "You already reviewed this"
+msgstr ""
+
+#: cart/checkout.php:85
+msgid "You are offline. Check your connection and try again."
+msgstr ""
+
+#: cart/module.php:96
+msgid "You get free delivery"
+msgstr ""
+
+#: cart/checkout.php:94
+#: cart/checkout.php:96
+msgid "You have %1$d unpaid bank transfer order. You can hold %2$d at once."
+msgid_plural "You have %1$d unpaid bank transfer orders. You can hold %2$d at once."
+msgstr[0] ""
+msgstr[1] ""
+
+#: user-billing-orders.php:62
+msgid "You have no orders yet."
+msgstr ""
+
+#: common/product/related.php:19
+msgid "You may also like"
+msgstr ""
+
+#: common/footer.php:75
+msgid "Your cart"
+msgstr ""
+
+#: cart/checkout.php:73
+#: common/footer.php:73
+msgid "Your cart is empty."
+msgstr ""
+
+#: cart/checkout.php:186
+#: cart/order.php:23
+#: cart/order.php:45
+msgid "Your order"
+msgstr ""
+
+#: cart/module.php:62
+#: user-billing-orders.php:50
+msgid "Your orders"
+msgstr ""
+
+#: cart/checkout.php:207
+msgid "Your payment details never touch our server."
+msgstr ""
+
+#: common/product/reviews.php:123
+msgid "Your rating"
+msgstr ""
+
+#: common/product/reviews.php:131
+msgid "Your review"
+msgstr ""
+
+#: common/product/gallery.php:33
+msgid "Zoom in on the photo"
+msgstr ""

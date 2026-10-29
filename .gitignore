@@ -1,0 +1,26 @@
+.DS_Store
+dist/
+*.log
+
+# Local dev tools (dev site, seeding, screenshots). Only the string extractor is shared.
+bin/*
+!bin/i18n.mjs
+
+# Output of bin/shots.mjs and bin/lighthouse.mjs
+shots/
+lighthouse/
+mockup/
+
+# Build tooling. The .pot template and .po catalogues are committed; compiled .mo files are not.
+node_modules/
+package-lock.json
+languages/**/*.mo
+
+# Local-only assistant and design docs, never shipped or tracked.
+.claude/
+.remember/
+.impeccable/
+CLAUDE.md
+DESIGN.md
+PRODUCT.md
+docs/private/

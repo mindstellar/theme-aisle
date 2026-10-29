@@ -1,0 +1,32 @@
+name: Release Theme
+on:
+  push:
+    tags:
+      - 'v*'
+permissions:
+  contents: write
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Package theme
+        run: |
+          VERSION="${GITHUB_REF_NAME#v}"
+          mkdir -p dist/aisle
+          rsync -a \
+            --exclude '.git' --exclude '.github' --exclude 'dist' \
+            --exclude 'node_modules' --exclude 'package.json' \
+            --exclude 'package-lock.json' --exclude 'bin' \
+            --exclude 'docs' --exclude 'tests' --exclude 'DESIGN.md' --exclude 'PRODUCT.md' \
+            --exclude 'CLAUDE.md' --exclude '.claude' --exclude '.impeccable' \
+            ./ dist/aisle/
+          ( cd dist && zip -qr "aisle_${VERSION}.zip" aisle )
+
+      - name: Create GitHub release
+        uses: softprops/action-gh-release@v3
+        with:
+          files: dist/aisle_*.zip
+          name: Aisle ${{ github.ref_name }}

@@ -1,0 +1,92 @@
+/* Aisle account pages: the orders list and one order. Colours come from tokens.css. */
+
+.acct { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 36px; padding-block: 24px 48px; }
+.acct-nav { display: grid; gap: 2px; align-content: start; }
+.acct-nav a { text-decoration: none; padding: 10px 14px; border-radius: var(--r-s); font-weight: 500; color: var(--muted); display: flex; gap: 10px; align-items: center; }
+.acct-nav a.on { background: var(--band); color: var(--ink); font-weight: 600; }
+.acct h1 { font-size: 32px; font-weight: 800; margin-bottom: 18px; overflow-wrap: anywhere; }
+.acct-thanks { display: flex; gap: 10px; align-items: center; margin: 0 0 18px; padding: 12px 16px; border-radius: var(--r-m); background: var(--ok-soft); color: var(--ok); font-weight: 600; }
+.acct-empty { color: var(--muted); }
+.acct-empty a { color: var(--ink); }
+.acct-gate { display: grid; gap: 14px; justify-items: start; padding-block: 48px; max-width: 520px; }
+.acct-gate h1 { font-size: 34px; font-weight: 800; }
+.acct-gate p { margin: 0; }
+
+.order { border: 1px solid var(--line); border-radius: var(--r-l); overflow: hidden; margin-bottom: 18px; background: var(--bg); }
+.order-h { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; padding: 16px 20px; background: var(--band); font-size: 14px; }
+.order-h dl { display: flex; gap: 28px; margin: 0; flex-wrap: wrap; }
+.order-h dt { color: var(--muted); font-size: 12px; }
+.order-h dd { margin: 0; font-weight: 600; }
+.order-h dd a { text-decoration: none; }
+.order-h dd { overflow-wrap: anywhere; }
+.order-h dl > div { min-width: 0; }
+.order-b { padding: 20px; display: grid; gap: 18px; }
+
+.status { display: inline-flex; gap: 6px; align-items: center; font-weight: 700; font-size: 13px; padding: 4px 10px; border-radius: var(--r-pill); }
+.status.ship { background: var(--brand-soft); color: var(--brand); }
+.status.done { background: var(--ok-soft); color: var(--ok); }
+.status.wait { background: var(--bg); color: var(--warn); box-shadow: inset 0 0 0 1px var(--line); }
+.status.off { background: var(--bg); color: var(--muted); box-shadow: inset 0 0 0 1px var(--line); }
+.status.bad { background: var(--bg); color: var(--danger); box-shadow: inset 0 0 0 1px var(--danger); }
+
+.track { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; position: relative; font-size: 13px; padding: 0; margin: 0; }
+.track li { list-style: none; display: grid; gap: 2px; justify-items: start; align-content: start; position: relative; padding-top: 22px; color: var(--muted); min-width: 0; }
+.track li::before { content: ""; position: absolute; top: 6px; inset-inline: 0; height: 3px; background: var(--line); }
+.track li::after { content: ""; position: absolute; top: 1px; inset-inline-start: 0; width: 13px; height: 13px; border-radius: 50%; background: var(--bg); border: 3px solid var(--line); box-sizing: border-box; }
+.track li.did { color: var(--ink); }
+.track li.did::before, .track li.did::after { background: var(--brand); border-color: var(--brand); }
+.track li.now::after { box-shadow: 0 0 0 5px var(--brand-soft); }
+.track b { font-weight: 600; overflow-wrap: anywhere; }
+.track span { color: var(--muted); overflow-wrap: anywhere; }
+
+.olines { display: grid; gap: 12px; }
+.oline > :nth-child(2) { min-width: 0; overflow-wrap: anywhere; }
+.oline { display: grid; grid-template-columns: 64px minmax(0, 1fr) auto; gap: 14px; align-items: center; font-size: 14px; }
+.oline img, .oline .file { width: 64px; height: 64px; border-radius: var(--r-thumb); object-fit: cover; background: var(--band); }
+.oline .file { background: var(--brand-soft); color: var(--brand); display: grid; place-items: center; font-weight: 700; font-size: 12px; }
+.oline a { text-decoration: none; }
+
+.oline small { color: var(--muted); display: block; }
+.oline .dl { display: grid; gap: 6px; justify-items: end; max-width: 40vw; }
+.oline .dl .btn { max-width: 100%; white-space: normal; text-align: center; }
+.btn.sm { padding: 8px 14px; font-size: 13px; }
+
+.osum { display: grid; gap: 6px; margin: 0; padding-top: 14px; border-top: 1px solid var(--line); font-size: 14px; }
+.osum div { display: flex; justify-content: space-between; gap: 16px; }
+.osum dt { overflow-wrap: anywhere; min-width: 0; }
+.osum dt { color: var(--muted); }
+.osum dd { margin: 0; }
+.otax { display: grid; gap: 2px; margin: 8px 0 0; font-size: 12px; color: var(--muted); }
+.oaddr { overflow-wrap: anywhere; display: flex; gap: 8px; align-items: flex-start; margin: 0; font-size: 13px; color: var(--muted); }
+.oaddr .ico { flex: none; margin-top: 2px; }
+
+.order-a { display: flex; gap: 8px; flex-wrap: wrap; }
+.order-a .btn { padding: 9px 16px; font-size: 14px; }
+.order-a .btn[data-armed] { border-color: var(--danger); color: var(--danger); }
+.order-howto { display: grid; gap: 4px; padding: 12px 14px; border-radius: var(--r-m); background: var(--band); font-size: 14px; }
+.order-howto p { margin: 0; white-space: pre-line; overflow-wrap: anywhere; color: var(--muted); }
+.order-pay { margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--line); }
+.order-a .btn:disabled { opacity: .55; cursor: progress; }
+.order-a .btn[data-armed]:focus-visible { outline-color: var(--danger); }
+.acct-empty, .acct-thanks { overflow-wrap: anywhere; }
+.acct-gate h1 { overflow-wrap: anywhere; }
+
+@media (hover: hover) {
+  .acct-nav a:hover { color: var(--ink); }
+  .order-h dd a:hover { text-decoration: underline; }
+  .oline a:hover b { text-decoration: underline; }
+}
+
+@media (max-width: 960px) {
+  .acct { grid-template-columns: 1fr; gap: 16px; }
+  .acct-nav { display: flex; overflow-x: auto; scrollbar-width: none; gap: 6px; }
+  .acct-nav a { white-space: nowrap; border: 1px solid var(--line); border-radius: var(--r-pill); padding: 7px 14px; }
+  .acct h1 { font-size: 26px; }
+  .order-h dl { gap: 16px; }
+  .track { font-size: 11px; }
+}
+@media (max-width: 600px) {
+  .order-h, .order-b { padding: 14px 16px; }
+  .oline { grid-template-columns: 56px minmax(0, 1fr) auto; gap: 12px; }
+  .oline img, .oline .file { width: 56px; height: 56px; }
+}

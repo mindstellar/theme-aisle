@@ -1,0 +1,95 @@
+/* Aisle: home page sections. Colours come from tokens.css only. */
+
+.hero { padding-block: 28px 12px; }
+.hero-grid { display: grid; grid-template-columns: 1.05fr 1fr; gap: 0; background: var(--band); border-radius: var(--r-l); overflow: hidden; min-height: 420px; }
+.hero-copy { padding: clamp(28px, 5cqi, 64px); display: flex; flex-direction: column; justify-content: center; gap: 20px; }
+.hero-copy h1 { font-size: clamp(36px, 5.2cqi, 64px); font-weight: 800; letter-spacing: -0.035em; }
+.hero-copy h1 em { font-style: normal; color: var(--brand); }
+.hero-copy p { color: var(--muted); font-size: 17px; max-width: 42ch; }
+.hero-cta { display: flex; gap: 10px; flex-wrap: wrap; }
+.hero-perks { display: flex; gap: 18px; flex-wrap: wrap; font-size: 13px; color: var(--muted); }
+.hero-perks span { display: inline-flex; gap: 6px; align-items: center; }
+.hero-img { position: relative; min-height: 280px; }
+.hero-img > img, .hero-img > picture > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.hero-tag { text-decoration: none; position: absolute; left: 20px; bottom: 20px; max-width: calc(100% - 40px); background: var(--raised); border-radius: var(--r-m); padding: 10px 14px; display: flex; gap: 12px; align-items: center; box-shadow: var(--shadow-card); font-size: 13px; }
+.hero-tag img { width: 44px; height: 44px; border-radius: var(--r-thumb); object-fit: cover; }
+.hero-tag b { display: block; font-size: 14px; }
+
+.cats { display: grid; grid-template-columns: repeat(7, 1fr); gap: 14px; }
+.cat { text-decoration: none; display: grid; gap: 8px; justify-items: center; text-align: center; font-weight: 600; font-size: 14px; align-content: start; }
+.cat span.ph { width: 100%; aspect-ratio: 1; border-radius: 50%; overflow: hidden; background: var(--band); transition: transform .25s var(--ease); display: grid; place-items: center; }
+.cat span.ph b { font-family: var(--display); font-size: 32px; color: var(--brand); }
+.cat img { width: 100%; height: 100%; object-fit: cover; }
+@media (hover: hover) { .cat:hover span.ph { transform: translateY(-3px); } }
+.cat small { color: var(--muted); font-weight: 400; font-size: 12px; }
+
+.promise { border-block: 1px solid var(--line); }
+.promise .wrap { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; padding-block: 22px; }
+.promise div { display: flex; gap: 12px; align-items: center; font-size: 14px; }
+.promise div .ico { color: var(--brand); width: 26px; height: 26px; }
+.promise b { display: block; }
+.promise span { color: var(--muted); font-size: 13px; }
+
+@container app (max-width: 980px) {
+  .cats { grid-template-columns: repeat(4, 1fr); }
+  .promise .wrap { grid-template-columns: 1fr 1fr; }
+}
+
+@container app (max-width: 700px) {
+  .hero { padding-block: 12px 4px; }
+  .hero-grid { grid-template-columns: 1fr; min-height: 0; }
+  .hero-img { min-height: 220px; order: -1; }
+  .hero-copy { padding: 22px; gap: 14px; }
+  .hero-copy p { font-size: 15px; }
+  .cats { display: flex; overflow-x: auto; scrollbar-width: none; gap: 14px; }
+  .cat { flex: 0 0 76px; font-size: 12px; }
+  .cat small { display: none; }
+  .promise .wrap { gap: 14px; }
+  .promise div { font-size: 13px; align-items: start; }
+  .promise span { display: none; }
+}
+
+/* Sections the owner can add */
+.home-sections > :not(section) { width: min(100%, 1240px); margin: 0 auto; padding: 18px max(16px, env(safe-area-inset-left, 0px)); box-sizing: border-box; }
+
+.banner { position: relative; display: grid; align-items: center; min-height: 280px; border-radius: var(--r-l); overflow: hidden; background: var(--band); isolation: isolate; }
+.banner > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1; }
+.banner-copy { display: grid; gap: 12px; justify-items: start; max-width: 460px; padding: clamp(24px, 5cqi, 56px); background: color-mix(in srgb, var(--raised) 86%, transparent); margin: 20px; border-radius: var(--r-m); }
+.banner h2 { font-size: clamp(24px, 3cqi, 38px); font-weight: 800; }
+.banner p { color: var(--muted); }
+.banner-center { justify-items: center; text-align: center; }
+.banner-center .banner-copy { justify-items: center; }
+.banner-right { justify-items: end; }
+
+.featured { display: grid; grid-template-columns: 1fr minmax(220px, 320px); gap: clamp(20px, 4cqi, 48px); align-items: center; background: var(--band); border-radius: var(--r-l); padding: clamp(20px, 4cqi, 44px); }
+.featured-copy { display: grid; gap: 12px; }
+.featured h2 { font-size: clamp(24px, 3cqi, 38px); font-weight: 800; }
+.featured p { color: var(--muted); max-width: 46ch; }
+
+.reviews { background: var(--band); border-radius: var(--r-l); padding: clamp(24px, 4cqi, 48px); display: grid; grid-template-columns: 1fr 2fr; gap: 32px; align-items: center; }
+.reviews:has(> :only-child) { grid-template-columns: 1fr; }
+.reviews .score { font-family: var(--display); font-size: 64px; font-weight: 800; line-height: 1; display: block; }
+.reviews .stars-row { margin-block: 8px 4px; }
+.reviews p { color: var(--muted); }
+.quotes { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; }
+.quote { margin: 0; background: var(--raised); border-radius: var(--r-m); padding: 18px; display: grid; gap: 10px; font-size: 14px; align-content: start; }
+.quote p { margin: 0; }
+.quote footer { color: var(--muted); font-size: 13px; }
+
+.news { display: grid; grid-template-columns: 1fr auto; gap: 20px; align-items: center; background: var(--brand); color: var(--brand-ink); border-radius: var(--r-l); padding: clamp(24px, 4cqi, 44px); }
+.news h2 { font-size: clamp(22px, 2.4cqi, 30px); }
+.news p { opacity: .85; margin-top: 6px; }
+.news form { display: flex; gap: 8px; background: var(--raised); border-radius: 999px; padding: 5px; min-width: min(420px, 100%); }
+.news input { border: 0; background: transparent; flex: 1; min-width: 0; padding: 8px 14px; color: var(--ink); }
+.news input:focus { outline: none; }
+.news input:disabled, .news button:disabled { opacity: .6; cursor: not-allowed; }
+
+@container app (max-width: 700px) {
+  .banner { min-height: 220px; }
+  .banner-copy { margin: 12px; padding: 18px; }
+  .featured { grid-template-columns: 1fr; }
+  .featured .card { max-width: 320px; }
+  .reviews { grid-template-columns: 1fr; gap: 18px; }
+  .reviews .score { font-size: 48px; }
+  .news { grid-template-columns: 1fr; }
+}
