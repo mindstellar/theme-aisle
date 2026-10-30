@@ -11,6 +11,7 @@
   var KEY = 'aisle-cart';
   var UKEY = 'aisle-cart-user';
   var PKEY = 'aisle-cart-price';
+  var CKEY = 'aisle-cart-coupon';
   var MAXLINES = 50;
   var MAXQTY = 20;
   var limitsAsked = false;
@@ -119,6 +120,23 @@
 
   function toast(text) {
     if (typeof window.aisleToast === 'function') window.aisleToast(text);
+  }
+
+  /* ---------- coupon ---------- */
+
+  /* The applied coupon, kept in this browser for the shopper who applied it; the account cart
+     holds lines only. A guest's code carries over when they sign in. */
+  function coupon() {
+    var d = null;
+    try { d = JSON.parse(read(CKEY) || 'null'); } catch (e) { /* none */ }
+    if (!d || typeof d.code !== 'string' || !/^[A-Z0-9-]{1,40}$/.test(d.code)) return '';
+    if (d.user === user) return d.code;
+    if (d.user === '' && user !== '') { setCoupon(d.code); return d.code; }
+    return '';
+  }
+
+  function setCoupon(code) {
+    write(CKEY, code ? JSON.stringify({ user: user, code: String(code) }) : '');
   }
 
   /* ---------- sync with the account ---------- */
@@ -343,6 +361,8 @@
     var mine = ++quoteSeq;
     var url = new URL(endpoint(c, 'cart/quote'), location.href);
     url.searchParams.set('lines', list.map(function (l) { return l.v + ':' + l.q; }).join(','));
+    var code = coupon();
+    if (code) url.searchParams.set('coupon', code);
     var headers = { Accept: 'application/json' };
     if (c.header && c.token) headers[c.header] = c.token;
     fetch(url.toString(), { headers: headers, signal: quoteCtl.signal, credentials: 'same-origin' }).then(function (r) {
@@ -354,6 +374,7 @@
       if (!d || !Array.isArray(d.lines)) throw new Error('bad quote');
       quoteData = d;
       quoteFailed = false;
+      if (code && (d.problems || []).some(function (p) { return p && p.pointer === '/coupon'; })) setCoupon('');
       var gone = prune(d);
       if (gone) {
         dropped = gone;
@@ -764,6 +785,7 @@
 
   function clear() {
     write(PKEY, '{}');
+    setCoupon('');
     save([]);
     changed(true);
   }
@@ -774,6 +796,8 @@
     set: set,
     remove: remove,
     clear: clear,
+    coupon: coupon,
+    setCoupon: setCoupon,
     quote: function () { return requote(); },
     priceNotes: priceNotes,
     clamp: clamp,

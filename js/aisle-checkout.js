@@ -83,7 +83,7 @@
   var openBlock = false;
   var seq = 0;
   var ctl = null;
-  var coupon = '';
+  var coupon = savedCoupon();
   var couponMsg = '';
   /* A refused order's message, kept while the quote is fetched again. */
   var placeErr = '';
@@ -150,6 +150,16 @@
   function saveAddress() {
     var box = form.elements.save_address;
     return !!(box && box.checked && !box.closest('[hidden]'));
+  }
+
+  function savedCoupon() {
+    return window.aisleCart && window.aisleCart.coupon ? window.aisleCart.coupon() : '';
+  }
+
+  /* The cart keeps the applied code, so a reload or the drawer prices with it too. */
+  function keepCoupon(code) {
+    coupon = code;
+    if (window.aisleCart && window.aisleCart.setCoupon) window.aisleCart.setCoupon(code);
   }
 
   function cartLines() {
@@ -273,7 +283,7 @@
     if (bad) {
       /* A refused code is dropped, so the shopper can order without it. */
       couponMsg = String(bad.message || T.coupon_bad);
-      coupon = '';
+      keepCoupon('');
     }
     ['postcode', 'country'].forEach(function (name) {
       var hit = list.filter(function (p) { return pointerOf(p) === '/address/' + name; })[0];
@@ -657,7 +667,7 @@
         }
       } else if (p === '/coupon') {
         couponMsg = String(e.message || T.coupon_bad);
-        coupon = '';
+        keepCoupon('');
         shown = true;
         refresh = true;
       } else if (p === '/shipping_method') {
@@ -747,7 +757,7 @@
       return;
     }
     couponMsg = '';
-    coupon = code;
+    keepCoupon(code);
     runQuote();
   }
 
@@ -759,7 +769,7 @@
     if (couponMsg) { couponMsg = ''; paintCoupon(); }
   });
   form.querySelector('[data-coupon-remove]').addEventListener('click', function () {
-    coupon = '';
+    keepCoupon('');
     couponMsg = '';
     elCouponIn.value = '';
     runQuote();
