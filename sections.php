@@ -226,6 +226,7 @@ function aisle_promise_icon_options(): array
  */
 function aisle_register_sections(): void
 {
+    $shop   = function_exists('osc_is_shop_mode') && osc_is_shop_mode();
     $render = static function (string $name): callable {
         return static function ($config, $row = []) use ($name): string {
             return aisle_render_section($name, is_array($config) ? $config : [], is_array($row) ? $row : []);
@@ -253,11 +254,11 @@ function aisle_register_sections(): void
                 'default' => 'first_deal',
                 'options' => [
                     'first_deal' => __('The first deal', 'aisle'),
-                    'listing'    => __('A listing I choose', 'aisle'),
+                    'listing'    => $shop ? __('A product I choose', 'aisle') : __('A listing I choose', 'aisle'),
                     'none'       => __('None', 'aisle'),
                 ],
             ],
-            ['name' => 'tag_listing', 'label' => __('Listing number for the card (0 shows the first deal)', 'aisle'), 'type' => 'number'],
+            ['name' => 'tag_listing', 'label' => $shop ? __('Product number for the card (0 shows the first deal)', 'aisle') : __('Listing number for the card (0 shows the first deal)', 'aisle'), 'type' => 'number'],
             ['name' => 'perk_1', 'label' => __('Short promise 1', 'aisle'), 'type' => 'text'],
             ['name' => 'perk_2', 'label' => __('Short promise 2', 'aisle'), 'type' => 'text'],
             ['name' => 'perk_3', 'label' => __('Short promise 3', 'aisle'), 'type' => 'text'],
@@ -358,7 +359,7 @@ function aisle_register_sections(): void
         'locations'   => ['home'],
         'render'      => $render('featured'),
         'fields'      => [
-            ['name' => 'listing', 'label' => __('Listing number', 'aisle'), 'type' => 'number'],
+            ['name' => 'listing', 'label' => $shop ? __('Product number', 'aisle') : __('Listing number', 'aisle'), 'type' => 'number'],
             ['name' => 'heading', 'label' => __('Heading', 'aisle'), 'type' => 'text'],
             ['name' => 'text', 'label' => __('Text', 'aisle'), 'type' => 'textarea'],
         ],

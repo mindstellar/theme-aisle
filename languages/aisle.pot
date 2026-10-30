@@ -54,7 +54,7 @@ msgstr ""
 msgid "+%s"
 msgstr ""
 
-#: sections.php:237
+#: sections.php:238
 msgid "A big heading, a short text, two buttons and a photo."
 msgstr ""
 
@@ -63,19 +63,23 @@ msgstr ""
 msgid "A customer"
 msgstr ""
 
-#: sections.php:281
+#: sections.php:282
 msgid "A grid or a row of deals, new arrivals or one category."
 msgstr ""
 
-#: sections.php:387
+#: sections.php:388
 msgid "A heading, one line and an e-mail field."
 msgstr ""
 
-#: sections.php:256
+#: sections.php:257
 msgid "A listing I choose"
 msgstr ""
 
-#: sections.php:378
+#: sections.php:257
+msgid "A product I choose"
+msgstr ""
+
+#: sections.php:379
 msgid "A score and up to three customer quotes."
 msgstr ""
 
@@ -83,7 +87,7 @@ msgstr ""
 msgid "A short line about the shop, under the logo."
 msgstr ""
 
-#: sections.php:334
+#: sections.php:335
 msgid "A wide photo with a heading, a line of text and a button."
 msgstr ""
 
@@ -166,7 +170,7 @@ msgstr ""
 msgid "Back to the shop"
 msgstr ""
 
-#: sections.php:333
+#: sections.php:334
 msgid "Banner"
 msgstr ""
 
@@ -188,14 +192,14 @@ msgstr ""
 msgid "Bricolage + Figtree (default)"
 msgstr ""
 
-#: sections.php:245
-#: sections.php:342
-#: sections.php:394
+#: sections.php:246
+#: sections.php:343
+#: sections.php:395
 msgid "Button label"
 msgstr ""
 
-#: sections.php:246
-#: sections.php:343
+#: sections.php:247
+#: sections.php:344
 msgid "Button link"
 msgstr ""
 
@@ -236,15 +240,15 @@ msgstr ""
 msgid "Categories"
 msgstr ""
 
-#: sections.php:298
+#: sections.php:299
 msgid "Category"
 msgstr ""
 
-#: sections.php:268
+#: sections.php:269
 msgid "Category row"
 msgstr ""
 
-#: sections.php:349
+#: sections.php:350
 msgid "Centre"
 msgstr ""
 
@@ -366,7 +370,7 @@ msgstr ""
 
 #: common/header.php:61
 #: common/menu.php:49
-#: sections.php:293
+#: sections.php:294
 msgid "Deals"
 msgstr ""
 
@@ -443,7 +447,7 @@ msgid ""
 "sent to your door."
 msgstr ""
 
-#: sections.php:355
+#: sections.php:356
 msgid "Featured product"
 msgstr ""
 
@@ -476,7 +480,7 @@ msgstr ""
 
 #: functions.php:676
 #: functions.php:757
-#: sections.php:447
+#: sections.php:448
 msgid "Footer"
 msgstr ""
 
@@ -521,23 +525,23 @@ msgstr ""
 msgid "Get it by %s"
 msgstr ""
 
-#: sections.php:480
+#: sections.php:481
 msgid "Good things, *easy to find.*"
 msgstr ""
 
-#: sections.php:305
+#: sections.php:306
 msgid "Grid"
 msgstr ""
 
-#: sections.php:274
-#: sections.php:286
-#: sections.php:340
-#: sections.php:362
-#: sections.php:392
+#: sections.php:275
+#: sections.php:287
+#: sections.php:341
+#: sections.php:363
+#: sections.php:393
 msgid "Heading"
 msgstr ""
 
-#: sections.php:242
+#: sections.php:243
 msgid "Heading (put *stars* around the word to colour)"
 msgstr ""
 
@@ -545,7 +549,7 @@ msgstr ""
 msgid "Help"
 msgstr ""
 
-#: sections.php:236
+#: sections.php:237
 msgid "Hero banner"
 msgstr ""
 
@@ -555,7 +559,7 @@ msgstr ""
 msgid "Home"
 msgstr ""
 
-#: sections.php:430
+#: sections.php:431
 msgid "Home page"
 msgstr ""
 
@@ -563,11 +567,11 @@ msgstr ""
 msgid "Home page sections"
 msgstr ""
 
-#: sections.php:275
+#: sections.php:276
 msgid "How many (3 to 12)"
 msgstr ""
 
-#: sections.php:299
+#: sections.php:300
 msgid "How many (4 to 12)"
 msgstr ""
 
@@ -596,6 +600,7 @@ msgid "Items added to your cart"
 msgstr ""
 
 #: user-billing-orders.php:62
+#: user-dashboard.php:47
 #: wishlist.php:58
 msgid "Keep browsing"
 msgstr ""
@@ -612,11 +617,11 @@ msgstr ""
 msgid "Large"
 msgstr ""
 
-#: sections.php:302
+#: sections.php:303
 msgid "Layout"
 msgstr ""
 
-#: sections.php:349
+#: sections.php:350
 msgid "Left"
 msgstr ""
 
@@ -630,7 +635,7 @@ msgstr ""
 msgid "Light"
 msgstr ""
 
-#: sections.php:369
+#: sections.php:370
 msgid "Line under the score"
 msgstr ""
 
@@ -638,15 +643,15 @@ msgstr ""
 msgid "Link copied"
 msgstr ""
 
-#: sections.php:307
+#: sections.php:308
 msgid "Link text"
 msgstr ""
 
-#: sections.php:361
+#: sections.php:362
 msgid "Listing number"
 msgstr ""
 
-#: sections.php:260
+#: sections.php:261
 msgid "Listing number for the card (0 shows the first deal)"
 msgstr ""
 
@@ -698,16 +703,16 @@ msgstr ""
 
 #: common/header.php:65
 #: common/menu.php:53
-#: sections.php:485
+#: sections.php:486
 msgid "New in"
 msgstr ""
 
 #: search.php:96
-#: sections.php:294
+#: sections.php:295
 msgid "Newest"
 msgstr ""
 
-#: sections.php:386
+#: sections.php:387
 msgid "Newsletter"
 msgstr ""
 
@@ -736,7 +741,7 @@ msgstr ""
 msgid "No reviews yet"
 msgstr ""
 
-#: sections.php:257
+#: sections.php:258
 msgid "None"
 msgstr ""
 
@@ -773,7 +778,7 @@ msgstr ""
 msgid "On the way"
 msgstr ""
 
-#: sections.php:295
+#: sections.php:296
 msgid "One category"
 msgstr ""
 
@@ -783,7 +788,7 @@ msgid ""
 "Sunflower, Cherry, Navy"
 msgstr ""
 
-#: sections.php:356
+#: sections.php:357
 msgid "One product with a heading and a few words beside it."
 msgstr ""
 
@@ -875,8 +880,8 @@ msgstr ""
 msgid "Payment failed"
 msgstr ""
 
-#: sections.php:244
-#: sections.php:339
+#: sections.php:245
+#: sections.php:340
 msgid "Photo"
 msgstr ""
 
@@ -938,28 +943,36 @@ msgstr ""
 msgid "Price: low to high"
 msgstr ""
 
-#: sections.php:251
+#: sections.php:252
 msgid "Product card on the photo"
 msgstr ""
 
+#: sections.php:362
+msgid "Product number"
+msgstr ""
+
+#: sections.php:261
+msgid "Product number for the card (0 shows the first deal)"
+msgstr ""
+
 #: common/menu.php:15
-#: sections.php:280
+#: sections.php:281
 msgid "Products"
 msgstr ""
 
-#: sections.php:317
+#: sections.php:318
 msgid "Promise %d: icon"
 msgstr ""
 
-#: sections.php:314
+#: sections.php:315
 msgid "Promise %d: text"
 msgstr ""
 
-#: sections.php:313
+#: sections.php:314
 msgid "Promise %d: title"
 msgstr ""
 
-#: sections.php:324
+#: sections.php:325
 msgid "Promise row"
 msgstr ""
 
@@ -972,15 +985,15 @@ msgstr ""
 msgid "Quantity"
 msgstr ""
 
-#: sections.php:373
+#: sections.php:374
 msgid "Quote %d: name and city"
 msgstr ""
 
-#: sections.php:374
+#: sections.php:375
 msgid "Quote %d: stars (1 to 5)"
 msgstr ""
 
-#: sections.php:372
+#: sections.php:373
 msgid "Quote %d: text"
 msgstr ""
 
@@ -1032,15 +1045,15 @@ msgid "Returns"
 msgstr ""
 
 #: common/product/reviews.php:77
-#: sections.php:377
+#: sections.php:378
 msgid "Reviews"
 msgstr ""
 
-#: sections.php:349
+#: sections.php:350
 msgid "Right"
 msgstr ""
 
-#: sections.php:269
+#: sections.php:270
 msgid "Round photos of your top categories."
 msgstr ""
 
@@ -1056,11 +1069,11 @@ msgstr ""
 msgid "Saved to your wishlist"
 msgstr ""
 
-#: sections.php:368
+#: sections.php:369
 msgid "Score, for example 4.7"
 msgstr ""
 
-#: sections.php:305
+#: sections.php:306
 msgid "Scrolling row"
 msgstr ""
 
@@ -1069,11 +1082,11 @@ msgstr ""
 msgid "Search products"
 msgstr ""
 
-#: sections.php:247
+#: sections.php:248
 msgid "Second button label"
 msgstr ""
 
-#: sections.php:248
+#: sections.php:249
 msgid "Second button link"
 msgstr ""
 
@@ -1086,6 +1099,7 @@ msgid "See all results for “%s”"
 msgstr ""
 
 #: cart/order.php:52
+#: user-dashboard.php:49
 msgid "See all your orders"
 msgstr ""
 
@@ -1109,27 +1123,27 @@ msgstr ""
 msgid "Shop"
 msgstr ""
 
-#: sections.php:486
+#: sections.php:487
 msgid "Shop now"
 msgstr ""
 
-#: sections.php:485
+#: sections.php:486
 msgid "Shop the deals"
 msgstr ""
 
-#: sections.php:261
+#: sections.php:262
 msgid "Short promise 1"
 msgstr ""
 
-#: sections.php:262
+#: sections.php:263
 msgid "Short promise 2"
 msgstr ""
 
-#: sections.php:263
+#: sections.php:264
 msgid "Short promise 3"
 msgstr ""
 
-#: sections.php:289
+#: sections.php:290
 msgid "Show"
 msgstr ""
 
@@ -1256,10 +1270,10 @@ msgstr ""
 msgid "Tell me if the price drops"
 msgstr ""
 
-#: sections.php:243
-#: sections.php:341
-#: sections.php:363
-#: sections.php:393
+#: sections.php:244
+#: sections.php:342
+#: sections.php:364
+#: sections.php:394
 msgid "Text"
 msgstr ""
 
@@ -1267,7 +1281,7 @@ msgstr ""
 msgid "Text block"
 msgstr ""
 
-#: sections.php:346
+#: sections.php:347
 msgid "Text position"
 msgstr ""
 
@@ -1293,7 +1307,7 @@ msgstr ""
 msgid "That payment method is not available. Pick another."
 msgstr ""
 
-#: sections.php:255
+#: sections.php:256
 msgid "The first deal"
 msgstr ""
 
@@ -1357,7 +1371,7 @@ msgstr ""
 msgid "Too many tries. Wait a minute and try again."
 msgstr ""
 
-#: sections.php:446
+#: sections.php:447
 msgid "Top bar"
 msgstr ""
 
@@ -1378,7 +1392,7 @@ msgstr ""
 msgid "Try again"
 msgstr ""
 
-#: sections.php:325
+#: sections.php:326
 msgid "Up to four short promises with an icon, such as free delivery."
 msgstr ""
 
@@ -1475,6 +1489,7 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: user-billing-orders.php:62
+#: user-dashboard.php:47
 msgid "You have no orders yet."
 msgstr ""
 
@@ -1508,6 +1523,10 @@ msgstr ""
 
 #: common/product/reviews.php:123
 msgid "Your rating"
+msgstr ""
+
+#: user-dashboard.php:36
+msgid "Your recent orders"
 msgstr ""
 
 #: common/product/reviews.php:131

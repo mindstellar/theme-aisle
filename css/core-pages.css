@@ -58,6 +58,9 @@
     .oe-page .oe-bill td[data-label]::before { content: attr(data-label); color: var(--muted); font-size: .8125rem; text-align: start; grid-column: 1; grid-row: 1; justify-self: start; }
     .oe-page .oe-bill td > * { grid-column: 2; margin: 0; }
     .oe-page .oe-bill td > br { display: none; }
+    .oe-page .oe-bill tr:has(+ .oe-bill-howto) { border-block-end: 0; padding-block-end: 0; }
+    .oe-page .oe-bill .oe-bill-howto td { display: block; text-align: start; padding: 10px 12px; margin-block: 4px; border-radius: var(--r-m); background: var(--band); white-space: normal; overflow-wrap: anywhere; }
+    .oe-page .oe-bill .oe-bill-howto td > br { display: inline; }
   }
   .oe-page .oe-bill :is(.oe-bill-num, .oe-bill-badge) { white-space: nowrap; }
   .oe-muted, .oe-bill-sub { color: var(--muted); margin: 4px 0 0; font-size: .875rem; }

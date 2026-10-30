@@ -37,7 +37,7 @@ $aisle_cat = is_array($aisle_listing['category'] ?? null) ? $aisle_listing['cate
             <p class="brand"><a href="<?php echo osc_esc_html(osc_search_url(['sCategory' => (string) $aisle_cat['slug']])); ?>"><?php echo osc_esc_html((string) $aisle_cat['name']); ?></a></p>
         <?php } ?>
         <h1><?php echo osc_esc_html($aisle_title); ?></h1>
-        <?php $aisle_place = aisle_item_location(); ?>
+        <?php $aisle_place = function_exists('osc_is_shop_mode') && osc_is_shop_mode() ? '' : aisle_item_location(); ?>
         <?php if ($aisle_place !== '') { ?>
             <p class="place"><?php echo aisle_icon('pin', true); ?><span><?php echo osc_esc_html($aisle_place); ?></span></p>
         <?php } ?>
