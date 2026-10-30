@@ -84,10 +84,39 @@ function aisle_enqueue_base(): void
     osc_enqueue_script('aisle-wishlist');
     osc_register_script('aisle-track', aisle_asset('js/aisle-track.js'));
     osc_enqueue_script('aisle-track');
+    if (aisle_is_address_book()) {
+        osc_register_script('aisle-address', aisle_asset('js/aisle-address.js'));
+        osc_enqueue_script('aisle-address');
+    }
     if (aisle_is_preview()) {
         osc_register_script('aisle-preview', aisle_asset('js/aisle-preview.js'));
         osc_enqueue_script('aisle-preview');
     }
+}
+
+/**
+ * Whether this is the account address book, or its form posted back with errors.
+ */
+function aisle_is_address_book(): bool
+{
+    return osc_is_current_page('user', 'addresses') || osc_is_current_page('user', 'addresses_post');
+}
+
+if (!OC_ADMIN) {
+    // The address book's State list and postcode label use the same words as checkout.
+    osc_add_hook('footer', static function (): void {
+        if (!aisle_is_address_book()) {
+            return;
+        }
+        $text = [
+            'pin_label'  => __('PIN code', 'aisle'),
+            'zip_label'  => __('Postcode', 'aisle'),
+            'state_pick' => __('Choose…', 'aisle'),
+        ];
+        echo '<script type="application/json" id="aisle-address-i18n">'
+            . json_encode($text, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_UNESCAPED_UNICODE)
+            . '</script>' . PHP_EOL;
+    });
 }
 
 /*

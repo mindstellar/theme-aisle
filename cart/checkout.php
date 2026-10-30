@@ -209,4 +209,5 @@ $aisle_co_i18n   = [
     </form>
 </div>
 <script type="application/json" id="aisle-checkout-i18n"><?php echo json_encode($aisle_co_i18n, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_UNESCAPED_UNICODE); ?></script>
+<script src="<?php echo osc_esc_html(aisle_asset('js/aisle-address.js')); ?>" defer></script>
 <script src="<?php echo osc_esc_html($aisle_co_js); ?>" defer></script>

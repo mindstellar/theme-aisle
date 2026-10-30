@@ -405,6 +405,7 @@
     elTotals.appendChild(row(labels.subtotal, amountText(t.subtotal)));
     if (ships()) elTotals.appendChild(row(labels.delivery, amountNum(t.shipping) > 0 ? amountText(t.shipping) : T.free));
     var mine = couponLine();
+    if (mine) elTotals.appendChild(elCouponOk);
     (quote.discounts || []).forEach(function (d) {
       if (d !== mine) elTotals.appendChild(row(String(d.label || labels.discount), '−' + unsigned(d.amount)));
     });
@@ -560,63 +561,12 @@
 
   function paintPostcodeLabel() {
     var lab = form.querySelector('[data-postcode-label]');
-    if (lab) lab.textContent = value('country') === 'IN' ? T.pin_label : T.zip_label;
-  }
-
-  /* State is a list of the country's regions when the shop has them, else free text. */
-  var regionCache = {};
-
-  function loadRegions(cc) {
-    if (regionCache[cc]) return regionCache[cc];
-    var c = apiConfig();
-    if (!c || !/^[A-Z]{2}$/.test(cc)) return Promise.resolve([]);
-    var headers = { Accept: 'application/json' };
-    headers[c.header] = c.token;
-    regionCache[cc] = fetch(endpoint(c, 'countries/' + cc + '/regions'), { headers: headers, credentials: 'same-origin' })
-      .then(function (r) { return r.ok ? r.json() : { data: [] }; })
-      .then(function (j) {
-        return (Array.isArray(j && j.data) ? j.data : []).map(function (x) { return String(x && x.name || ''); }).filter(Boolean);
-      })
-      .catch(function () { delete regionCache[cc]; return []; });
-    return regionCache[cc];
-  }
-
-  /* A value the list lacks, such as a saved address's state, is kept as its own option. */
-  function keepState(sel, v) {
-    if (!v) { sel.value = ''; return; }
-    var hit = Array.prototype.filter.call(sel.options, function (o) { return o.value.toLowerCase() === v.toLowerCase(); })[0];
-    if (!hit) { hit = el('option', '', v); hit.value = v; sel.appendChild(hit); }
-    sel.value = hit.value;
+    if (lab && window.aisleAddress) lab.textContent = window.aisleAddress.postcodeLabel(form, T);
   }
 
   function paintStateField() {
-    var cc = value('country').toUpperCase();
-    loadRegions(cc).then(function (names) {
-      if (value('country').toUpperCase() !== cc) return;
-      var old = form.elements.state;
-      if (!old) return;
-      var now = String(old.value).trim();
-      var next;
-      if (names.length) {
-        next = el('select');
-        var blank = el('option', '', T.state_pick);
-        blank.value = '';
-        next.appendChild(blank);
-        names.forEach(function (n) { var o = el('option', '', n); o.value = n; next.appendChild(o); });
-        keepState(next, now);
-      } else if (old.tagName === 'SELECT') {
-        next = el('input');
-        next.value = now;
-      } else {
-        return;
-      }
-      next.name = 'state';
-      next.required = true;
-      next.setAttribute('autocomplete', 'address-level1');
-      ['aria-invalid', 'aria-describedby'].forEach(function (a) { if (old.hasAttribute(a)) next.setAttribute(a, old.getAttribute(a)); });
-      old.replaceWith(next);
-      if (value('state') !== now) later();
-    });
+    if (!window.aisleAddress) return;
+    window.aisleAddress.paintState(form, T.state_pick).then(function (changed) { if (changed) later(); });
   }
 
   /* ---------- place ---------- */
@@ -828,7 +778,7 @@
     FIELDS.forEach(function (n) { setError(n, ''); fieldMsg[n] = false; });
     showAlert('');
     var st = e.detail && e.detail.address ? String(e.detail.address.state || '') : '';
-    if (st && form.elements.state && form.elements.state.tagName === 'SELECT') keepState(form.elements.state, st);
+    if (st && window.aisleAddress && form.elements.state && form.elements.state.tagName === 'SELECT') window.aisleAddress.keepState(form.elements.state, st);
     paintPostcodeLabel();
     paintStateField();
     runQuote();

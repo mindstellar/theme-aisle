@@ -87,6 +87,7 @@
 .coupon .btn { padding: 8px 16px; }
 .applied-code { overflow-wrap: anywhere; display: flex; gap: 12px; justify-content: space-between; align-items: baseline; font-size: 13px; color: var(--ok); font-weight: 600; }
 .applied-code span:first-child { flex: 1; }
+.summary [data-totals] .applied-code { font-size: 14px; font-variant-numeric: tabular-nums; }
 .linkbtn { background: none; border: 0; padding: 0; color: var(--muted); font: inherit; font-size: 13px; font-weight: 400; text-decoration: underline; cursor: pointer; }
 .linkbtn { min-height: 24px; }
 @media (hover: hover) { .linkbtn:hover { color: var(--ink); } }
