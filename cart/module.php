@@ -12,9 +12,17 @@ declare(strict_types=1);
 
 /*
  * Routes of the shop pages. Their files live beside this one (cart/checkout.php, cart/order.php).
+ * They go through render targets so they still resolve when a child of Aisle is the active theme.
  */
-osc_add_route('aisle-checkout', '^checkout/?(?:\?.*)?$', 'checkout', 'cart/checkout.php', false, 'checkout', 'checkout', 'Checkout');
-osc_add_route('aisle-order', '^orders/(\d+)/?(?:\?.*)?$', 'orders/{id}', 'cart/order.php', false, 'orders', 'orders', 'Order');
+$aisle_checkout_file = 'cart/checkout.php';
+$aisle_order_file    = 'cart/order.php';
+if (function_exists('osc_register_render_target')) {
+    osc_register_render_target('aisle/checkout', AISLE_DIR . '/cart/checkout.php');
+    osc_register_render_target('aisle/order', AISLE_DIR . '/cart/order.php');
+    [$aisle_checkout_file, $aisle_order_file] = ['aisle/checkout', 'aisle/order'];
+}
+osc_add_route('aisle-checkout', '^checkout/?(?:\?.*)?$', 'checkout', $aisle_checkout_file, false, 'checkout', 'checkout', 'Checkout');
+osc_add_route('aisle-order', '^orders/(\d+)/?(?:\?.*)?$', 'orders/{id}', $aisle_order_file, false, 'orders', 'orders', 'Order');
 
 /**
  * Address of the checkout page.

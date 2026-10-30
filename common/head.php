@@ -18,14 +18,16 @@ if (!function_exists('aisle_inline_styles')) {
      */
     function aisle_inline_styles(string $html): string
     {
-        $theme   = osc_current_web_theme_url('');
-        $roots   = [
-            [$theme . 'css/', AISLE_DIR . '/css/'],
-            [osc_assets_url('osclass/'), ABS_PATH . 'oc-includes/assets/osclass/'],
-        ];
+        // A child theme's own files first, then Aisle's; url("../ points back at the folder the file came from.
+        $active  = osc_current_web_theme_url('');
+        $roots   = [[$active . 'css/', WebThemes::getInstance()->getCurrentThemePath() . 'css/', $active]];
+        if ($active !== AISLE_URL) {
+            $roots[] = [AISLE_URL . 'css/', AISLE_DIR . '/css/', AISLE_URL];
+        }
+        $roots[] = [osc_assets_url('osclass/'), ABS_PATH . 'oc-includes/assets/osclass/', $active];
         $pattern = '#<link href="([^"?]+\.css)(?:\?[^"]*)?" rel="stylesheet" type="text/css" />\R?#';
-        $inline  = static function (string $href) use ($roots, $theme): ?string {
-            foreach ($roots as [$base, $dir]) {
+        $inline  = static function (string $href) use ($roots): ?string {
+            foreach ($roots as [$base, $dir, $theme]) {
                 if (strpos($href, $base) === 0) {
                     $name = substr($href, strlen($base));
                     if (strpos($name, '..') !== false || !is_file($dir . $name)) {

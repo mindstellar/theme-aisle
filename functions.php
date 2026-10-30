@@ -16,8 +16,8 @@ if (!defined('ABS_PATH')) {
 
 define('AISLE_VERSION', '1.0.0');
 define('AISLE_DIR', __DIR__);
-// Taken while Aisle is the active theme: a page Aisle does not ship falls back to Storefront mid-request.
-define('AISLE_URL', osc_current_web_theme_url());
+// Aisle's own folder, also when a child theme is the active one.
+define('AISLE_URL', osc_base_url() . str_replace(osc_base_path(), '', osc_themes_path()) . 'aisle/');
 
 /** The brand presets an owner can pick. The values live in css/tokens.css. */
 const AISLE_BRANDS = ['raspberry', 'ocean', 'forest', 'marigold', 'plum'];
@@ -63,11 +63,11 @@ if (!OC_ADMIN) {
 }
 
 /**
- * Versioned URL of a theme file.
+ * Versioned URL of a theme file: the active child's copy when it has one, else Aisle's.
  */
 function aisle_asset(string $file): string
 {
-    return osc_asset_url_versioned(AISLE_URL . $file);
+    return osc_asset_url_versioned(osc_current_web_theme_url($file));
 }
 
 /**
