@@ -10,9 +10,10 @@
 
 declare(strict_types=1);
 
-$aisle_site = (string) osc_get_preference('pageTitle');
+$aisle_site   = (string) osc_get_preference('pageTitle');
+$aisle_scheme = function_exists('aisle_scheme') ? aisle_scheme() : '';
 ?><!DOCTYPE html>
-<html lang="<?php echo osc_esc_html(str_replace('_', '-', osc_current_user_locale())); ?>">
+<html lang="<?php echo osc_esc_html(str_replace('_', '-', osc_current_user_locale())); ?>"<?php echo $aisle_scheme !== '' ? ' data-theme="' . osc_esc_html($aisle_scheme) . '"' : ''; ?>>
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -27,7 +28,7 @@ $aisle_site = (string) osc_get_preference('pageTitle');
         p { margin: 0; color: var(--muted); }
     </style>
     <script>
-        (function () { try { var v = localStorage.getItem('aisle-scheme'); if (v === 'light' || v === 'dark') { document.documentElement.setAttribute('data-theme', v); } } catch (e) {} })();
+        (function () { try { var v = localStorage.getItem('aisle-scheme'); if (v === 'light' || v === 'dark') { document.documentElement.setAttribute('data-theme', v); } else if (v === 'system') { document.documentElement.removeAttribute('data-theme'); } } catch (e) {} })();
     </script>
 </head>
 <body>
