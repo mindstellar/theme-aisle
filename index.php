@@ -12,7 +12,7 @@
 Theme Name: Aisle
 Theme URI: https://github.com/mindstellar/theme-aisle
 Description: Aisle, the Shopclass shop theme. A friendly, phone-first store front with search, deals, filters and a clear product page.
-Version: 1.0.0
+Version: 1.1.0
 Author: Mindstellar
 Author URI: https://github.com/mindstellar
 Widgets: footer

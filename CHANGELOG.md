@@ -1,5 +1,21 @@
 # Changelog
 
+## 1.1.0
+
+### New
+- Aisle works as a parent theme for a child theme.
+- A sold-out choice shows Notify me in place of Add to cart.
+
+### Changed
+- An applied coupon stays through a reload and a new sign-in.
+- The address book's State is a list of the country's regions.
+- A placed order opens its own order page.
+- The maintenance page shows the owner's message, brand colour and colour scheme.
+
+### Fixed
+- A cart of downloads places its order without a delivery method.
+- The cart drawer shows the site's reason when it refuses an item.
+
 ## 1.0.0
 
 Ships with Shopclass 7.1 as its shop theme. Needs Shopclass 7.1.0 or newer.

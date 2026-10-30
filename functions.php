@@ -14,7 +14,7 @@ if (!defined('ABS_PATH')) {
     exit('Direct access is not allowed.');
 }
 
-define('AISLE_VERSION', '1.0.0');
+define('AISLE_VERSION', '1.1.0');
 define('AISLE_DIR', __DIR__);
 // Aisle's own folder, also when a child theme is the active one.
 define('AISLE_URL', osc_base_url() . str_replace(osc_base_path(), '', osc_themes_path()) . 'aisle/');
