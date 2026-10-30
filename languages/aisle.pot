@@ -8,7 +8,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Language: \n"
 
-#: cart/module.php:98
+#: cart/module.php:106
 msgid "(%d)"
 msgstr ""
 
@@ -39,7 +39,7 @@ msgid_plural "%d stars"
 msgstr[0] ""
 msgstr[1] ""
 
-#: common/card.php:91
+#: common/card.php:93
 #: common/product/buy.php:24
 #: common/product/buy.php:53
 msgid "%d%% off"
@@ -93,23 +93,23 @@ msgstr ""
 msgid "Account"
 msgstr ""
 
-#: cart/module.php:97
+#: cart/module.php:105
 msgid "Add %s more for free delivery"
 msgstr ""
 
-#: cart/module.php:88
-#: common/card.php:73
+#: cart/module.php:96
+#: common/card.php:75
 #: common/product/buy.php:130
-#: common/product/buy.php:159
+#: common/product/buy.php:165
 msgid "Add to cart"
 msgstr ""
 
-#: cart/module.php:87
+#: cart/module.php:95
 #: common/product/buy.php:26
 msgid "Added"
 msgstr ""
 
-#: cart/checkout.php:143
+#: cart/checkout.php:142
 msgid "Address"
 msgstr ""
 
@@ -137,7 +137,7 @@ msgstr ""
 msgid "Announcement bar"
 msgstr ""
 
-#: cart/checkout.php:193
+#: cart/checkout.php:192
 msgid "Apply"
 msgstr ""
 
@@ -153,7 +153,7 @@ msgstr ""
 msgid "Awaiting payment"
 msgstr ""
 
-#: maintenance.php:20
+#: maintenance.php:24
 msgid "back soon"
 msgstr ""
 
@@ -256,13 +256,13 @@ msgstr ""
 msgid "Checking…"
 msgstr ""
 
-#: cart/checkout.php:115
+#: cart/checkout.php:114
 #: cart/checkout.php:25
-#: cart/module.php:99
+#: cart/module.php:107
 msgid "Checkout"
 msgstr ""
 
-#: cart/checkout.php:208
+#: cart/checkout.php:207
 msgid "Checkout needs JavaScript. Please turn it on to place your order."
 msgstr ""
 
@@ -274,11 +274,15 @@ msgstr ""
 msgid "Choose a star rating or write a review"
 msgstr ""
 
-#: common/card.php:76
+#: common/card.php:78
 msgid "Choose options"
 msgstr ""
 
-#: cart/checkout.php:151
+#: cart/checkout.php:107
+msgid "Choose…"
+msgstr ""
+
+#: cart/checkout.php:150
 msgid "City"
 msgstr ""
 
@@ -313,7 +317,7 @@ msgstr ""
 msgid "Colour scheme"
 msgstr ""
 
-#: cart/checkout.php:121
+#: cart/checkout.php:120
 msgid "Contact"
 msgstr ""
 
@@ -322,7 +326,7 @@ msgstr ""
 msgid "Contact us"
 msgstr ""
 
-#: common/product/buy.php:147
+#: common/product/buy.php:153
 msgid "Copy link"
 msgstr ""
 
@@ -334,7 +338,7 @@ msgstr ""
 msgid "Could not send your review, try again"
 msgstr ""
 
-#: cart/module.php:89
+#: cart/module.php:97
 msgid "Could not update your cart"
 msgstr ""
 
@@ -342,12 +346,12 @@ msgstr ""
 msgid "Could not update your wishlist"
 msgstr ""
 
-#: cart/checkout.php:159
+#: cart/checkout.php:158
 msgid "Country"
 msgstr ""
 
+#: cart/checkout.php:190
 #: cart/checkout.php:191
-#: cart/checkout.php:192
 msgid "Coupon code"
 msgstr ""
 
@@ -375,13 +379,13 @@ msgstr ""
 msgid "Delivered %s"
 msgstr ""
 
-#: cart/checkout.php:174
-#: cart/checkout.php:99
+#: cart/checkout.php:173
+#: cart/checkout.php:96
 #: sections.php:215
 msgid "Delivery"
 msgstr ""
 
-#: cart/checkout.php:130
+#: cart/checkout.php:129
 msgid "Delivery address"
 msgstr ""
 
@@ -397,7 +401,7 @@ msgstr ""
 msgid "Digital download"
 msgstr ""
 
-#: cart/checkout.php:100
+#: cart/checkout.php:97
 msgid "Discount"
 msgstr ""
 
@@ -405,11 +409,11 @@ msgstr ""
 msgid "Download"
 msgstr ""
 
-#: common/product/buy.php:151
+#: common/product/buy.php:157
 msgid "E-mail"
 msgstr ""
 
-#: cart/checkout.php:123
+#: cart/checkout.php:122
 msgid "Email"
 msgstr ""
 
@@ -417,7 +421,7 @@ msgstr ""
 msgid "Enter a mobile number with at least 8 digits."
 msgstr ""
 
-#: cart/checkout.php:105
+#: cart/checkout.php:102
 msgid "Enter a valid coupon code."
 msgstr ""
 
@@ -443,7 +447,7 @@ msgstr ""
 msgid "Featured product"
 msgstr ""
 
-#: cart/checkout.php:102
+#: cart/checkout.php:99
 msgid "Fee"
 msgstr ""
 
@@ -501,7 +505,7 @@ msgstr ""
 msgid "From %s"
 msgstr ""
 
-#: cart/checkout.php:135
+#: cart/checkout.php:134
 msgid "Full name"
 msgstr ""
 
@@ -578,7 +582,7 @@ msgstr ""
 msgid "In stock"
 msgstr ""
 
-#: cart/checkout.php:107
+#: cart/checkout.php:104
 #: cart/order-card.php:247
 msgid "Includes %1$s %2$s"
 msgstr ""
@@ -616,7 +620,7 @@ msgstr ""
 msgid "Left"
 msgstr ""
 
-#: cart/module.php:93
+#: cart/module.php:101
 #: common/product/buy.php:126
 msgid "Less"
 msgstr ""
@@ -630,7 +634,7 @@ msgstr ""
 msgid "Line under the score"
 msgstr ""
 
-#: common/product/buy.php:145
+#: common/product/buy.php:151
 msgid "Link copied"
 msgstr ""
 
@@ -683,11 +687,11 @@ msgstr ""
 msgid "Min"
 msgstr ""
 
-#: cart/checkout.php:139
+#: cart/checkout.php:138
 msgid "Mobile"
 msgstr ""
 
-#: cart/module.php:94
+#: cart/module.php:102
 #: common/product/buy.php:128
 msgid "More"
 msgstr ""
@@ -740,7 +744,7 @@ msgstr ""
 msgid "Nothing saved yet."
 msgstr ""
 
-#: common/product/buy.php:135
+#: common/product/buy.php:132
 msgid "Notify me when it is back"
 msgstr ""
 
@@ -748,7 +752,7 @@ msgstr ""
 msgid "Ocean"
 msgstr ""
 
-#: cart/module.php:102
+#: cart/module.php:110
 msgid "OK"
 msgstr ""
 
@@ -788,8 +792,8 @@ msgid "One short line above the header. Leave empty to hide the bar."
 msgstr ""
 
 #: cart/checkout.php:76
-#: cart/module.php:92
-#: common/card.php:98
+#: cart/module.php:100
+#: common/card.php:100
 #: common/product/buy.php:116
 #: common/product/buy.php:22
 msgid "Only %d left"
@@ -812,10 +816,6 @@ msgstr ""
 msgid "Order %s"
 msgstr ""
 
-#: cart/checkout.php:88
-msgid "Order %s placed"
-msgstr ""
-
 #: cart/order-card.php:309
 msgid "Order cancelled"
 msgstr ""
@@ -824,7 +824,7 @@ msgstr ""
 msgid "Order not found"
 msgstr ""
 
-#: cart/checkout.php:185
+#: cart/checkout.php:184
 msgid "Order summary"
 msgstr ""
 
@@ -832,7 +832,7 @@ msgstr ""
 msgid "Ordered"
 msgstr ""
 
-#: common/card.php:96
+#: common/card.php:98
 #: common/product/buy.php:112
 #: common/product/buy.php:20
 msgid "Out of stock"
@@ -855,7 +855,7 @@ msgstr ""
 msgid "Parcel"
 msgstr ""
 
-#: cart/checkout.php:97
+#: cart/checkout.php:94
 msgid "Pay for or cancel an unpaid bank transfer order first."
 msgstr ""
 
@@ -867,7 +867,7 @@ msgstr ""
 msgid "Pay on delivery"
 msgstr ""
 
-#: cart/checkout.php:179
+#: cart/checkout.php:178
 msgid "Payment"
 msgstr ""
 
@@ -885,7 +885,7 @@ msgstr ""
 msgid "Photo %d"
 msgstr ""
 
-#: cart/checkout.php:147
+#: cart/checkout.php:146
 #: cart/checkout.php:70
 #: common/product/deliver.php:39
 msgid "PIN code"
@@ -896,7 +896,7 @@ msgstr ""
 msgid "PIN code needs 6 digits."
 msgstr ""
 
-#: cart/checkout.php:205
+#: cart/checkout.php:204
 #: cart/checkout.php:82
 msgid "Place order"
 msgstr ""
@@ -1009,8 +1009,8 @@ msgstr ""
 msgid "Refunded"
 msgstr ""
 
-#: cart/checkout.php:199
-#: cart/module.php:95
+#: cart/checkout.php:198
+#: cart/module.php:103
 #: common/chips.php:60
 msgid "Remove"
 msgstr ""
@@ -1048,7 +1048,7 @@ msgstr ""
 msgid "Save"
 msgstr ""
 
-#: common/card.php:79
+#: common/card.php:81
 msgid "Save %s"
 msgstr ""
 
@@ -1089,7 +1089,7 @@ msgstr ""
 msgid "See all your orders"
 msgstr ""
 
-#: cart/checkout.php:92
+#: cart/checkout.php:89
 msgid "See your orders"
 msgstr ""
 
@@ -1097,7 +1097,7 @@ msgstr ""
 msgid "Send review"
 msgstr ""
 
-#: common/product/buy.php:145
+#: common/product/buy.php:151
 msgid "Share"
 msgstr ""
 
@@ -1187,7 +1187,7 @@ msgid "Small"
 msgstr ""
 
 #: cart/checkout.php:77
-#: cart/module.php:90
+#: cart/module.php:98
 msgid "Sold out"
 msgstr ""
 
@@ -1219,11 +1219,11 @@ msgstr ""
 msgid "Start shopping"
 msgstr ""
 
-#: cart/checkout.php:155
+#: cart/checkout.php:154
 msgid "State"
 msgstr ""
 
-#: cart/checkout.php:98
+#: cart/checkout.php:95
 #: common/footer.php:73
 msgid "Subtotal"
 msgstr ""
@@ -1236,19 +1236,23 @@ msgstr ""
 msgid "System fonts"
 msgstr ""
 
-#: cart/checkout.php:104
+#: cart/checkout.php:101
 msgid "Taking you to payment…"
 msgstr ""
 
-#: cart/checkout.php:108
+#: cart/checkout.php:105
 msgid "tax"
 msgstr ""
 
-#: cart/checkout.php:101
+#: cart/checkout.php:98
 msgid "Tax"
 msgstr ""
 
-#: common/product/buy.php:136
+#: cart/checkout.php:106
+msgid "Tax is worked out once you choose your state."
+msgstr ""
+
+#: common/product/buy.php:142
 msgid "Tell me if the price drops"
 msgstr ""
 
@@ -1277,10 +1281,6 @@ msgstr ""
 msgid "Thank you, your order is placed. We will start on it when payment arrives."
 msgstr ""
 
-#: cart/checkout.php:89
-msgid "Thank you. We have your order."
-msgstr ""
-
 #: common/product/reviews.php:31
 msgid "Thanks for your review"
 msgstr ""
@@ -1289,7 +1289,7 @@ msgstr ""
 msgid "Thanks, it shows once it is approved"
 msgstr ""
 
-#: cart/checkout.php:91
+#: cart/checkout.php:88
 msgid "That payment method is not available. Pick another."
 msgstr ""
 
@@ -1305,7 +1305,7 @@ msgstr ""
 msgid "The page uses the whole width of the content area."
 msgstr ""
 
-#: cart/module.php:101
+#: cart/module.php:109
 msgid "The price of %1$s changed from %2$s to %3$s."
 msgstr ""
 
@@ -1319,7 +1319,7 @@ msgstr ""
 msgid "The sections of the home page, top to bottom."
 msgstr ""
 
-#: maintenance.php:37
+#: maintenance.php:44
 msgid "The shop is being updated. Please check again in a few minutes."
 msgstr ""
 
@@ -1333,7 +1333,7 @@ msgstr ""
 msgid "This field is required."
 msgstr ""
 
-#: cart/module.php:91
+#: cart/module.php:99
 msgid "This item cannot be bought right now and was removed from your cart."
 msgstr ""
 
@@ -1361,8 +1361,8 @@ msgstr ""
 msgid "Top bar"
 msgstr ""
 
-#: cart/checkout.php:103
-#: cart/checkout.php:118
+#: cart/checkout.php:100
+#: cart/checkout.php:117
 #: cart/order-card.php:178
 msgid "Total"
 msgstr ""
@@ -1380,11 +1380,6 @@ msgstr ""
 
 #: sections.php:325
 msgid "Up to four short promises with an icon, such as free delivery."
-msgstr ""
-
-#: cart/checkout.php:216
-#: cart/checkout.php:90
-msgid "View your order"
 msgstr ""
 
 #: functions.php:708
@@ -1428,7 +1423,7 @@ msgstr ""
 msgid "We do not deliver to this PIN code yet."
 msgstr ""
 
-#: maintenance.php:36
+#: maintenance.php:43
 msgid "We will be back soon"
 msgstr ""
 
@@ -1468,12 +1463,12 @@ msgstr ""
 msgid "You are offline. Check your connection and try again."
 msgstr ""
 
-#: cart/module.php:96
+#: cart/module.php:104
 msgid "You get free delivery"
 msgstr ""
 
-#: cart/checkout.php:94
-#: cart/checkout.php:96
+#: cart/checkout.php:91
+#: cart/checkout.php:93
 msgid "You have %1$d unpaid bank transfer order. You can hold %2$d at once."
 msgid_plural "You have %1$d unpaid bank transfer orders. You can hold %2$d at once."
 msgstr[0] ""
@@ -1496,18 +1491,18 @@ msgstr ""
 msgid "Your cart is empty."
 msgstr ""
 
-#: cart/checkout.php:186
+#: cart/checkout.php:185
 #: cart/order.php:23
 #: cart/order.php:45
 msgid "Your order"
 msgstr ""
 
-#: cart/module.php:62
+#: cart/module.php:70
 #: user-billing-orders.php:50
 msgid "Your orders"
 msgstr ""
 
-#: cart/checkout.php:207
+#: cart/checkout.php:206
 msgid "Your payment details never touch our server."
 msgstr ""
 

@@ -43,13 +43,13 @@
     left: 'Only %d left', sold: 'Sold out', fix_cart: 'Some items need your attention. Change them in your cart.',
     no_pay: 'No payment method is available right now.', fee: '+%s', placing: 'Placing your order…', place: 'Place order',
     failed: 'We could not place your order. Please try again.', quote_fail: 'We could not price your cart. Please try again.',
-    placed: 'Order %s placed', placed_sub: 'Thank you. We have your order.', view_order: 'View your order',
     unavail: 'That payment method is not available. Pick another.', see_orders: 'See your orders', redirect: 'Taking you to payment…',
     coupon_bad: 'Enter a valid coupon code.', offline: 'You are offline. Check your connection and try again.',
     slow: 'Too many tries. Wait a minute and try again.',
     open_one: 'You have %1$d unpaid bank transfer order. You can hold %2$d at once.',
     open_many: 'You have %1$d unpaid bank transfer orders. You can hold %2$d at once.',
-    open_blocked: 'Pay for or cancel an unpaid bank transfer order first.', retry: 'Try again', includes: 'Includes %1$s %2$s', tax_name: 'Tax'
+    open_blocked: 'Pay for or cancel an unpaid bank transfer order first.', retry: 'Try again', includes: 'Includes %1$s %2$s', tax_name: 'Tax',
+    tax_later: 'Tax is worked out once you choose your state.', state_pick: 'Choose…'
   };
   try {
     var raw = document.getElementById('aisle-checkout-i18n');
@@ -69,12 +69,12 @@
   var elTopTotal = form.querySelector('[data-co-top-total]');
   var btn = form.querySelector('[data-place]');
   var btnText = btn.querySelector('span');
-  var placed = document.querySelector('[data-placed]');
   var elCoupon = form.querySelector('[data-coupon]');
   var elCouponIn = form.querySelector('[data-coupon-input]');
   var elCouponErr = form.querySelector('[data-coupon-err]');
   var elCouponOk = form.querySelector('[data-coupon-ok]');
   var elTaxNote = form.querySelector('[data-tax-note]');
+  var elSecure = form.querySelector('[data-secure]');
 
   var quote = null;
   var shipping = '';
@@ -87,6 +87,8 @@
   var couponMsg = '';
   /* A refused order's message, kept while the quote is fetched again. */
   var placeErr = '';
+  /* The state the shown quote was priced for. */
+  var quotedState = '';
   var fieldMsg = { postcode: false, country: false };
   var timer = 0;
   /* The saved address chosen in core's address picker; '' for a typed one. */
@@ -186,6 +188,7 @@
     }
     ctl = new AbortController();
     var mine = ++seq;
+    var forState = ships() ? value('state') : '';
     var url = new URL(endpoint(c, 'cart/quote'), location.href);
     url.searchParams.set('lines', list.map(function (l) { return l.v + ':' + l.q; }).join(','));
     if (shipping) url.searchParams.set('shipping', shipping);
@@ -211,6 +214,7 @@
       var d = body && (body.data || body);
       if (!d || !Array.isArray(d.lines)) throw new Error('bad quote');
       quote = d;
+      quotedState = forState;
       showAlert(placeErr);
       placeErr = '';
       takeFieldProblems(d);
@@ -404,9 +408,12 @@
     (quote.discounts || []).forEach(function (d) {
       if (d !== mine) elTotals.appendChild(row(String(d.label || labels.discount), '−' + unsigned(d.amount)));
     });
-    (quote.taxes || []).forEach(function (x) {
-      if (x && x.included !== true) elTotals.appendChild(row(String(x.label || labels.tax), amountText(x.amount)));
-    });
+    var added = (quote.taxes || []).filter(function (x) { return x && x.included !== true; });
+    if (added.length && !taxKnown()) {
+      elTotals.appendChild(row(labels.tax, amountText(t.tax)));
+    } else {
+      added.forEach(function (x) { elTotals.appendChild(row(String(x.label || labels.tax), amountText(x.amount))); });
+    }
     (quote.fees || []).forEach(function (x) { elTotals.appendChild(row(String(x.label || labels.fee), amountText(x.amount))); });
     elTotals.appendChild(row(labels.total, amountText(t.total), 'total'));
   }
@@ -432,6 +439,9 @@
     if (couponMsg) elCouponIn.setAttribute('aria-invalid', 'true'); else elCouponIn.removeAttribute('aria-invalid');
   }
 
+  /* Which tax applies can hang on the state, so a delivery quote names no tax until it is known. */
+  function taxKnown() { return !ships() || (!!quotedState && quotedState === value('state')); }
+
   /* "Includes GST ₹76.12" from the taxes already inside the prices. */
   function paintTaxNote() {
     var names = [];
@@ -442,6 +452,8 @@
       if (names.indexOf(n) < 0) names.push(n);
       sum += amountNum(x.amount);
     });
+    var any = names.length || ((quote && quote.taxes) || []).some(function (x) { return x && x.included !== true; });
+    if (any && !taxKnown()) { elTaxNote.textContent = T.tax_later; elTaxNote.hidden = false; return; }
     if (!names.length) { elTaxNote.hidden = true; elTaxNote.textContent = ''; return; }
     var inc = quote.totals && quote.totals.tax_included;
     var amt = amountNum(inc) > 0 ? amountText(inc) : String(sum);
@@ -494,6 +506,8 @@
     paintTotals();
     paintCoupon();
     paintTaxNote();
+    /* Only a card gateway takes payment details; bank transfer and cash on delivery do not. */
+    if (elSecure) elSecure.hidden = !gateway || gateway === 'offline' || gateway === 'cod';
     if (quote && lineProblems()) showAlert(T.fix_cart);
     else if (quote) {
       var ship = problemList().filter(function (p) { return pointerOf(p) === '/shipping_method'; })[0];
@@ -547,6 +561,62 @@
   function paintPostcodeLabel() {
     var lab = form.querySelector('[data-postcode-label]');
     if (lab) lab.textContent = value('country') === 'IN' ? T.pin_label : T.zip_label;
+  }
+
+  /* State is a list of the country's regions when the shop has them, else free text. */
+  var regionCache = {};
+
+  function loadRegions(cc) {
+    if (regionCache[cc]) return regionCache[cc];
+    var c = apiConfig();
+    if (!c || !/^[A-Z]{2}$/.test(cc)) return Promise.resolve([]);
+    var headers = { Accept: 'application/json' };
+    headers[c.header] = c.token;
+    regionCache[cc] = fetch(endpoint(c, 'countries/' + cc + '/regions'), { headers: headers, credentials: 'same-origin' })
+      .then(function (r) { return r.ok ? r.json() : { data: [] }; })
+      .then(function (j) {
+        return (Array.isArray(j && j.data) ? j.data : []).map(function (x) { return String(x && x.name || ''); }).filter(Boolean);
+      })
+      .catch(function () { delete regionCache[cc]; return []; });
+    return regionCache[cc];
+  }
+
+  /* A value the list lacks, such as a saved address's state, is kept as its own option. */
+  function keepState(sel, v) {
+    if (!v) { sel.value = ''; return; }
+    var hit = Array.prototype.filter.call(sel.options, function (o) { return o.value.toLowerCase() === v.toLowerCase(); })[0];
+    if (!hit) { hit = el('option', '', v); hit.value = v; sel.appendChild(hit); }
+    sel.value = hit.value;
+  }
+
+  function paintStateField() {
+    var cc = value('country').toUpperCase();
+    loadRegions(cc).then(function (names) {
+      if (value('country').toUpperCase() !== cc) return;
+      var old = form.elements.state;
+      if (!old) return;
+      var now = String(old.value).trim();
+      var next;
+      if (names.length) {
+        next = el('select');
+        var blank = el('option', '', T.state_pick);
+        blank.value = '';
+        next.appendChild(blank);
+        names.forEach(function (n) { var o = el('option', '', n); o.value = n; next.appendChild(o); });
+        keepState(next, now);
+      } else if (old.tagName === 'SELECT') {
+        next = el('input');
+        next.value = now;
+      } else {
+        return;
+      }
+      next.name = 'state';
+      next.required = true;
+      next.setAttribute('autocomplete', 'address-level1');
+      ['aria-invalid', 'aria-describedby'].forEach(function (a) { if (old.hasAttribute(a)) next.setAttribute(a, old.getAttribute(a)); });
+      old.replaceWith(next);
+      if (value('state') !== now) later();
+    });
   }
 
   /* ---------- place ---------- */
@@ -673,15 +743,6 @@
     }
   }
 
-  function runScripts(box) {
-    box.querySelectorAll('script').forEach(function (old) {
-      var s = document.createElement('script');
-      Array.prototype.forEach.call(old.attributes, function (a) { s.setAttribute(a.name, a.value); });
-      s.textContent = old.textContent;
-      old.parentNode.replaceChild(s, old);
-    });
-  }
-
   function success(json) {
     var d = (json && json.data) || json || {};
     var next = d.next || (json && json.next) || null;
@@ -698,21 +759,11 @@
       }
     }
 
-    form.hidden = true;
-    placed.hidden = false;
-    placed.querySelector('[data-placed-title]').textContent = fill(T.placed, String(d.number || (id ? '#' + id : '')));
-    placed.querySelector('[data-placed-sub]').textContent = T.placed_sub;
-    var link = placed.querySelector('[data-placed-link]');
+    /* The order's own page shows how to pay and survives a refresh; a gateway that draws its own
+       form there gets pay=1 so the page opens it at once. */
     var tpl = form.getAttribute('data-order-url') || '';
-    if (id && tpl) link.href = tpl.replace('{id}', String(id));
-    var box = placed.querySelector('[data-intent]');
-    box.textContent = '';
-    if (next && next.kind === 'html' && typeof next.payload === 'string') {
-      box.innerHTML = next.payload; /* the gateway's own markup, printed as given */
-      runScripts(box);
-    }
-    placed.focus();
-    window.scrollTo(0, 0);
+    var to = id && tpl ? safeUrl(tpl.replace('{id}', String(id)) + (next && next.kind === 'html' ? '&pay=1' : '')) : '';
+    location.assign(to || safeUrl(form.getAttribute('data-orders-url')) || location.href);
   }
 
   /* ---------- events ---------- */
@@ -734,7 +785,7 @@
     if (!t || !t.name) return;
     if (t.name === 'ship') { shipping = t.value; runQuote(); }
     else if (t.name === 'pay') { gateway = t.value; elGwErr.hidden = true; runQuote(); }
-    else if (t.name === 'country') { paintPostcodeLabel(); runQuote(); }
+    else if (t.name === 'country') { paintPostcodeLabel(); paintStateField(); runQuote(); }
     else if (t.name === 'postcode' || t.name === 'state' || t.name === 'city') { later(); }
   });
 
@@ -776,7 +827,10 @@
     addressId = e.detail && e.detail.id ? String(e.detail.id) : '';
     FIELDS.forEach(function (n) { setError(n, ''); fieldMsg[n] = false; });
     showAlert('');
+    var st = e.detail && e.detail.address ? String(e.detail.address.state || '') : '';
+    if (st && form.elements.state && form.elements.state.tagName === 'SELECT') keepState(form.elements.state, st);
     paintPostcodeLabel();
+    paintStateField();
     runQuote();
   });
 
@@ -784,6 +838,7 @@
   document.addEventListener('aisle:cart', function () { if (!busy) runQuote(); });
 
   paintPostcodeLabel();
+  paintStateField();
   paint();
   if (window.aisleCart) {
     /* Wait for the signed-in cart to merge, then price what is there. */

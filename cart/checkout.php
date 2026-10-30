@@ -85,9 +85,6 @@ $aisle_co_i18n   = [
     'offline'    => __('You are offline. Check your connection and try again.', 'aisle'),
     'slow'       => __('Too many tries. Wait a minute and try again.', 'aisle'),
     'retry'      => __('Try again', 'aisle'),
-    'placed'     => __('Order %s placed', 'aisle'),
-    'placed_sub' => __('Thank you. We have your order.', 'aisle'),
-    'view_order' => __('View your order', 'aisle'),
     'unavail'    => __('That payment method is not available. Pick another.', 'aisle'),
     'see_orders' => __('See your orders', 'aisle'),
     /* translators: 1: unpaid bank transfer orders held, 2: most that may be held */
@@ -106,6 +103,8 @@ $aisle_co_i18n   = [
     /* translators: 1: tax name such as GST, 2: amount */
     'includes'   => __('Includes %1$s %2$s', 'aisle'),
     'tax_name'   => __('tax', 'aisle'),
+    'tax_later'  => __('Tax is worked out once you choose your state.', 'aisle'),
+    'state_pick' => __('Choose…', 'aisle'),
 ];
 ?>
 <link rel="stylesheet" href="<?php echo osc_esc_html($aisle_co_css); ?>">
@@ -204,17 +203,10 @@ $aisle_co_i18n   = [
             <button class="btn btn-primary btn-block" type="submit" data-place>
                 <svg class="ico sm" aria-hidden="true"><use href="#i-lock"/></svg><span><?php _e('Place order', 'aisle'); ?></span>
             </button>
-            <p class="secure"><svg class="ico sm" aria-hidden="true"><use href="#i-shield"/></svg><?php _e('Your payment details never touch our server.', 'aisle'); ?></p>
+            <p class="secure" data-secure hidden><svg class="ico sm" aria-hidden="true"><use href="#i-shield"/></svg><?php _e('Your payment details never touch our server.', 'aisle'); ?></p>
             <noscript><p class="co-alert"><?php _e('Checkout needs JavaScript. Please turn it on to place your order.', 'aisle'); ?></p></noscript>
         </aside>
     </form>
-
-    <section class="co-placed" data-placed tabindex="-1" hidden>
-        <h1 data-placed-title></h1>
-        <p data-placed-sub></p>
-        <div class="co-intent" data-intent></div>
-        <p><a class="btn btn-ghost" data-placed-link href="<?php echo osc_esc_html((string) osc_user_dashboard_url()); ?>"><?php _e('View your order', 'aisle'); ?></a></p>
-    </section>
 </div>
 <script type="application/json" id="aisle-checkout-i18n"><?php echo json_encode($aisle_co_i18n, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_UNESCAPED_UNICODE); ?></script>
 <script src="<?php echo osc_esc_html($aisle_co_js); ?>" defer></script>

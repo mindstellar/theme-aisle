@@ -156,4 +156,15 @@
     var del = t.closest('[data-cancel-order]');
     if (del) { e.preventDefault(); cancel(del); }
   });
+
+  /* Straight from checkout with a gateway that draws its own form: open it now. */
+  try {
+    var here = new URL(location.href);
+    if (here.searchParams.get('pay') === '1') {
+      here.searchParams.delete('pay');
+      history.replaceState(null, '', here.toString());
+      var first = document.querySelector('[data-pay-order]');
+      if (first) pay(first);
+    }
+  } catch (e) { /* the Pay now button still works */ }
 })();
