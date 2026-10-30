@@ -11,6 +11,7 @@
 declare(strict_types=1);
 
 $aisle_site   = (string) osc_get_preference('pageTitle');
+$aisle_note   = function_exists('osc_sanitize_maintenance_message') ? osc_sanitize_maintenance_message(osc_get_preference('maintenance_message')) : '';
 $aisle_scheme = function_exists('aisle_scheme') ? aisle_scheme() : '';
 $aisle_brand  = function_exists('aisle_brand') ? aisle_brand() : '';
 $aisle_font   = function_exists('aisle_font') ? aisle_font() : '';
@@ -41,7 +42,7 @@ $aisle_files  = function_exists('aisle_font_files') ? aisle_font_files() : [];
 <main>
     <span class="mark" aria-hidden="true"><?php echo osc_esc_html($aisle_site !== '' ? mb_strtoupper(mb_substr($aisle_site, 0, 1, 'UTF-8'), 'UTF-8') : 'A'); ?></span>
     <h1><?php _e('We will be back soon', 'aisle'); ?></h1>
-    <p><?php _e('The shop is being updated. Please check again in a few minutes.', 'aisle'); ?></p>
+    <p><?php echo $aisle_note !== '' ? nl2br(osc_esc_html($aisle_note), false) : osc_esc_html(__('The shop is being updated. Please check again in a few minutes.', 'aisle')); ?></p>
     <p><?php echo osc_esc_html($aisle_site); ?></p>
 </main>
 </body>
