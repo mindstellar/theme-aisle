@@ -646,11 +646,13 @@
     list.forEach(function (l) {
       if (byVariant[l.v]) box.appendChild(lineNode(byVariant[l.v], l));
     });
-    paintMeter(meter, quoteData);
+    var ships = quoteData.needs_shipping !== false;
+    if (ships) paintMeter(meter, quoteData);
+    else meter.hidden = true;
 
     var totals = quoteData.totals || {};
     foot.appendChild(row(drawer.getAttribute('data-subtotal') || 'Subtotal', amountText(totals.subtotal), 'total'));
-    foot.appendChild(el('p', 'note', drawer.getAttribute('data-note') || ''));
+    if (ships) foot.appendChild(el('p', 'note', drawer.getAttribute('data-note') || ''));
     var go = el('a', 'btn btn-primary btn-block', T.checkout);
     go.href = safeUrl(drawer.getAttribute('data-checkout') || '') || '#';
     foot.appendChild(go);
