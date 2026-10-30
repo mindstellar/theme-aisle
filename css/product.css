@@ -92,6 +92,9 @@ details.acc > div { padding-bottom: 16px; color: var(--muted); font-size: 14px; 
 .buy .btn:disabled:active { transform: none; }
 .buy .btn[aria-busy="true"], .alerts .btn[aria-busy="true"] { cursor: progress; opacity: .7; }
 .sticky-buy { display: none; }
+/* A sold-out choice offers the back-in-stock alert in place of the buy buttons. */
+.buy:has(> [data-notify]:not([hidden])) > :not([data-notify]) { display: none; }
+.buy > [data-notify] { grid-column: 1 / -1; }
 
 @media (max-width: 760px) {
   .buy { grid-template-columns: auto 1fr; }
@@ -103,6 +106,7 @@ details.acc > div { padding-bottom: 16px; color: var(--muted); font-size: 14px; 
   .sticky-buy .btn:disabled { opacity: .5; }
   .sticky-buy.wait { visibility: hidden; transform: translateY(100%); }
   .sticky-buy { transition: transform .2s, visibility .2s; }
+  body:has(.buy > [data-notify]:not([hidden])) .sticky-buy { display: none; }
   body:has(.sticky-buy:not(.wait)) .toast { bottom: calc(84px + env(safe-area-inset-bottom, 0px)); }
 }
 

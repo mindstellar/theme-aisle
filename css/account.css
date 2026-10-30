@@ -79,7 +79,7 @@
 
 @media (max-width: 960px) {
   .acct { grid-template-columns: 1fr; gap: 16px; }
-  .acct-nav { display: flex; overflow-x: auto; scrollbar-width: none; gap: 6px; }
+  .acct-nav { display: flex; overflow-x: auto; scrollbar-width: none; gap: 6px; padding-inline-end: 32px; mask-image: linear-gradient(to right, #000 calc(100% - 40px), transparent); }
   .acct-nav a { white-space: nowrap; border: 1px solid var(--line); border-radius: var(--r-pill); padding: 7px 14px; }
   .acct h1 { font-size: 26px; }
   .order-h dl { gap: 16px; }

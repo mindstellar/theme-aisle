@@ -305,6 +305,15 @@
     });
   }
 
+  /* On a phone the account tabs scroll sideways; bring the current one into view. */
+  function initAccountTabs() {
+    var on = document.querySelector('.acct-nav a.on, .oe-account-nav [aria-current]');
+    var row = on && (on.closest('.acct-nav') || on.closest('ul'));
+    if (!row || row.scrollWidth <= row.clientWidth) return;
+    var gap = on.offsetLeft - row.offsetLeft - 16;
+    if (gap > 0) row.scrollLeft = gap;
+  }
+
   function init() {
     loadText();
     initScheme();
@@ -312,6 +321,7 @@
     initMenu();
     initPhotoCarry();
     initCartFly();
+    initAccountTabs();
   }
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);

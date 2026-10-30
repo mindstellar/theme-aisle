@@ -65,6 +65,8 @@ if (!function_exists('aisle_card')) {
     <div class="ph">
         <?php if ($thumb !== '') { ?>
             <img src="<?php echo osc_esc_html($thumb); ?>"<?php if ($small !== '' && $small !== $thumb) { ?> srcset="<?php echo osc_esc_html($small); ?> 240w, <?php echo osc_esc_html($thumb); ?> 800w" sizes="(min-width: 1100px) 280px, (min-width: 761px) 46vw, 120px"<?php } ?> alt="" loading="<?php echo $eager ? 'eager' : 'lazy'; ?>" decoding="async">
+        <?php } else { ?>
+            <span class="ph-none" aria-hidden="true"><svg class="ico"><use href="#i-bag"/></svg></span>
         <?php } ?>
         <?php if ($off >= 1) { ?>
             <span class="deal num"><?php echo osc_esc_html('−' . $off . '%'); ?></span>
