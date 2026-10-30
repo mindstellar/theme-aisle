@@ -527,7 +527,10 @@
       var out = el('output', 'num', String(local.q));
       qty.appendChild(out);
       var inc = stepButton('data-inc', T.more, 'plus');
-      if (capped && local.q >= left) inc.disabled = true;
+      if (capped && local.q >= left) {
+        inc.disabled = true;
+        inc.title = fill(T.left, left);
+      }
       qty.appendChild(inc);
       mid.appendChild(qty);
       if (capped) {

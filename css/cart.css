@@ -3,6 +3,7 @@
 .qty { display: inline-flex; align-items: center; border: 1px solid var(--line); border-radius: var(--r-pill); }
 .qty button { background: none; border: 0; width: 40px; height: 44px; display: grid; place-items: center; color: var(--ink); border-radius: var(--r-pill); }
 .qty button:active { background: var(--band); }
+.qty button:disabled { opacity: .35; cursor: not-allowed; }
 .qty button:focus-visible { border-radius: var(--r-pill); }
 .qty output { min-width: 26px; padding-inline: 2px; text-align: center; font-weight: 600; font-variant-numeric: tabular-nums; }
 
