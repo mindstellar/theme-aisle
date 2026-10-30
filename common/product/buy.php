@@ -130,7 +130,13 @@ $aisle_cat = is_array($aisle_listing['category'] ?? null) ? $aisle_listing['cate
             <button class="btn btn-primary" type="button" data-add<?php echo $aisle_row['in_stock'] ? '' : ' disabled'; ?>><?php echo aisle_icon('bag', true); ?><span data-add-label><?php _e('Add to cart', 'aisle'); ?></span></button>
             <button class="btn btn-ink" type="button" data-buy-now<?php echo $aisle_row['in_stock'] ? '' : ' disabled'; ?>><?php _e('Buy now', 'aisle'); ?></button>
         </div>
-        <?php osc_current_web_theme_path('common/product/deliver.php'); ?>
+        <?php
+        // A download is not sent, so it gets no PIN box.
+        $aisle_quote = aisle_api('cart/quote', ['lines' => (int) $aisle_row['id'] . ':1']);
+        if (($aisle_quote['data']['needs_shipping'] ?? null) !== false) {
+            osc_current_web_theme_path('common/product/deliver.php');
+        }
+        ?>
         <div class="alerts">
             <button class="btn btn-ghost" type="button" data-notify<?php echo $aisle_row['in_stock'] ? ' hidden' : ''; ?>><span><?php _e('Notify me when it is back', 'aisle'); ?></span></button>
             <button class="btn btn-ghost" type="button" data-pricedrop><span><?php _e('Tell me if the price drops', 'aisle'); ?></span></button>
