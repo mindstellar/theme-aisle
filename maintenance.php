@@ -12,13 +12,19 @@ declare(strict_types=1);
 
 $aisle_site   = (string) osc_get_preference('pageTitle');
 $aisle_scheme = function_exists('aisle_scheme') ? aisle_scheme() : '';
+$aisle_brand  = function_exists('aisle_brand') ? aisle_brand() : '';
+$aisle_font   = function_exists('aisle_font') ? aisle_font() : '';
+$aisle_files  = function_exists('aisle_font_files') ? aisle_font_files() : [];
 ?><!DOCTYPE html>
-<html lang="<?php echo osc_esc_html(str_replace('_', '-', osc_current_user_locale())); ?>"<?php echo $aisle_scheme !== '' ? ' data-theme="' . osc_esc_html($aisle_scheme) . '"' : ''; ?>>
+<html lang="<?php echo osc_esc_html(str_replace('_', '-', osc_current_user_locale())); ?>"<?php echo $aisle_scheme !== '' ? ' data-theme="' . osc_esc_html($aisle_scheme) . '"' : ''; ?><?php echo $aisle_brand !== '' ? ' data-brand="' . osc_esc_html($aisle_brand) . '"' : ''; ?><?php echo $aisle_font !== '' ? ' data-font="' . osc_esc_html($aisle_font) . '"' : ''; ?>>
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="noindex">
     <title><?php echo osc_esc_html($aisle_site . ' - ' . __('back soon', 'aisle')); ?></title>
+<?php foreach ($aisle_files as $aisle_file) { ?>
+    <link rel="preload" href="<?php echo osc_esc_html(osc_current_web_theme_url($aisle_file)); ?>" as="font" type="font/woff2" crossorigin>
+<?php } ?>
     <link rel="stylesheet" href="<?php echo osc_esc_html(osc_current_web_theme_url('css/tokens.css')); ?>">
     <style>
         body { margin: 0; min-height: 100vh; display: grid; place-items: center; text-align: center; padding: 32px; background: var(--bg); color: var(--ink); font: 400 17px/1.6 var(--body); }
