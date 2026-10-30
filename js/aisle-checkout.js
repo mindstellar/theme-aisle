@@ -85,6 +85,8 @@
   var ctl = null;
   var coupon = '';
   var couponMsg = '';
+  /* A refused order's message, kept while the quote is fetched again. */
+  var placeErr = '';
   var fieldMsg = { postcode: false, country: false };
   var timer = 0;
   /* The saved address chosen in core's address picker; '' for a typed one. */
@@ -209,7 +211,8 @@
       var d = body && (body.data || body);
       if (!d || !Array.isArray(d.lines)) throw new Error('bad quote');
       quote = d;
-      showAlert('');
+      showAlert(placeErr);
+      placeErr = '';
       takeFieldProblems(d);
       paint();
     }).catch(function (err) {
@@ -549,16 +552,17 @@
   /* ---------- place ---------- */
 
   function body() {
-    return {
+    var out = {
       lines: cartLines().map(function (l) { return { variant: l.v, qty: l.q }; }),
       address: !ships() ? {} : addressId ? { id: addressId } : {
         name: value('name'), phone: value('phone'), line1: value('line1'), city: value('city'),
         state: value('state'), postcode: value('postcode'), country: value('country'), save: saveAddress()
       },
-      shipping_method: ships() ? shipping : '',
       gateway: gateway,
       coupon: coupon || undefined
     };
+    if (ships()) out.shipping_method = shipping;
+    return out;
   }
 
   /* The same order data reuses its key, so a retry after a dropped answer cannot place twice. */
@@ -607,11 +611,13 @@
   function failure(res) {
     setBusy(false);
     var j = res.json || {};
+    var detail = typeof j.detail === 'string' && j.detail ? j.detail : T.failed;
     if (res.status !== 422) {
-      showAlert(failText(res.status, T.failed));
+      showAlert(failText(res.status, detail));
       return;
     }
-    var errs = Array.isArray(j.errors) ? j.errors : [];
+    var errs = Array.isArray(j.errors) ? j.errors : Array.isArray(j.problems) ? j.problems : [];
+    function note(text) { placeErr = text; showAlert(text); }
     var shown = false;
     var refresh = false;
     elGwErr.hidden = true;
@@ -620,7 +626,7 @@
       var p = String(e && e.pointer || '');
       var m = /^\/address\/(\w+)/.exec(p);
       if (m && (addressId || m[1] === 'id')) {
-        showAlert(String(e.message || T.failed));
+        note(String(e.message || T.failed));
         shown = true;
         refresh = true;
       } else if (m) {
@@ -635,7 +641,7 @@
         shown = true;
         refresh = true;
       } else if (p === '/shipping_method') {
-        showAlert(String(e.message || T.failed));
+        note(String(e.message || T.failed));
         shown = true;
         refresh = true;
       } else if (p === '/gateway') {
@@ -660,11 +666,11 @@
         refresh = true;
       }
     });
+    if (!shown) note(String((errs[0] && errs[0].message) || detail));
     if (refresh) {
       try { sessionStorage.removeItem('aisle-co-key'); } catch (e) { /* ignore */ }
       runQuote();
     }
-    if (!shown && !refresh) showAlert(String(j.detail || T.failed));
   }
 
   function runScripts(box) {
