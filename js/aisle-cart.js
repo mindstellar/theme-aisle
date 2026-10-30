@@ -308,6 +308,7 @@
   var fresh = 0;
   var waiting = [];
   var dropped = 0;
+  var droppedText = '';
 
   function finishQuote(v) {
     var w = waiting;
@@ -354,7 +355,10 @@
       quoteData = d;
       quoteFailed = false;
       var gone = prune(d);
-      if (gone) dropped = gone;
+      if (gone) {
+        dropped = gone;
+        droppedText = refusals(d);
+      }
       else if (!clamp(d)) dropped = 0;
       paintDrawer();
       finishQuote(d);
@@ -365,6 +369,13 @@
       paintDrawer();
       finishQuote(null);
     });
+  }
+
+  /* The site's own words for items it refused, such as a price in another currency. */
+  function refusals(d) {
+    return (Array.isArray(d.problems) ? d.problems : []).filter(function (p) {
+      return p && p.code === 'not_buyable' && typeof p.message === 'string' && p.message !== '';
+    }).map(function (p) { return p.message; }).join(' ');
   }
 
   /* A variant the quote no longer knows (deleted or hidden) leaves the cart. Returns how many left. */
@@ -603,7 +614,7 @@
 
     if (!list.length) {
       meter.hidden = true;
-      if (dropped) box.appendChild(el('p', 'empty', T.unbuyable));
+      if (dropped) box.appendChild(el('p', 'empty', droppedText || T.unbuyable));
       box.appendChild(emptyNode(drawer.getAttribute('data-empty') || 'Your cart is empty.'));
       return;
     }
@@ -629,7 +640,7 @@
     if (dropped) {
       var gone = el('div', 'price-note');
       gone.setAttribute('role', 'status');
-      gone.appendChild(el('p', '', T.unbuyable));
+      gone.appendChild(el('p', '', droppedText || T.unbuyable));
       box.appendChild(gone);
     }
     list.forEach(function (l) {
