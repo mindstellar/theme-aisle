@@ -626,13 +626,12 @@ function aisle_html_attrs(): string
 }
 
 /**
- * The current item's place as "City, Region, Country", each in the visitor's language.
+ * The current item's place as "City, Region, Country"; core gives each name in the visitor's language.
  */
 function aisle_item_location(): string
 {
     $parts = [];
-    foreach ([['city', osc_item_city_id(), osc_item_city()], ['region', osc_item_region_id(), osc_item_region()], ['country', osc_item_country_code(), osc_item_country()]] as [$type, $id, $name]) {
-        $label = $id !== '' && $id !== '0' && function_exists('osc_location_name') ? osc_location_name($type, $id, $name) : $name;
+    foreach ([osc_item_city(), osc_item_region(), osc_item_country()] as $label) {
         if ($label !== '' && !in_array($label, $parts, true)) {
             $parts[] = $label;
         }
