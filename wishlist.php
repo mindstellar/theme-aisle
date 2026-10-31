@@ -46,8 +46,16 @@ foreach ($aisle_ids as $aisle_id) {
         $aisle_shown[] = $aisle_items[$aisle_id];
     }
 }
-?>
-<div class="wrap wishlist" data-wishlist-page data-url="<?php echo osc_esc_html(aisle_wishlist_url()); ?>" data-ids="<?php echo osc_esc_html(implode(',', array_map(static fn ($r): int => (int) $r['id'], $aisle_shown))); ?>">
+$aisle_in_account = osc_is_web_user_logged_in();
+if ($aisle_in_account) {
+    require_once AISLE_DIR . '/cart/order-card.php';
+    ?>
+<link rel="stylesheet" href="<?php echo osc_esc_html(aisle_asset('css/account.css')); ?>">
+<div class="wrap">
+    <div class="acct">
+        <?php echo aisle_account_nav('wishlist'); ?>
+<?php } ?>
+<div class="<?php echo $aisle_in_account ? '' : 'wrap '; ?>wishlist" data-wishlist-page data-url="<?php echo osc_esc_html(aisle_wishlist_url()); ?>" data-ids="<?php echo osc_esc_html(implode(',', array_map(static fn ($r): int => (int) $r['id'], $aisle_shown))); ?>">
     <h1><?php _e('Wishlist', 'aisle'); ?></h1>
     <div class="grid" data-wishlist-grid>
         <?php foreach ($aisle_shown as $aisle_row) {
@@ -57,3 +65,7 @@ foreach ($aisle_ids as $aisle_id) {
     <?php echo $aisle_shown === [] ? aisle_api_error() : ''; ?>
     <p class="wish-empty" data-wishlist-empty<?php echo $aisle_shown !== [] || aisle_api_failed() ? ' hidden' : ''; ?>><?php _e('Nothing saved yet.', 'aisle'); ?> <a href="<?php echo osc_esc_html(osc_base_url()); ?>"><?php _e('Keep browsing', 'aisle'); ?></a></p>
 </div>
+<?php if ($aisle_in_account) { ?>
+    </div>
+</div>
+<?php } ?>

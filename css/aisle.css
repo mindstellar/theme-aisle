@@ -228,10 +228,12 @@ img { max-width: 100%; }
 .card .meta b { font-weight: 400; color: var(--muted); }
 .wishlist { padding-block: 24px 48px; display: grid; gap: 20px; }
 .wishlist h1 { font-family: var(--display); font-size: clamp(24px, 3vw, 32px); margin: 0; }
+.acct .wishlist { padding-block: 0; align-content: start; }
 .wish-empty { color: var(--muted); margin: 0; }
 .wish-empty[hidden] { display: none; }
 .card .ph { z-index: 2; pointer-events: none; }
 .card .fav { pointer-events: auto; }
+@media (pointer: coarse) { .card .fav::after { content: ""; position: absolute; inset: -4px; border-radius: inherit; } }
 
 .count.bump { animation: bump .42s var(--ease); }
 @keyframes bump { 30% { transform: scale(1.45); } 100% { transform: scale(1); } }

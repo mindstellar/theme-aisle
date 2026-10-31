@@ -10,6 +10,7 @@
 .card .quick { position: absolute; inset-inline: 10px; bottom: 10px; z-index: 2; opacity: 0; translate: 0 8px; transition: opacity .2s var(--ease), translate .2s var(--ease), background .18s var(--ease); padding: 10px; font-size: 14px; pointer-events: auto; }
 .card:hover .quick, .card:focus-within .quick, .card .quick:focus-visible { opacity: 1; translate: 0 0; }
 @media (hover: none), (max-width: 760px) { .card .quick { display: none; } }
+.wishlist .card .quick { display: inline-flex; opacity: 1; translate: 0 0; }
 
 .cart-scrim { position: fixed; inset: 0; background: var(--scrim); z-index: 80; opacity: 0; pointer-events: none; transition: opacity .28s var(--ease); }
 .cart-scrim.on { opacity: 1; pointer-events: auto; }

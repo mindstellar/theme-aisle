@@ -31,6 +31,8 @@ $aisle_menu_i18n  = [
 .menu-panel a:not(.iconbtn):hover { background: var(--band); }
 .menu-panel a[aria-current] { background: var(--band); font-weight: 700; box-shadow: inset 3px 0 0 var(--brand); }
 .menu-panel a.sale { color: var(--brand); }
+.menu-panel a.menu-wish { display: flex; align-items: center; gap: 8px; }
+.menu-wish .count { position: static; }
 @media (prefers-reduced-motion: no-preference) {
   .menu:not([hidden]) .menu-panel { animation: aisle-menu-in .2s var(--ease); }
 }
@@ -54,5 +56,6 @@ $aisle_menu_i18n  = [
         <?php if (osc_users_enabled()) { ?>
             <a href="<?php echo osc_esc_html(osc_is_web_user_logged_in() ? osc_user_dashboard_url() : osc_user_login_url()); ?>"><?php _e('Account', 'aisle'); ?></a>
         <?php } ?>
+        <a class="menu-wish" href="<?php echo osc_esc_html(aisle_wishlist_url()); ?>"<?php echo aisle_menu_current(aisle_wishlist_url()) ? ' aria-current="page"' : ''; ?>><?php _e('Wishlist', 'aisle'); ?> <span class="count num" data-wishlist-count hidden>0</span></a>
     </div>
 </div>

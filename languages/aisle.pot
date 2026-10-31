@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Aisle 1.0.0\n"
+"Project-Id-Version: Aisle 1.1.0\n"
 "Report-Msgid-Bugs-To: https://github.com/mindstellar/theme-aisle/issues\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -92,8 +92,8 @@ msgid "A wide photo with a heading, a line of text and a button."
 msgstr ""
 
 #: cart/order-card.php:326
-#: common/header.php:56
-#: common/menu.php:55
+#: common/header.php:57
+#: common/menu.php:57
 msgid "Account"
 msgstr ""
 
@@ -157,7 +157,7 @@ msgstr ""
 msgid "Awaiting payment"
 msgstr ""
 
-#: maintenance.php:24
+#: maintenance.php:25
 msgid "back soon"
 msgstr ""
 
@@ -220,7 +220,7 @@ msgstr ""
 msgid "Cancelled"
 msgstr ""
 
-#: common/header.php:53
+#: common/header.php:54
 msgid "Cart"
 msgstr ""
 
@@ -236,7 +236,7 @@ msgstr ""
 msgid "Catalogue"
 msgstr ""
 
-#: common/header.php:60
+#: common/header.php:61
 msgid "Categories"
 msgstr ""
 
@@ -304,7 +304,7 @@ msgstr ""
 msgid "Clear the filters"
 msgstr ""
 
-#: common/menu.php:47
+#: common/menu.php:49
 msgid "Close"
 msgstr ""
 
@@ -316,7 +316,7 @@ msgstr ""
 msgid "Close filters"
 msgstr ""
 
-#: common/header.php:51
+#: common/header.php:52
 #: common/menu.php:18
 #: functions.php:731
 msgid "Colour scheme"
@@ -369,8 +369,8 @@ msgstr ""
 msgid "Dark"
 msgstr ""
 
-#: common/header.php:61
-#: common/menu.php:49
+#: common/header.php:62
+#: common/menu.php:51
 #: sections.php:294
 msgid "Deals"
 msgstr ""
@@ -602,7 +602,7 @@ msgstr ""
 
 #: user-billing-orders.php:62
 #: user-dashboard.php:47
-#: wishlist.php:58
+#: wishlist.php:66
 msgid "Keep browsing"
 msgstr ""
 
@@ -684,8 +684,8 @@ msgstr ""
 msgid "Medium"
 msgstr ""
 
-#: common/header.php:41
-#: common/menu.php:44
+#: common/header.php:42
+#: common/menu.php:46
 msgid "Menu"
 msgstr ""
 
@@ -702,8 +702,8 @@ msgstr ""
 msgid "More"
 msgstr ""
 
-#: common/header.php:65
-#: common/menu.php:53
+#: common/header.php:66
+#: common/menu.php:55
 #: sections.php:486
 msgid "New in"
 msgstr ""
@@ -746,7 +746,7 @@ msgstr ""
 msgid "None"
 msgstr ""
 
-#: wishlist.php:58
+#: wishlist.php:66
 msgid "Nothing saved yet."
 msgstr ""
 
@@ -1068,6 +1068,10 @@ msgstr ""
 msgid "Save %s"
 msgstr ""
 
+#: common/header.php:25
+msgid "Saved"
+msgstr ""
+
 #: common/header.php:21
 msgid "Saved to your wishlist"
 msgstr ""
@@ -1080,8 +1084,8 @@ msgstr ""
 msgid "Scrolling row"
 msgstr ""
 
-#: common/header.php:46
 #: common/header.php:47
+#: common/header.php:48
 msgid "Search products"
 msgstr ""
 
@@ -1195,7 +1199,7 @@ msgstr ""
 msgid "Sign in to write a review"
 msgstr ""
 
-#: common/header.php:33
+#: common/header.php:34
 msgid "Skip to content"
 msgstr ""
 
@@ -1336,7 +1340,7 @@ msgstr ""
 msgid "The sections of the home page, top to bottom."
 msgstr ""
 
-#: maintenance.php:44
+#: maintenance.php:45
 msgid "The shop is being updated. Please check again in a few minutes."
 msgstr ""
 
@@ -1440,7 +1444,7 @@ msgstr ""
 msgid "We do not deliver to this PIN code yet."
 msgstr ""
 
-#: maintenance.php:43
+#: maintenance.php:44
 msgid "We will be back soon"
 msgstr ""
 
@@ -1448,9 +1452,10 @@ msgstr ""
 msgid "We will e-mail you"
 msgstr ""
 
-#: common/header.php:52
+#: common/header.php:53
+#: common/menu.php:59
 #: functions.php:139
-#: wishlist.php:51
+#: wishlist.php:59
 msgid "Wishlist"
 msgstr ""
 

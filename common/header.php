@@ -18,10 +18,11 @@ $aisle_account = osc_is_web_user_logged_in() ? osc_user_dashboard_url() : osc_us
 $aisle_deals_url = osc_search_url(['sale' => 1]);
 $aisle_new_url   = osc_search_url(['sOrder' => 'dt_pub_date', 'iOrderType' => 'desc']);
 $aisle_wish_i18n = [
-    'saved'   => __('Saved to your wishlist', 'aisle'),
-    'removed' => __('Removed from your wishlist', 'aisle'),
-    'failed'  => __('Could not update your wishlist', 'aisle'),
-    'save'    => __('Save', 'aisle'),
+    'saved'      => __('Saved to your wishlist', 'aisle'),
+    'removed'    => __('Removed from your wishlist', 'aisle'),
+    'failed'     => __('Could not update your wishlist', 'aisle'),
+    'save'       => __('Save', 'aisle'),
+    'savedLabel' => __('Saved', 'aisle'),
 ];
 ?><!DOCTYPE html>
 <html lang="<?php echo osc_esc_html(str_replace('_', '-', osc_current_user_locale())); ?>" dir="<?php echo osc_locale_text_direction() === 'rtl' ? 'rtl' : 'ltr'; ?>" data-theme="<?php echo osc_esc_html(aisle_scheme()); ?>"<?php echo $aisle_brand !== '' ? ' data-brand="' . osc_esc_html($aisle_brand) . '"' : ''; ?><?php echo aisle_html_attrs(); ?>>
