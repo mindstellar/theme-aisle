@@ -301,7 +301,10 @@ if (!function_exists('aisle_order_card')) {
 
         <?php if ($goods && is_array($ship['address'] ?? null) && $status !== 'cancelled') {
             $a = $ship['address'];
-            $addr = array_filter([(string) ($a['name'] ?? ''), (string) ($a['line1'] ?? ''), (string) ($a['line2'] ?? ''), trim(($a['city'] ?? '') . ' ' . ($a['postcode'] ?? '')), (string) ($a['state'] ?? '')]);
+            // Core writes the lines in the country's own order ("10119 Berlin"); older cores get the plain join.
+            $addr = function_exists('osc_address_text')
+                ? array_filter([(string) ($a['name'] ?? ''), osc_address_text(array_diff_key($a, ['name' => 1, 'phone' => 1]))])
+                : array_filter([(string) ($a['name'] ?? ''), (string) ($a['line1'] ?? ''), (string) ($a['line2'] ?? ''), trim(($a['city'] ?? '') . ' ' . ($a['postcode'] ?? '')), (string) ($a['state'] ?? '')]);
             ?>
             <p class="oaddr"><?php echo aisle_icon('pin', true); ?><span><?php echo osc_esc_html(implode(', ', $addr)); ?></span></p>
         <?php } ?>
