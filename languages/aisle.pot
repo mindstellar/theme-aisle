@@ -1252,7 +1252,7 @@ msgid "Tax"
 msgstr ""
 
 #: cart/checkout.php:102
-msgid "Tax is worked out once you choose your state."
+msgid "Tax is worked out once you enter your address."
 msgstr ""
 
 #: common/product/buy.php:142

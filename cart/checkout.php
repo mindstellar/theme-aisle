@@ -99,7 +99,7 @@ $aisle_co_i18n   = [
     /* translators: 1: tax name such as GST, 2: amount */
     'includes'   => __('Includes %1$s %2$s', 'aisle'),
     'tax_name'   => __('tax', 'aisle'),
-    'tax_later'  => __('Tax is worked out once you choose your state.', 'aisle'),
+    'tax_later'  => __('Tax is worked out once you enter your address.', 'aisle'),
 ];
 ?>
 <link rel="stylesheet" href="<?php echo osc_esc_html($aisle_co_css); ?>">
