@@ -36,7 +36,7 @@ $aisle_placed = Params::getParamInt('placed');
 $aisle_thanks = '';
 foreach ($aisle_orders as $aisle_order) {
     if ($aisle_placed > 0 && (int) $aisle_order['id'] === $aisle_placed) {
-        $aisle_thanks = in_array($aisle_order['status'], ['paid', 'shipped', 'delivered'], true)
+        $aisle_thanks = aisle_order_paid($aisle_order)
             ? __('Thank you, your order is placed.', 'aisle')
             : __('Thank you, your order is placed. We will start on it when payment arrives.', 'aisle');
     }

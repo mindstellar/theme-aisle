@@ -14,6 +14,19 @@ declare(strict_types=1);
 
 if (!function_exists('aisle_order_card')) {
     /**
+     * Whether the buyer has paid for the order. A cash on delivery order counts once the cash is in.
+     *
+     * @param array<string,mixed> $order an order as the API sends it
+     */
+    function aisle_order_paid(array $order): bool
+    {
+        $gateway = is_array($order['gateway'] ?? null) ? (string) ($order['gateway']['id'] ?? '') : '';
+
+        return in_array($order['status'] ?? '', ['paid', 'processing', 'shipped', 'delivered'], true)
+            && !($gateway === 'cod' && empty($order['paid_at']));
+    }
+
+    /**
      * What the cards need beyond the orders: each listing's variants (for Buy again) and the
      * files the signed-in buyer may download. One listings request however many orders there are.
      *
@@ -95,7 +108,7 @@ if (!function_exists('aisle_order_card')) {
         $gateway   = is_array($order['gateway'] ?? null) ? (string) ($order['gateway']['id'] ?? '') : '';
         $parcels   = array_values(array_filter((array) ($order['shipments'] ?? []), 'is_array'));
         $partly    = $status === 'processing' && $parcels !== [];
-        $paid      = in_array($status, ['paid', 'processing', 'shipped', 'delivered'], true) && !($gateway === 'cod' && empty($order['paid_at']));
+        $paid      = aisle_order_paid($order);
         $delivered = aisle_order_date($ship['delivered_at'] ?? null, true);
 
         switch ($status) {
