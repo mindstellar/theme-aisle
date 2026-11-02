@@ -57,7 +57,7 @@ $prefs = [
     'promise_1_title' => 'Free delivery', 'promise_1_text' => 'On orders over 499',
     'promise_2_title' => 'Easy returns', 'promise_2_text' => 'Within 30 days',
     'promise_3_title' => 'Cash on delivery', 'promise_3_text' => 'Pay at your door',
-    'promise_4_title' => 'Secure checkout', 'promise_4_text' => 'Cards and UPI',
+    'promise_4_title' => 'Secure checkout', 'promise_4_text' => 'Cards and PayPal',
 ];
 foreach ($prefs as $key => $value) {
     seed_exec($admin, 'INSERT INTO ' . DB_TABLE_PREFIX . "t_preference (s_section, s_name, s_value, e_type) VALUES ('aisle', ?, ?, 'STRING')", 'ss', [$key, ' ' . $value . ' ']);
@@ -85,7 +85,7 @@ pin('the promise row copies all four pairs with their icons', [
     '1_title' => 'Free delivery', '1_text' => 'On orders over 499', '1_icon' => 'truck',
     '2_title' => 'Easy returns', '2_text' => 'Within 30 days', '2_icon' => 'return',
     '3_title' => 'Cash on delivery', '3_text' => 'Pay at your door', '3_icon' => 'cash',
-    '4_title' => 'Secure checkout', '4_text' => 'Cards and UPI', '4_icon' => 'shield',
+    '4_title' => 'Secure checkout', '4_text' => 'Cards and PayPal', '4_icon' => 'shield',
 ], $home[3]['s_config']);
 pin('new in is a newest rail of six', ['title' => '', 'source' => 'newest', 'category' => '', 'count' => 6, 'layout' => 'rail', 'link_label' => ''], $home[4]['s_config']);
 check('every row is shown: no hide switch', array_filter($home, static fn ($r) => array_key_exists('_enabled', $r['s_config'])) === []);
