@@ -63,7 +63,7 @@
     open_one: 'You have %1$d unpaid bank transfer order. You can hold %2$d at once.',
     open_many: 'You have %1$d unpaid bank transfer orders. You can hold %2$d at once.',
     open_blocked: 'Pay for or cancel an unpaid bank transfer order first.', retry: 'Try again', includes: 'Includes %1$s %2$s', tax_name: 'Tax',
-    tax_later: 'Tax is worked out once you choose your state.'
+    tax_later: 'Tax is worked out once you enter your address.'
   };
   try {
     var raw = document.getElementById('aisle-checkout-i18n');
