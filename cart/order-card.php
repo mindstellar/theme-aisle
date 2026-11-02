@@ -180,6 +180,17 @@ if (!function_exists('aisle_order_card')) {
             }
         }
         $showParcels = count($parcels) > 1 || $partly;
+        $documents   = array_values(array_filter((array) ($order['documents'] ?? []), static fn ($d): bool => is_array($d) && !empty($d['url'])));
+        $invoice     = null;
+        $notes       = [];
+        foreach ($documents as $doc) {
+            if (($doc['type'] ?? '') === 'invoice') {
+                $invoice ??= $doc;
+            } else {
+                $notes[] = $doc;
+            }
+        }
+        $invoiceUrl = $invoice !== null ? (string) $invoice['url'] : (string) ($order['receipt_url'] ?? '');
         $help        = (string) osc_contact_url();
 
         ob_start();
@@ -324,8 +335,8 @@ if (!function_exists('aisle_order_card')) {
             <?php if (!empty($ship['tracking_url']) && !$showParcels) { ?>
                 <a class="btn btn-primary" href="<?php echo osc_esc_html((string) $ship['tracking_url']); ?>" target="_blank" rel="noopener noreferrer"><?php _e('Track parcel', 'aisle'); ?></a>
             <?php } ?>
-            <?php if (!empty($order['receipt_url'])) { ?>
-                <a class="btn btn-ghost" href="<?php echo osc_esc_html((string) $order['receipt_url']); ?>"><?php _e('Invoice', 'aisle'); ?></a>
+            <?php if ($invoiceUrl !== '') { ?>
+                <a class="btn btn-ghost" href="<?php echo osc_esc_html($invoiceUrl); ?>"><?php _e('Invoice', 'aisle'); ?></a>
             <?php } ?>
             <?php if ($again !== [] && in_array($status, ['delivered', 'cancelled', 'refunded'], true)) { ?>
                 <button class="btn btn-ghost" type="button" data-buy-again="<?php echo osc_esc_html((string) json_encode($again)); ?>"><?php _e('Buy again', 'aisle'); ?></button>
@@ -340,6 +351,13 @@ if (!function_exists('aisle_order_card')) {
                 <a class="btn btn-ghost" href="<?php echo osc_esc_html($help); ?>"><?php echo $status === 'delivered' ? osc_esc_html(__('Return an item', 'aisle')) : osc_esc_html(__('Get help', 'aisle')); ?></a>
             <?php } ?>
         </div>
+        <?php if ($notes !== []) { ?>
+            <p class="otax">
+                <?php foreach ($notes as $doc) { ?>
+                    <span><a href="<?php echo osc_esc_html((string) $doc['url']); ?>"><?php echo osc_esc_html(sprintf(__('Credit note %1$s, %2$s', 'aisle'), (string) ($doc['number'] ?? ''), (string) ($doc['total']['formatted'] ?? ''))); ?></a></span>
+                <?php } ?>
+            </p>
+        <?php } ?>
         <?php if (!empty($order['can_pay'])) { ?>
             <div class="order-pay" data-pay-intent hidden></div>
         <?php } ?>

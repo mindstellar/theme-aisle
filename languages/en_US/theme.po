@@ -16,7 +16,7 @@ msgstr "(%d)"
 msgid "%1$s · %2$s"
 msgstr "%1$s · %2$s"
 
-#: cart/order-card.php:260
+#: cart/order-card.php:284
 msgid "%1$s × %2$d"
 msgstr "%1$s × %2$d"
 
@@ -24,7 +24,7 @@ msgstr "%1$s × %2$d"
 msgid "%1$s to %2$s"
 msgstr "%1$s to %2$s"
 
-#: cart/order-card.php:134
+#: cart/order-card.php:147
 msgid "%d parcel sent"
 msgid_plural "%d parcels sent"
 msgstr[0] "%d parcel sent"
@@ -101,7 +101,7 @@ msgstr "A short line about the shop, under the logo."
 msgid "A wide photo with a heading, a line of text and a button."
 msgstr "A wide photo with a heading, a line of text and a button."
 
-#: cart/order-card.php:363
+#: cart/order-card.php:397
 #: common/header.php:57
 #: common/menu.php:57
 msgid "Account"
@@ -167,7 +167,7 @@ msgstr "Apply filters"
 msgid "Availability"
 msgstr "Availability"
 
-#: cart/order-card.php:124
+#: cart/order-card.php:137
 msgid "Awaiting payment"
 msgstr "Awaiting payment"
 
@@ -217,7 +217,7 @@ msgstr "Button label"
 msgid "Button link"
 msgstr "Button link"
 
-#: cart/order-card.php:315
+#: cart/order-card.php:342
 msgid "Buy again"
 msgstr "Buy again"
 
@@ -225,12 +225,12 @@ msgstr "Buy again"
 msgid "Buy now"
 msgstr "Buy now"
 
-#: cart/order-card.php:321
+#: cart/order-card.php:348
 msgid "Cancel order"
 msgstr "Cancel order"
 
-#: cart/order-card.php:115
-#: cart/order-card.php:345
+#: cart/order-card.php:128
+#: cart/order-card.php:379
 msgid "Cancelled"
 msgstr "Cancelled"
 
@@ -373,6 +373,10 @@ msgstr "Coupon code"
 msgid "Create an account"
 msgstr "Create an account"
 
+#: cart/order-card.php:357
+msgid "Credit note %1$s, %2$s"
+msgstr "Credit note %1$s, %2$s"
+
 #: common/menu.php:21
 #: functions.php:705
 msgid "Dark"
@@ -384,12 +388,12 @@ msgstr "Dark"
 msgid "Deals"
 msgstr "Deals"
 
-#: cart/order-card.php:106
-#: cart/order-card.php:143
+#: cart/order-card.php:119
+#: cart/order-card.php:156
 msgid "Delivered"
 msgstr "Delivered"
 
-#: cart/order-card.php:106
+#: cart/order-card.php:119
 msgid "Delivered %s"
 msgstr "Delivered %s"
 
@@ -411,7 +415,7 @@ msgstr "Delivery is worked out at checkout."
 msgid "Details"
 msgstr "Details"
 
-#: cart/order-card.php:212
+#: cart/order-card.php:236
 msgid "Digital download"
 msgstr "Digital download"
 
@@ -419,7 +423,7 @@ msgstr "Digital download"
 msgid "Discount"
 msgstr "Discount"
 
-#: cart/order-card.php:234
+#: cart/order-card.php:258
 msgid "Download"
 msgstr "Download"
 
@@ -463,7 +467,7 @@ msgstr "Featured product"
 msgid "Fee"
 msgstr "Fee"
 
-#: cart/order-card.php:217
+#: cart/order-card.php:241
 msgid "File"
 msgstr "File"
 
@@ -525,7 +529,7 @@ msgstr "Full name"
 msgid "Full width"
 msgstr "Full width"
 
-#: cart/order-card.php:324
+#: cart/order-card.php:351
 msgid "Get help"
 msgstr "Get help"
 
@@ -583,7 +587,7 @@ msgstr "How many (3 to 12)"
 msgid "How many (4 to 12)"
 msgstr "How many (4 to 12)"
 
-#: cart/order-card.php:299
+#: cart/order-card.php:326
 msgid "How to pay"
 msgstr "How to pay"
 
@@ -595,15 +599,15 @@ msgid "In stock"
 msgstr "In stock"
 
 #: cart/checkout.php:100
-#: cart/order-card.php:284
+#: cart/order-card.php:308
 msgid "Includes %1$s %2$s"
 msgstr "Includes %1$s %2$s"
 
-#: cart/order-card.php:312
+#: cart/order-card.php:339
 msgid "Invoice"
 msgstr "Invoice"
 
-#: cart/order-card.php:348
+#: cart/order-card.php:382
 msgid "Items added to your cart"
 msgstr "Items added to your cart"
 
@@ -769,7 +773,7 @@ msgstr "OK"
 msgid "Older orders"
 msgstr "Older orders"
 
-#: cart/order-card.php:132
+#: cart/order-card.php:145
 msgid "On delivery"
 msgstr "On delivery"
 
@@ -778,7 +782,7 @@ msgstr "On delivery"
 msgid "On sale"
 msgstr "On sale"
 
-#: cart/order-card.php:103
+#: cart/order-card.php:116
 msgid "On the way"
 msgstr "On the way"
 
@@ -819,7 +823,7 @@ msgstr "Only %d left in %s"
 msgid "Optional. Used when the dark scheme is on."
 msgstr "Optional. Used when the dark scheme is on."
 
-#: cart/order-card.php:177
+#: cart/order-card.php:201
 msgid "Order"
 msgstr "Order"
 
@@ -827,7 +831,7 @@ msgstr "Order"
 msgid "Order %s"
 msgstr "Order %s"
 
-#: cart/order-card.php:346
+#: cart/order-card.php:380
 msgid "Order cancelled"
 msgstr "Order cancelled"
 
@@ -839,7 +843,7 @@ msgstr "Order not found"
 msgid "Order summary"
 msgstr "Order summary"
 
-#: cart/order-card.php:139
+#: cart/order-card.php:152
 msgid "Ordered"
 msgstr "Ordered"
 
@@ -858,7 +862,7 @@ msgstr "Page not found - %s"
 msgid "Pages"
 msgstr "Pages"
 
-#: cart/order-card.php:140
+#: cart/order-card.php:153
 msgid "Paid"
 msgstr "Paid"
 
@@ -866,15 +870,15 @@ msgstr "Paid"
 msgid "Parcel"
 msgstr "Parcel"
 
-#: cart/order-card.php:257
+#: cart/order-card.php:281
 msgid "Parcel %d"
 msgstr "Parcel %d"
 
-#: cart/order-card.php:247
+#: cart/order-card.php:271
 msgid "Part of your order has shipped. The rest follows soon."
 msgstr "Part of your order has shipped. The rest follows soon."
 
-#: cart/order-card.php:112
+#: cart/order-card.php:125
 msgid "Partly shipped"
 msgstr "Partly shipped"
 
@@ -882,11 +886,11 @@ msgstr "Partly shipped"
 msgid "Pay for or cancel an unpaid bank transfer order first."
 msgstr "Pay for or cancel an unpaid bank transfer order first."
 
-#: cart/order-card.php:306
+#: cart/order-card.php:333
 msgid "Pay now"
 msgstr "Pay now"
 
-#: cart/order-card.php:124
+#: cart/order-card.php:137
 msgid "Pay on delivery"
 msgstr "Pay on delivery"
 
@@ -894,7 +898,7 @@ msgstr "Pay on delivery"
 msgid "Payment"
 msgstr "Payment"
 
-#: cart/order-card.php:118
+#: cart/order-card.php:131
 msgid "Payment failed"
 msgstr "Payment failed"
 
@@ -917,7 +921,7 @@ msgstr "Photo %d"
 msgid "Place order"
 msgstr "Place order"
 
-#: cart/order-card.php:184
+#: cart/order-card.php:208
 msgid "Placed"
 msgstr "Placed"
 
@@ -934,7 +938,7 @@ msgstr "Plum"
 msgid "Postcode"
 msgstr "Postcode"
 
-#: cart/order-card.php:109
+#: cart/order-card.php:122
 msgid "Preparing"
 msgstr "Preparing"
 
@@ -954,8 +958,8 @@ msgstr "Price: high to low"
 msgid "Price: low to high"
 msgstr "Price: low to high"
 
-#: cart/order-card.php:112
-#: cart/order-card.php:141
+#: cart/order-card.php:125
+#: cart/order-card.php:154
 msgid "Processing"
 msgstr "Processing"
 
@@ -993,7 +997,7 @@ msgid "Promise row"
 msgstr "Promise row"
 
 #: cart/checkout.php:71
-#: cart/order-card.php:212
+#: cart/order-card.php:236
 msgid "Qty %d"
 msgstr "Qty %d"
 
@@ -1034,7 +1038,7 @@ msgstr "Recently viewed"
 msgid "Recommended"
 msgstr "Recommended"
 
-#: cart/order-card.php:121
+#: cart/order-card.php:134
 msgid "Refunded"
 msgstr "Refunded"
 
@@ -1052,7 +1056,7 @@ msgstr "Removed from your wishlist"
 msgid "Results for “%s”"
 msgstr "Results for “%s”"
 
-#: cart/order-card.php:324
+#: cart/order-card.php:351
 msgid "Return an item"
 msgstr "Return an item"
 
@@ -1135,7 +1139,7 @@ msgstr "Send review"
 msgid "Share"
 msgstr "Share"
 
-#: cart/order-card.php:142
+#: cart/order-card.php:155
 msgid "Shipped"
 msgstr "Shipped"
 
@@ -1385,7 +1389,7 @@ msgstr "This page could not be found."
 msgid "This page is not loading right now."
 msgstr "This page is not loading right now."
 
-#: cart/order-card.php:349
+#: cart/order-card.php:383
 msgid "Those items are no longer available"
 msgstr "Those items are no longer available"
 
@@ -1403,12 +1407,12 @@ msgstr "Top bar"
 
 #: cart/checkout.php:112
 #: cart/checkout.php:96
-#: cart/order-card.php:185
+#: cart/order-card.php:209
 msgid "Total"
 msgstr "Total"
 
-#: cart/order-card.php:267
-#: cart/order-card.php:309
+#: cart/order-card.php:291
+#: cart/order-card.php:336
 msgid "Track parcel"
 msgstr "Track parcel"
 
@@ -1427,7 +1431,7 @@ msgstr "Up to four short promises with an icon, such as free delivery."
 msgid "Visitors can still switch it with the button in the header."
 msgstr "Visitors can still switch it with the button in the header."
 
-#: cart/order-card.php:132
+#: cart/order-card.php:145
 msgid "Waiting"
 msgstr "Waiting"
 
@@ -1436,7 +1440,7 @@ msgstr "Waiting"
 msgid "Ways to pay"
 msgstr "Ways to pay"
 
-#: cart/order-card.php:347
+#: cart/order-card.php:381
 msgid "We could not cancel this order. It may have been paid already."
 msgstr "We could not cancel this order. It may have been paid already."
 
@@ -1456,7 +1460,7 @@ msgstr "We could not place your order. Please try again."
 msgid "We could not price your cart. Please try again."
 msgstr "We could not price your cart. Please try again."
 
-#: cart/order-card.php:350
+#: cart/order-card.php:384
 msgid "We could not start the payment. Try again in a moment."
 msgstr "We could not start the payment. Try again in a moment."
 
@@ -1479,7 +1483,7 @@ msgstr "We will e-mail you"
 msgid "Wishlist"
 msgstr "Wishlist"
 
-#: cart/order-card.php:318
+#: cart/order-card.php:345
 #: common/product/reviews.php:120
 #: common/product/reviews.php:78
 msgid "Write a review"
@@ -1493,7 +1497,7 @@ msgstr "Write your review first"
 msgid "Yes"
 msgstr "Yes"
 
-#: cart/order-card.php:321
+#: cart/order-card.php:348
 msgid "Yes, cancel the order"
 msgstr "Yes, cancel the order"
 
