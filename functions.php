@@ -755,7 +755,7 @@ function aisle_register_settings(): void
 
     $form->group(__('Footer', 'aisle'))
         ->text('footer_note', __('Footer note', 'aisle'), __('A short line about the shop, under the logo.', 'aisle'))
-        ->text('payment_methods', __('Ways to pay', 'aisle'), __('Shown as small tags under the footer note, separated by commas. Example: UPI, VISA, COD', 'aisle'))
+        ->text('payment_methods', __('Ways to pay', 'aisle'), __('Shown as small tags under the footer note, separated by commas. Example: Visa, Mastercard, PayPal', 'aisle'))
         ->register();
 }
 osc_add_hook('init', 'aisle_register_settings');

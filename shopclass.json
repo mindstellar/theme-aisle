@@ -6,7 +6,6 @@
             "shipping": "^0.1.0",
             "tax": "^0.1.0",
             "promotions": "^0.1.0",
-            "razorpay": "^0.1.0",
             "shop-emails": "^0.1.0",
             "analytics": "^0.1.0",
             "digital-goods": "^2.3.0"

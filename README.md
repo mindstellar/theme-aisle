@@ -8,7 +8,7 @@ A shop theme for Shopclass. It is phone-first, with search, deals, filters and a
 
 - Shopclass 7.1.0 or later, in shop mode
 - PHP 8.2 or later
-- No required plugins. These are recommended: `shipping`, `tax`, `promotions`, `razorpay`, `shop-emails`, `analytics`, `digital-goods`.
+- No required plugins. These are recommended: `shipping`, `tax`, `promotions`, `shop-emails`, `analytics`, `digital-goods`.
 
 ## Install
 
@@ -47,10 +47,10 @@ Without a recommended plugin the theme still works:
 
 | Plugin | Adds | Without it |
 |---|---|---|
-| `shipping` | PIN code check, delivery date, Express, zones | Core's flat delivery charge |
-| `tax` (and `tax-gst` for India) | "Includes GST" note, tax rows, tax invoice | No tax shown |
+| `shipping` | Postcode check, delivery date, Express, zones | Core's flat delivery charge |
+| `tax` (and `tax-gst` for India) | "Includes tax" note, tax rows, tax invoice | No tax shown |
 | `promotions` | Coupon field, automatic offers | A code is ignored |
-| `razorpay` | Card, UPI, net banking | Bank transfer and cash on delivery |
+| `stripe`, `paypal`, `razorpay` (pick the ones you need) | Card and wallet payments through your gateway | Bank transfer and cash on delivery |
 | `digital-goods` | Downloads on paid orders | No downloads |
 
 ## Customising
