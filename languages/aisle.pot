@@ -155,7 +155,7 @@ msgstr ""
 msgid "Apartment, suite, etc."
 msgstr ""
 
-#: cart/checkout.php:203
+#: cart/checkout.php:208
 msgid "Apply"
 msgstr ""
 
@@ -280,7 +280,7 @@ msgstr ""
 msgid "Checkout"
 msgstr ""
 
-#: cart/checkout.php:218
+#: cart/checkout.php:223
 msgid "Checkout needs JavaScript. Please turn it on to place your order."
 msgstr ""
 
@@ -364,8 +364,8 @@ msgstr ""
 msgid "Country"
 msgstr ""
 
-#: cart/checkout.php:201
-#: cart/checkout.php:202
+#: cart/checkout.php:206
+#: cart/checkout.php:207
 msgid "Coupon code"
 msgstr ""
 
@@ -707,6 +707,10 @@ msgstr ""
 msgid "More"
 msgstr ""
 
+#: cart/checkout.php:189
+msgid "More details"
+msgstr ""
+
 #: common/header.php:66
 #: common/menu.php:55
 #: sections.php:486
@@ -835,7 +839,7 @@ msgstr ""
 msgid "Order not found"
 msgstr ""
 
-#: cart/checkout.php:195
+#: cart/checkout.php:200
 msgid "Order summary"
 msgstr ""
 
@@ -890,7 +894,7 @@ msgstr ""
 msgid "Pay on delivery"
 msgstr ""
 
-#: cart/checkout.php:189
+#: cart/checkout.php:194
 msgid "Payment"
 msgstr ""
 
@@ -912,7 +916,7 @@ msgstr ""
 msgid "Photo %d"
 msgstr ""
 
-#: cart/checkout.php:215
+#: cart/checkout.php:220
 #: cart/checkout.php:78
 msgid "Place order"
 msgstr ""
@@ -1042,7 +1046,7 @@ msgstr ""
 msgid "Refunded"
 msgstr ""
 
-#: cart/checkout.php:209
+#: cart/checkout.php:214
 #: cart/module.php:103
 #: common/chips.php:60
 msgid "Remove"
@@ -1532,7 +1536,7 @@ msgstr ""
 msgid "Your cart is empty."
 msgstr ""
 
-#: cart/checkout.php:196
+#: cart/checkout.php:201
 #: cart/order.php:23
 #: cart/order.php:45
 msgid "Your order"
@@ -1543,7 +1547,7 @@ msgstr ""
 msgid "Your orders"
 msgstr ""
 
-#: cart/checkout.php:217
+#: cart/checkout.php:222
 msgid "Your payment details never touch our server."
 msgstr ""
 

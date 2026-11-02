@@ -185,6 +185,11 @@ $aisle_co_i18n   = [
                 <div class="radios" data-shipping></div>
             </section>
 
+            <section class="co-sec" data-step="details" hidden>
+                <h2><i>4</i><?php _e('More details', 'aisle'); ?></h2>
+                <div class="fields" data-extra-fields></div>
+            </section>
+
             <section class="co-sec" data-step="payment">
                 <h2><i>4</i><?php _e('Payment', 'aisle'); ?></h2>
                 <div class="radios" data-gateways></div>

@@ -49,6 +49,35 @@
   }
   window.aisleCanPlace = canPlace;
 
+  /* The values to send for the extra fields the shop asks for: asked ids only, trimmed, blanks left out. */
+  function fieldsBody(defs, vals) {
+    var out = {};
+    (defs || []).forEach(function (d) {
+      var v = vals && typeof vals[d.id] === 'string' ? vals[d.id].trim() : '';
+      if (v) out[d.id] = v;
+    });
+    return out;
+  }
+  window.aisleFieldsBody = fieldsBody;
+
+  function fieldProblem(def, value, T) {
+    return def.required && !String(value || '').trim() ? T.required : '';
+  }
+  window.aisleFieldProblem = fieldProblem;
+
+  /* Earlier answers from the buyer's last order, for the fields asked now. */
+  function fieldsPrefill(defs, order) {
+    var out = {};
+    var old = order && Array.isArray(order.fields) ? order.fields : [];
+    (defs || []).forEach(function (d) {
+      old.forEach(function (f) {
+        if (f && f.id === d.id && typeof f.value === 'string' && f.value) out[d.id] = f.value;
+      });
+    });
+    return out;
+  }
+  window.aisleFieldsPrefill = fieldsPrefill;
+
   var form = document.querySelector('[data-checkout]');
   if (!form) return;
 
@@ -89,6 +118,7 @@
   var elCouponOk = form.querySelector('[data-coupon-ok]');
   var elTaxNote = form.querySelector('[data-tax-note]');
   var elSecure = form.querySelector('[data-secure]');
+  var elExtra = form.querySelector('[data-extra-fields]');
 
   var quote = null;
   var shipping = '';
@@ -107,6 +137,11 @@
   var timer = 0;
   /* The saved address chosen in core's address picker; '' for a typed one. */
   var addressId = pickedAddress();
+  /* Extra fields the shop asks for (from the quote), what the buyer typed, and the shape last drawn. */
+  var fieldDefs = [];
+  var fieldVals = {};
+  var fieldSig = '';
+  var prefilled = false;
 
   /* ---------- helpers ---------- */
 
@@ -239,6 +274,8 @@
       var d = body && (body.data || body);
       if (!d || !Array.isArray(d.lines)) throw new Error('bad quote');
       quote = d;
+      fieldDefs = cleanFieldDefs(d.checkout_fields);
+      loadPrefill();
       quotedState = forState;
       showAlert(placeErr);
       placeErr = '';
@@ -261,7 +298,7 @@
     var n = 0;
     form.querySelectorAll('[data-step]').forEach(function (sec) {
       var step = sec.getAttribute('data-step');
-      sec.hidden = !ships() && (step === 'address' || step === 'delivery');
+      sec.hidden = (!ships() && (step === 'address' || step === 'delivery')) || (step === 'details' && !fieldDefs.length);
       var num = sec.querySelector('h2 i');
       if (!sec.hidden && num) num.textContent = String(++n);
     });
@@ -523,7 +560,79 @@
     }
   }
 
+  function cleanFieldDefs(list) {
+    if (!Array.isArray(list)) return [];
+    return list.filter(function (f) { return f && /^[a-z0-9_]{1,32}$/.test(String(f.id)); }).slice(0, 8).map(function (f) {
+      return {
+        id: String(f.id), label: String(f.label || f.id), required: f.required === true, max: Math.min(toInt(f.max) || 64, 100),
+        help: String(f.help || ''), autocomplete: String(f.autocomplete || '')
+      };
+    });
+  }
+
+  /* The last order's answers fill empty fields once, so a returning buyer need not retype a tax number. */
+  function loadPrefill() {
+    if (prefilled || !fieldDefs.length) return;
+    var c = apiConfig();
+    if (!c) return;
+    prefilled = true;
+    var headers = { Accept: 'application/json' };
+    headers[c.header] = c.token;
+    var url = new URL(endpoint(c, 'account/orders'), location.href);
+    url.searchParams.set('limit', '1');
+    fetch(url.toString(), { headers: headers, credentials: 'same-origin' }).then(function (r) {
+      return r.ok ? r.json() : null;
+    }).then(function (j) {
+      var list = j && (j.data || j);
+      var last = Array.isArray(list) ? list[0] : null;
+      var old = fieldsPrefill(fieldDefs, last);
+      Object.keys(old).forEach(function (id) {
+        if (fieldVals[id]) return;
+        fieldVals[id] = old[id];
+        var input = elExtra && elExtra.querySelector('[name="field_' + id + '"]');
+        if (input && !input.value) input.value = old[id];
+      });
+    }).catch(function () { /* no prefill */ });
+  }
+
+  /* Drawn again only when the shop's list of fields changes, so typing is never lost. */
+  function paintFields() {
+    if (!elExtra) return;
+    var sig = JSON.stringify(fieldDefs);
+    if (sig === fieldSig) return;
+    fieldSig = sig;
+    elExtra.textContent = '';
+    fieldDefs.forEach(function (d) {
+      var box = el('div', 'field full');
+      box.setAttribute('data-field', 'f-' + d.id);
+      var id = 'co-field-' + d.id;
+      var lab = el('label', '', d.label + (d.required ? ' *' : ''));
+      lab.setAttribute('for', id);
+      var input = el('input');
+      input.id = id;
+      input.name = 'field_' + d.id;
+      input.type = 'text';
+      input.maxLength = d.max;
+      input.value = fieldVals[d.id] || '';
+      if (d.autocomplete) input.setAttribute('autocomplete', d.autocomplete);
+      if (d.required) input.setAttribute('aria-required', 'true');
+      box.appendChild(lab);
+      box.appendChild(input);
+      if (d.help) {
+        var help = el('small', 'help', d.help);
+        help.id = id + '-help';
+        input.setAttribute('aria-describedby', help.id);
+        box.appendChild(help);
+      }
+      var err = el('span', 'err');
+      err.hidden = true;
+      box.appendChild(err);
+      elExtra.appendChild(box);
+    });
+  }
+
   function paint() {
+    paintFields();
     paintSteps();
     paintPriceNotes();
     paintLines();
@@ -564,7 +673,22 @@
     return true;
   }
 
+  function validateFields() {
+    var first = '';
+    fieldDefs.forEach(function (d) {
+      var msg = fieldProblem(d, fieldVals[d.id], T);
+      setError('f-' + d.id, msg);
+      if (msg && !first) first = d.id;
+    });
+    if (first) {
+      var input = elExtra && elExtra.querySelector('[name="field_' + first + '"]');
+      if (input) input.focus();
+    }
+    return !first;
+  }
+
   function validate() {
+    if (!validateFields()) return false;
     if (addressId) return true;
     var first = '';
     FIELDS.forEach(function (n) {
@@ -595,6 +719,8 @@
       coupon: coupon || undefined
     };
     if (ships()) out.shipping_method = shipping;
+    var extra = fieldsBody(fieldDefs, fieldVals);
+    if (Object.keys(extra).length) out.fields = extra;
     return out;
   }
 
@@ -666,6 +792,13 @@
         var name = m[1];
         if (setError(name, String(e.message || T.required))) {
           if (!shown && form.elements[name]) form.elements[name].focus();
+          shown = true;
+        }
+      } else if (/^\/fields\/[a-z0-9_]+$/.test(p)) {
+        var fid = p.slice(8);
+        if (setError('f-' + fid, String(e.message || T.required))) {
+          var fin = elExtra && elExtra.querySelector('[name="field_' + fid + '"]');
+          if (!shown && fin) fin.focus();
           shown = true;
         }
       } else if (p === '/coupon') {
@@ -783,6 +916,11 @@
     var t = e.target;
     if (t && t.name && FIELDS.indexOf(t.name) > -1) { setError(t.name, ''); fieldMsg[t.name] = false; }
     if (t && (t.name === 'postcode' || t.name === 'state' || t.name === 'city')) later();
+    if (t && /^field_[a-z0-9_]+$/.test(t.name || '')) {
+      var key = t.name.slice(6);
+      fieldVals[key] = t.value;
+      setError('f-' + key, '');
+    }
   });
 
   /* Core's picker filled the fields from a saved address, or cleared them for a new one. */
