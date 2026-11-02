@@ -481,7 +481,11 @@
     }
 
     function valid(pin) {
-      return country === 'IN' ? /^\d{6}$/.test(pin) : /^[A-Za-z0-9 -]{3,10}$/.test(pin);
+      var rule = box.dataset.postcodePattern;
+      if (rule) {
+        try { return new RegExp(rule, 'i').test(pin); } catch (e) { /* loose check below */ }
+      }
+      return /^[A-Za-z0-9 -]{3,10}$/.test(pin);
     }
 
     function show(msg) {
@@ -529,7 +533,7 @@
       if (!valid(pin)) {
         if (ctl) ctl.abort();
         rowsEl.textContent = '';
-        show(country === 'IN' ? T.pin_in : T.pin_zip);
+        show(T.pin_zip);
         return;
       }
       var m = document.querySelector('meta[name="shopclass-api"]');
