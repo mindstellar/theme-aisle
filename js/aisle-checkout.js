@@ -24,6 +24,13 @@
   }
   window.aisleAddressFieldProblem = addressFieldProblem;
 
+  /* A postcode goes to the quote once it looks whole: core's country pattern when its script runs, else a loose shape. */
+  function postcodeSendable(pc, coreChecks, validationMessage) {
+    if (!pc) return false;
+    return coreChecks ? !validationMessage : /^[A-Za-z0-9 -]{3,10}$/.test(pc);
+  }
+  window.aislePostcodeSendable = postcodeSendable;
+
   /* The limit is on unpaid bank transfer orders only, so other gateways get no line. */
   function openOrdersFor(quote, gateway, T) {
     return quote && gateway === 'offline' ? openOrdersNotice(quote.open_orders, T) : { text: '', blocking: false };
@@ -218,7 +225,7 @@
       if (/^[A-Za-z]{2}$/.test(cc)) url.searchParams.set('country', cc.toUpperCase());
       if (st) url.searchParams.set('state', st.slice(0, 100));
       if (ci) url.searchParams.set('city', ci.slice(0, 100));
-      if (pc && !postcodeOff()) url.searchParams.set('postcode', pc);
+      if (!postcodeOff() && postcodeSendable(pc, !!document.getElementById('osc-address-formats'), form.elements.postcode.validationMessage)) url.searchParams.set('postcode', pc);
     }
     if (coupon) url.searchParams.set('coupon', coupon);
     var headers = { Accept: 'application/json' };

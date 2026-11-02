@@ -152,12 +152,12 @@ $aisle_co_i18n   = [
                         </div>
                         <div class="field" data-field="city" data-address-field="city">
                             <label for="co-city"><?php _e('City', 'aisle'); ?></label>
-                            <input id="co-city" name="city" value="<?php echo osc_esc_html($aisle_pick($aisle_loc['city'] ?? '')); ?>" autocomplete="address-level2">
+                            <input id="co-city" name="city" value="<?php echo osc_esc_html($aisle_pick($aisle_loc['city'] ?? '')); ?>" autocomplete="address-level2" required>
                             <span class="err" hidden></span>
                         </div>
                         <div class="field" data-field="state" data-address-field="state">
                             <label for="co-state"><?php _e('State', 'aisle'); ?></label>
-                            <input id="co-state" name="state" value="<?php echo osc_esc_html($aisle_pick($aisle_loc['region'] ?? '')); ?>" autocomplete="address-level1">
+                            <input id="co-state" name="state" value="<?php echo osc_esc_html($aisle_pick($aisle_loc['region'] ?? '')); ?>" autocomplete="address-level1" required>
                             <span class="err" hidden></span>
                         </div>
                     </div>

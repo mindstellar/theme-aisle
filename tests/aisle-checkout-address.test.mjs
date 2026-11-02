@@ -19,4 +19,10 @@ assert.equal(check({ value: '+44 20 7946 0000', required: true }), '', 'an inter
 assert.equal(check({ value: '12345', required: true }), '', 'a short phone passes, the server decides');
 assert.equal(check({ value: '', required: true }), T.required, 'an empty required field is flagged');
 assert.equal(check({ value: '123', required: true, validationMessage: 'Enter a valid postcode.' }), 'Enter a valid postcode.', 'core\'s postcode flag shows');
+const send = win.aislePostcodeSendable;
+assert.equal(send('1100', false, ''), true, 'without core a short postcode still looks whole');
+assert.equal(send('11', false, ''), false, 'without core a half-typed postcode is held back');
+assert.equal(send('110001', true, 'Enter a valid PIN code.'), false, 'core\'s pattern flag holds it back');
+assert.equal(send('SW1A 1AA', true, ''), true, 'a postcode core accepts is sent');
+assert.equal(send('', false, ''), false, 'an empty postcode is not sent');
 console.log('aisle-checkout-address ok');
