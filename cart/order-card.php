@@ -93,7 +93,9 @@ if (!function_exists('aisle_order_card')) {
         $extra     = array_values(array_filter($lines, static fn (array $l): bool => ($l['kind'] ?? '') !== 'item' && empty($l['included'])));
         $included  = array_values(array_filter($lines, static fn (array $l): bool => ($l['kind'] ?? '') === 'tax' && !empty($l['included'])));
         $gateway   = is_array($order['gateway'] ?? null) ? (string) ($order['gateway']['id'] ?? '') : '';
-        $paid      = in_array($status, ['paid', 'shipped', 'delivered'], true) && !($gateway === 'cod' && empty($order['paid_at']));
+        $parcels   = array_values(array_filter((array) ($order['shipments'] ?? []), 'is_array'));
+        $partly    = $status === 'processing' && $parcels !== [];
+        $paid      = in_array($status, ['paid', 'processing', 'shipped', 'delivered'], true) && !($gateway === 'cod' && empty($order['paid_at']));
         $delivered = aisle_order_date($ship['delivered_at'] ?? null, true);
 
         switch ($status) {
@@ -105,6 +107,9 @@ if (!function_exists('aisle_order_card')) {
                 break;
             case 'paid':
                 $pill = ['ship', 'box', __('Preparing', 'aisle')];
+                break;
+            case 'processing':
+                $pill = $partly ? ['ship', 'truck', __('Partly shipped', 'aisle')] : ['ship', 'box', __('Processing', 'aisle')];
                 break;
             case 'cancelled':
                 $pill = ['off', 'x', __('Cancelled', 'aisle')];
@@ -121,18 +126,19 @@ if (!function_exists('aisle_order_card')) {
 
         // The tracker: four steps, the last one reached is the current one.
         $steps = [];
-        if ($goods && in_array($status, ['pending', 'paid', 'shipped', 'delivered'], true)) {
+        if ($goods && in_array($status, ['pending', 'paid', 'processing', 'shipped', 'delivered'], true)) {
             $paidNote = aisle_order_date($order['paid_at'] ?? null, true);
             if (!$paid) {
                 $paidNote = $gateway === 'cod' ? __('On delivery', 'aisle') : __('Waiting', 'aisle');
             }
-            $shipNote = aisle_order_date($ship['shipped_at'] ?? null, true);
+            $shipNote = $partly ? sprintf(_n('%d parcel sent', '%d parcels sent', count($parcels), 'aisle'), count($parcels)) : aisle_order_date($ship['shipped_at'] ?? null, true);
             if ($shipNote !== '' && ($ship['carrier'] ?? '') !== '') {
                 $shipNote .= ' · ' . $ship['carrier'];
             }
             $steps = [
                 [true, __('Ordered', 'aisle'), aisle_order_date($order['placed_at'] ?? null, true)],
                 [$paid, __('Paid', 'aisle'), $paidNote],
+                [in_array($status, ['processing', 'shipped', 'delivered'], true), __('Processing', 'aisle'), ''],
                 [in_array($status, ['shipped', 'delivered'], true), __('Shipped', 'aisle'), $shipNote],
                 [$status === 'delivered', __('Delivered', 'aisle'), $delivered],
             ];
@@ -160,7 +166,8 @@ if (!function_exists('aisle_order_card')) {
                 break;
             }
         }
-        $help = (string) osc_contact_url();
+        $showParcels = count($parcels) > 1 || $partly;
+        $help        = (string) osc_contact_url();
 
         ob_start();
         ?>
@@ -234,6 +241,36 @@ if (!function_exists('aisle_order_card')) {
             <?php } ?>
         </div>
 
+        <?php if ($showParcels) { ?>
+            <div class="parcels">
+                <?php if ($partly) { ?>
+                    <p class="parcels-note"><?php _e('Part of your order has shipped. The rest follows soon.', 'aisle'); ?></p>
+                <?php } ?>
+                <?php foreach ($parcels as $parcel) {
+                    $carrier = (string) ($parcel['carrier'] ?? '');
+                    $number  = (string) ($parcel['tracking'] ?? '');
+                    $link    = (string) ($parcel['tracking_url'] ?? '');
+                    $sent    = aisle_order_date($parcel['shipped_at'] ?? null, true);
+                    $meta    = array_filter([$sent, $carrier, $number]);
+                    ?>
+                    <section class="parcel">
+                        <b><?php echo osc_esc_html(sprintf(__('Parcel %d', 'aisle'), (int) ($parcel['n'] ?? 0))); ?></b>
+                        <ul>
+                            <?php foreach ((array) ($parcel['lines'] ?? []) as $row) { ?>
+                                <li><?php echo osc_esc_html(sprintf(__('%1$s × %2$d', 'aisle'), (string) ($row['title'] ?? ''), (int) ($row['qty'] ?? 0))); ?></li>
+                            <?php } ?>
+                        </ul>
+                        <?php if ($meta !== []) { ?>
+                            <small><?php echo osc_esc_html(implode(' · ', $meta)); ?></small>
+                        <?php } ?>
+                        <?php if ($link !== '') { ?>
+                            <a class="btn btn-ghost sm" href="<?php echo osc_esc_html($link); ?>" target="_blank" rel="noopener noreferrer"><?php _e('Track parcel', 'aisle'); ?></a>
+                        <?php } ?>
+                    </section>
+                <?php } ?>
+            </div>
+        <?php } ?>
+
         <?php if ($extra !== []) { ?>
             <dl class="osum">
                 <?php foreach ($extra as $line) { ?>
@@ -268,7 +305,7 @@ if (!function_exists('aisle_order_card')) {
             <?php if (!empty($order['can_pay'])) { ?>
                 <button class="btn btn-primary" type="button" data-pay-order="<?php echo $id; ?>"><span><?php _e('Pay now', 'aisle'); ?></span></button>
             <?php } ?>
-            <?php if (!empty($ship['tracking_url'])) { ?>
+            <?php if (!empty($ship['tracking_url']) && !$showParcels) { ?>
                 <a class="btn btn-primary" href="<?php echo osc_esc_html((string) $ship['tracking_url']); ?>" target="_blank" rel="noopener noreferrer"><?php _e('Track parcel', 'aisle'); ?></a>
             <?php } ?>
             <?php if (!empty($order['receipt_url'])) { ?>
