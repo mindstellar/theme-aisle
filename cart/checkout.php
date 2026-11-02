@@ -65,10 +65,6 @@ $aisle_order_url = aisle_order_placed_url(987654321);
 $aisle_order_url = str_replace('987654321', '{id}', $aisle_order_url);
 $aisle_co_i18n   = [
     'required'   => __('This field is required.', 'aisle'),
-    'pin'        => __('PIN code needs 6 digits.', 'aisle'),
-    'phone'      => __('Enter a mobile number with at least 8 digits.', 'aisle'),
-    'pin_label'  => __('PIN code', 'aisle'),
-    'zip_label'  => __('Postcode', 'aisle'),
     'free'       => __('Free', 'aisle'),
     'empty'      => __('Your cart is empty.', 'aisle'),
     'back'       => __('Back to the shop', 'aisle'),
@@ -104,7 +100,6 @@ $aisle_co_i18n   = [
     'includes'   => __('Includes %1$s %2$s', 'aisle'),
     'tax_name'   => __('tax', 'aisle'),
     'tax_later'  => __('Tax is worked out once you choose your state.', 'aisle'),
-    'state_pick' => __('Choose…', 'aisle'),
 ];
 ?>
 <link rel="stylesheet" href="<?php echo osc_esc_html($aisle_co_css); ?>">
@@ -135,34 +130,50 @@ $aisle_co_i18n   = [
                         <input name="name" value="<?php echo osc_esc_html((string) ($aisle_me['name'] ?? '')); ?>" autocomplete="name" required>
                         <span class="err" hidden></span>
                     </label>
-                    <label class="field" data-field="phone"><?php _e('Mobile', 'aisle'); ?>
+                    <label class="field" data-field="phone"><?php _e('Phone', 'aisle'); ?>
                         <input name="phone" value="<?php echo osc_esc_html((string) ($aisle_me['phone_mobile'] ?? '')); ?>" inputmode="tel" autocomplete="tel" required>
                         <span class="err" hidden></span>
                     </label>
-                    <label class="field full" data-field="line1"><?php _e('Address', 'aisle'); ?>
-                        <input name="line1" value="<?php echo osc_esc_html((string) ($aisle_me['address'] ?? '')); ?>" autocomplete="street-address" required>
-                        <span class="err" hidden></span>
-                    </label>
-                    <label class="field" data-field="postcode"><span data-postcode-label><?php _e('PIN code', 'aisle'); ?></span>
-                        <input name="postcode" value="<?php echo osc_esc_html((string) ($aisle_me['zip'] ?? '')); ?>" inputmode="numeric" autocomplete="postal-code" required>
-                        <span class="err" hidden></span>
-                    </label>
-                    <label class="field" data-field="city"><?php _e('City', 'aisle'); ?>
-                        <input name="city" value="<?php echo osc_esc_html($aisle_pick($aisle_loc['city'] ?? '')); ?>" autocomplete="address-level2" required>
-                        <span class="err" hidden></span>
-                    </label>
-                    <label class="field" data-field="state"><?php _e('State', 'aisle'); ?>
-                        <input name="state" value="<?php echo osc_esc_html($aisle_pick($aisle_loc['region'] ?? '')); ?>" autocomplete="address-level1" required>
-                        <span class="err" hidden></span>
-                    </label>
-                    <label class="field" data-field="country"><?php _e('Country', 'aisle'); ?>
-                        <select name="country" autocomplete="country">
+                    <div data-address-fields>
+                        <div class="field full" data-field="line1" data-address-field="line1">
+                            <label for="co-line1"><?php _e('Address', 'aisle'); ?></label>
+                            <input id="co-line1" name="line1" value="<?php echo osc_esc_html((string) ($aisle_me['address'] ?? '')); ?>" autocomplete="address-line1" required>
+                            <span class="err" hidden></span>
+                        </div>
+                        <div class="field full" data-field="line2" data-address-field="line2">
+                            <label for="co-line2"><?php _e('Apartment, suite, etc.', 'aisle'); ?></label>
+                            <input id="co-line2" name="line2" value="" autocomplete="address-line2">
+                            <span class="err" hidden></span>
+                        </div>
+                        <div class="field" data-field="postcode" data-address-field="postcode">
+                            <label for="co-postcode"><?php _e('Postcode', 'aisle'); ?></label>
+                            <input id="co-postcode" name="postcode" value="<?php echo osc_esc_html((string) ($aisle_me['zip'] ?? '')); ?>" autocomplete="postal-code">
+                            <span class="err" hidden></span>
+                        </div>
+                        <div class="field" data-field="city" data-address-field="city">
+                            <label for="co-city"><?php _e('City', 'aisle'); ?></label>
+                            <input id="co-city" name="city" value="<?php echo osc_esc_html($aisle_pick($aisle_loc['city'] ?? '')); ?>" autocomplete="address-level2">
+                            <span class="err" hidden></span>
+                        </div>
+                        <div class="field" data-field="state" data-address-field="state">
+                            <label for="co-state"><?php _e('State', 'aisle'); ?></label>
+                            <input id="co-state" name="state" value="<?php echo osc_esc_html($aisle_pick($aisle_loc['region'] ?? '')); ?>" autocomplete="address-level1">
+                            <span class="err" hidden></span>
+                        </div>
+                    </div>
+                    <?php if (count($aisle_countries) === 1) { ?>
+                        <input type="hidden" name="country" value="<?php echo osc_esc_html($aisle_country_code); ?>">
+                    <?php } else { ?>
+                    <div class="field" data-field="country">
+                        <label for="co-country"><?php _e('Country', 'aisle'); ?></label>
+                        <select id="co-country" name="country" autocomplete="country">
                             <?php foreach ($aisle_countries as $aisle_code => $aisle_name) { ?>
                                 <option value="<?php echo osc_esc_html($aisle_code); ?>"<?php echo $aisle_code === $aisle_country_code ? ' selected' : ''; ?>><?php echo osc_esc_html($aisle_name); ?></option>
                             <?php } ?>
                         </select>
                         <span class="err" hidden></span>
-                    </label>
+                    </div>
+                    <?php } ?>
                     <?php if (function_exists('osc_address_save_field')) {
                         osc_address_save_field();
                     } ?>
@@ -207,7 +218,9 @@ $aisle_co_i18n   = [
             <noscript><p class="co-alert"><?php _e('Checkout needs JavaScript. Please turn it on to place your order.', 'aisle'); ?></p></noscript>
         </aside>
     </form>
+    <?php if (function_exists('osc_address_form_script')) {
+        osc_address_form_script();
+    } ?>
 </div>
 <script type="application/json" id="aisle-checkout-i18n"><?php echo json_encode($aisle_co_i18n, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_UNESCAPED_UNICODE); ?></script>
-<script src="<?php echo osc_esc_html(aisle_asset('js/aisle-address.js')); ?>" defer></script>
 <script src="<?php echo osc_esc_html($aisle_co_js); ?>" defer></script>

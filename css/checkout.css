@@ -8,6 +8,8 @@
 .co-sec h2 i { font-style: normal; width: 26px; height: 26px; border-radius: 50%; background: var(--ink); color: var(--bg); display: inline-grid; place-items: center; font-family: var(--body); font-size: 13px; }
 .fields { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 12px; align-items: start; }
 .fields .full { grid-column: 1 / -1; }
+.fields [data-address-fields] { display: contents; }
+.field[hidden] { display: none; }
 .field { display: grid; gap: 4px; font-size: 13px; font-weight: 600; }
 .co .field input, .co .field select { border: 1px solid var(--line); border-radius: var(--r-s); padding: 11px 12px; background: var(--raised); color: var(--ink); font: inherit; font-weight: 400; font-size: 15px; width: 100%; }
 .co .field input[readonly] { color: var(--muted); }
