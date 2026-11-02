@@ -16,6 +16,21 @@
   }
   window.aisleOpenOrdersNotice = openOrdersNotice;
 
+  /* Core's address script marks each field required or disabled and flags a bad postcode; this reads that. */
+  function addressFieldProblem(f, T) {
+    if (f.disabled) return '';
+    if (f.required && !f.value) return T.required;
+    return f.validationMessage || '';
+  }
+  window.aisleAddressFieldProblem = addressFieldProblem;
+
+  /* A postcode goes to the quote once it looks whole: core's country pattern when its script runs, else a loose shape. */
+  function postcodeSendable(pc, coreChecks, validationMessage) {
+    if (!pc) return false;
+    return coreChecks ? !validationMessage : /^[A-Za-z0-9 -]{3,10}$/.test(pc);
+  }
+  window.aislePostcodeSendable = postcodeSendable;
+
   /* The limit is on unpaid bank transfer orders only, so other gateways get no line. */
   function openOrdersFor(quote, gateway, T) {
     return quote && gateway === 'offline' ? openOrdersNotice(quote.open_orders, T) : { text: '', blocking: false };
@@ -38,8 +53,7 @@
   if (!form) return;
 
   var T = {
-    required: 'This field is required.', pin: 'PIN code needs 6 digits.', phone: 'Enter a mobile number with at least 8 digits.',
-    pin_label: 'PIN code', zip_label: 'Postcode', free: 'Free', empty: 'Your cart is empty.', back: 'Back to the shop', qty: 'Qty %d',
+    required: 'This field is required.', free: 'Free', empty: 'Your cart is empty.', back: 'Back to the shop', qty: 'Qty %d',
     left: 'Only %d left', sold: 'Sold out', fix_cart: 'Some items need your attention. Change them in your cart.',
     no_pay: 'No payment method is available right now.', fee: '+%s', placing: 'Placing your order…', place: 'Place order',
     failed: 'We could not place your order. Please try again.', quote_fail: 'We could not price your cart. Please try again.',
@@ -49,14 +63,14 @@
     open_one: 'You have %1$d unpaid bank transfer order. You can hold %2$d at once.',
     open_many: 'You have %1$d unpaid bank transfer orders. You can hold %2$d at once.',
     open_blocked: 'Pay for or cancel an unpaid bank transfer order first.', retry: 'Try again', includes: 'Includes %1$s %2$s', tax_name: 'Tax',
-    tax_later: 'Tax is worked out once you choose your state.', state_pick: 'Choose…'
+    tax_later: 'Tax is worked out once you choose your state.'
   };
   try {
     var raw = document.getElementById('aisle-checkout-i18n');
     if (raw) Object.assign(T, JSON.parse(raw.textContent || '{}'));
   } catch (e) { /* keep defaults */ }
 
-  var FIELDS = ['name', 'phone', 'line1', 'postcode', 'city', 'state', 'country'];
+  var FIELDS = ['name', 'phone', 'line1', 'line2', 'postcode', 'city', 'state', 'country'];
   var elShip = form.querySelector('[data-shipping]');
   var elPay = form.querySelector('[data-gateways]');
   var elLines = form.querySelector('[data-lines]');
@@ -166,19 +180,20 @@
     return window.aisleCart ? window.aisleCart.lines() : [];
   }
 
-  /* The postcode is sent only when it passes the same rule as the form. */
-  function pinOk(v) {
-    return value('country') === 'IN' ? /^\d{6}$/.test(v) : /^[A-Za-z0-9 -]{3,10}$/.test(v);
-  }
-
   function later() {
     clearTimeout(timer);
     timer = setTimeout(runQuote, 500);
   }
 
+  function postcodeOff() {
+    var f = form.elements.postcode;
+    return !f || f.disabled;
+  }
+
+  /* A field core's address script disabled is not part of this country's address, so it sends nothing. */
   function value(name) {
     var f = form.elements[name];
-    return f ? String(f.value).trim() : '';
+    return f && !f.disabled ? String(f.value).trim() : '';
   }
 
   /* ---------- quote ---------- */
@@ -211,7 +226,7 @@
       if (/^[A-Za-z]{2}$/.test(cc)) url.searchParams.set('country', cc.toUpperCase());
       if (st) url.searchParams.set('state', st.slice(0, 100));
       if (ci) url.searchParams.set('city', ci.slice(0, 100));
-      if (pc && pinOk(pc)) url.searchParams.set('postcode', pc);
+      if (!postcodeOff() && postcodeSendable(pc, !!document.getElementById('osc-address-formats'), form.elements.postcode.validationMessage)) url.searchParams.set('postcode', pc);
     }
     if (coupon) url.searchParams.set('coupon', coupon);
     var headers = { Accept: 'application/json' };
@@ -553,12 +568,10 @@
     if (addressId) return true;
     var first = '';
     FIELDS.forEach(function (n) {
-      var v = value(n);
-      var msg = '';
-      if (!ships()) msg = '';
-      else if (!v) msg = T.required;
-      else if (n === 'postcode' && value('country') === 'IN' && !/^\d{6}$/.test(v)) msg = T.pin;
-      else if (n === 'phone' && v.replace(/\D/g, '').length < 8) msg = T.phone;
+      var f = form.elements[n];
+      var msg = ships() && f ? addressFieldProblem({
+        value: String(f.value).trim(), required: !!f.required, disabled: !!f.disabled, validationMessage: f.validationMessage || ''
+      }, T) : '';
       setError(n, msg);
       if (msg && !first) first = n;
     });
@@ -569,23 +582,13 @@
     return !first;
   }
 
-  function paintPostcodeLabel() {
-    var lab = form.querySelector('[data-postcode-label]');
-    if (lab && window.aisleAddress) lab.textContent = window.aisleAddress.postcodeLabel(form, T);
-  }
-
-  function paintStateField() {
-    if (!window.aisleAddress) return;
-    window.aisleAddress.paintState(form, T.state_pick).then(function (changed) { if (changed) later(); });
-  }
-
   /* ---------- place ---------- */
 
   function body() {
     var out = {
       lines: cartLines().map(function (l) { return { variant: l.v, qty: l.q }; }),
       address: !ships() ? {} : addressId ? { id: addressId } : {
-        name: value('name'), phone: value('phone'), line1: value('line1'), city: value('city'),
+        name: value('name'), phone: value('phone'), line1: value('line1'), line2: value('line2'), city: value('city'),
         state: value('state'), postcode: value('postcode'), country: value('country'), save: saveAddress()
       },
       gateway: gateway,
@@ -745,7 +748,7 @@
     if (!t || !t.name) return;
     if (t.name === 'ship') { shipping = t.value; runQuote(); }
     else if (t.name === 'pay') { gateway = t.value; elGwErr.hidden = true; runQuote(); }
-    else if (t.name === 'country') { paintPostcodeLabel(); paintStateField(); runQuote(); }
+    else if (t.name === 'country') { runQuote(); }
     else if (t.name === 'postcode' || t.name === 'state' || t.name === 'city') { later(); }
   });
 
@@ -787,18 +790,15 @@
     addressId = e.detail && e.detail.id ? String(e.detail.id) : '';
     FIELDS.forEach(function (n) { setError(n, ''); fieldMsg[n] = false; });
     showAlert('');
-    var st = e.detail && e.detail.address ? String(e.detail.address.state || '') : '';
-    if (st && window.aisleAddress && form.elements.state && form.elements.state.tagName === 'SELECT') window.aisleAddress.keepState(form.elements.state, st);
-    paintPostcodeLabel();
-    paintStateField();
     runQuote();
   });
+
+  /* Core swapped the State field or its rules for the chosen country. */
+  form.addEventListener('osc:address-country', function () { later(); });
 
   document.addEventListener('aisle:prices', paintPriceNotes);
   document.addEventListener('aisle:cart', function () { if (!busy) runQuote(); });
 
-  paintPostcodeLabel();
-  paintStateField();
   paint();
   if (window.aisleCart) {
     /* Wait for the signed-in cart to merge, then price what is there. */

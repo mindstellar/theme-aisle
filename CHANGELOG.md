@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.2.0
+
+### Changed
+- Checkout and the address book use core's address rules, labels and State list, so Aisle drops its PIN code and 8-digit phone checks.
+- The product delivery box uses the country's own postcode label, pattern and example.
+- Setup copy and examples no longer assume one country; Razorpay is no longer recommended, only listed as a payment option.
+
 ## 1.1.0
 
 ### New
