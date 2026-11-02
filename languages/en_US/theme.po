@@ -1030,6 +1030,10 @@ msgstr "Rate this product"
 msgid "Rated %s out of 5"
 msgstr "Rated %s out of 5"
 
+#: cart/order-card.php:339
+msgid "Receipt"
+msgstr "Receipt"
+
 #: common/product/related.php:28
 msgid "Recently viewed"
 msgstr "Recently viewed"

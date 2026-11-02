@@ -336,7 +336,7 @@ if (!function_exists('aisle_order_card')) {
                 <a class="btn btn-primary" href="<?php echo osc_esc_html((string) $ship['tracking_url']); ?>" target="_blank" rel="noopener noreferrer"><?php _e('Track parcel', 'aisle'); ?></a>
             <?php } ?>
             <?php if ($invoiceUrl !== '') { ?>
-                <a class="btn btn-ghost" href="<?php echo osc_esc_html($invoiceUrl); ?>"><?php _e('Invoice', 'aisle'); ?></a>
+                <a class="btn btn-ghost" href="<?php echo osc_esc_html($invoiceUrl); ?>"><?php $invoice !== null ? _e('Invoice', 'aisle') : _e('Receipt', 'aisle'); ?></a>
             <?php } ?>
             <?php if ($again !== [] && in_array($status, ['delivered', 'cancelled', 'refunded'], true)) { ?>
                 <button class="btn btn-ghost" type="button" data-buy-again="<?php echo osc_esc_html((string) json_encode($again)); ?>"><?php _e('Buy again', 'aisle'); ?></button>
