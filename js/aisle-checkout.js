@@ -190,9 +190,10 @@
     return !f || f.disabled;
   }
 
+  /* A field core's address script disabled is not part of this country's address, so it sends nothing. */
   function value(name) {
     var f = form.elements[name];
-    return f ? String(f.value).trim() : '';
+    return f && !f.disabled ? String(f.value).trim() : '';
   }
 
   /* ---------- quote ---------- */
