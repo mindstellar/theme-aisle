@@ -78,6 +78,10 @@ function aisle_enqueue_base(): void
     osc_enqueue_style('aisle-tokens', aisle_asset('css/tokens.css'));
     osc_enqueue_style('aisle', aisle_asset('css/aisle.css'));
     osc_enqueue_style('aisle-core-pages', aisle_asset('css/core-pages.css'));
+    // Core's block layout, for an Image and text section on the home page.
+    if (osc_is_home_page()) {
+        osc_enqueue_style('osc-page-blocks');
+    }
     osc_register_script('aisle-core', aisle_asset('js/aisle-core.js'));
     osc_enqueue_script('aisle-core');
     osc_register_script('aisle-wishlist', aisle_asset('js/aisle-wishlist.js'));

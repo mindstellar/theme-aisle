@@ -256,3 +256,28 @@ img { max-width: 100%; }
 .shop-emails-widget button { border: 1px solid transparent; border-radius: var(--r-pill); padding: 11px 22px; font-weight: 600; background: var(--brand); color: var(--brand-ink); cursor: pointer; white-space: nowrap; transition: background .18s var(--ease); }
 .shop-emails-widget button:hover { background: var(--brand-hover); }
 @media (max-width: 560px) { .shop-emails-widget button { width: 100%; } }
+
+/* Page builder and home section blocks (core lays them out; this is Aisle's look). */
+.osc-button { display: inline-flex; align-items: center; justify-content: center; border-radius: var(--r-pill); padding: 12px 22px; font-weight: 600; border: 1px solid transparent; text-decoration: none; white-space: nowrap; transition: background .18s var(--ease), border-color .18s var(--ease); }
+.osc-button--primary, a.osc-button--primary { background: var(--brand); color: var(--brand-ink); text-decoration: none; }
+.osc-button--primary:hover { background: var(--brand-hover); }
+.osc-button--secondary, a.osc-button--secondary { border-color: var(--line); color: var(--ink); text-decoration: none; }
+.osc-button--secondary:hover { border-color: var(--ink); }
+.osc-heading > h2 { font-family: var(--display); font-size: clamp(26px, 4vw, 36px); margin: 0 0 8px; }
+.osc-heading > h3 { font-family: var(--display); font-size: 24px; margin: 0; }
+.osc-heading { text-align: start; }
+.osc-heading--center { text-align: center; }
+.osc-heading > p { color: var(--muted); font-size: 18px; line-height: 1.5; max-width: 56ch; margin-block: 0; }
+.osc-heading--center > p { margin-inline: auto; }
+.osc-rich-text { line-height: 1.65; }
+.osc-rich-text > * + * { margin-top: 1em; }
+.osc-rich-text :is(ul, ol) { padding-inline-start: 1.4em; }
+.osc-rich-text li + li { margin-top: 0.35em; }
+.osc-media-text > figure { border-radius: var(--r-l); overflow: hidden; background: var(--band); }
+.osc-media-text .osc-rich-text :is(h2, h3) { font-family: var(--display); font-size: 28px; margin: 0 0 10px; }
+.osc-media-text .osc-button-row { margin-top: 18px; }
+.osc-columns .osc-rich-text { padding-top: 14px; border-top: 2px solid var(--line); }
+.osc-columns .osc-rich-text :is(h3, h4) { font-size: 20px; margin: 0 0 6px; }
+@media (max-width: 639.98px) {
+    .osc-button-row .osc-button { flex: 1 1 100%; min-height: 44px; }
+}

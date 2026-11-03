@@ -431,7 +431,7 @@ function aisle_customiser_support(): void
                 'label'   => __('Home page', 'aisle'),
                 'types'   => [
                     'aisle.hero', 'aisle.categories', 'aisle.products', 'aisle.promise', 'aisle.banner',
-                    'aisle.featured', 'aisle.reviews', 'aisle.newsletter', 'core.rich_text',
+                    'aisle.featured', 'aisle.reviews', 'aisle.newsletter', 'core.rich_text', 'core.media_text',
                 ],
                 'preview' => osc_base_url(),
             ],

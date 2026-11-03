@@ -15,3 +15,10 @@
 @media (max-width: 600px) { .page-body table { display: block; overflow-x: auto; } }
 .page-body th, .page-body td { text-align: start; padding: 10px 12px; border-bottom: 1px solid var(--line); }
 .page-body blockquote { margin-inline: 0; padding-inline-start: 18px; border-inline-start: 1px solid var(--line); color: var(--muted); }
+
+/* A Page builder page uses the full content width; its text blocks keep a reading width. */
+.page:has(.page-builder) { max-width: 1240px; }
+.page-builder > * + * { margin-top: 48px; }
+.page-builder .osc-rich-text { max-width: 68ch; }
+.page-body a.osc-button--primary { color: var(--brand-ink); text-decoration: none; }
+.page-body a.osc-button--secondary { color: var(--ink); text-decoration: none; }
