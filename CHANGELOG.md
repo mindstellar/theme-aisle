@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 1.3.0
 
 ### New
 - The order page shows a Processing step, a Partly shipped note and one block per parcel with its tracking link.
