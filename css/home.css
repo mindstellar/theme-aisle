@@ -51,6 +51,11 @@
 
 /* Sections the owner can add */
 .home-sections > :not(section) { width: min(100%, 1240px); margin: 0 auto; padding: 18px max(16px, env(safe-area-inset-left, 0px)); box-sizing: border-box; }
+.osc-rich-text { line-height: 1.65; }
+.osc-rich-text > * + * { margin-top: 1em; }
+.osc-rich-text :is(ul, ol) { padding-inline-start: 1.4em; }
+.osc-rich-text li + li { margin-top: 0.35em; }
+.osc-rich-text a { color: var(--brand); text-underline-offset: 3px; }
 
 .banner { position: relative; display: grid; align-items: center; min-height: 280px; border-radius: var(--r-l); overflow: hidden; background: var(--band); isolation: isolate; }
 .banner > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1; }
