@@ -36,7 +36,7 @@ osc_current_web_theme_path('common/header.php');
             <span aria-hidden="true">/</span>
             <span aria-current="page"><?php echo osc_esc_html((string) $aisle_page['title']); ?></span>
         </nav>
-        <h1><?php echo osc_esc_html((string) $aisle_page['title']); ?></h1>
+        <h1<?php echo function_exists('osc_static_page_title_hidden') && osc_static_page_title_hidden() ? ' class="oe-sr-only"' : ''; ?>><?php echo osc_esc_html((string) $aisle_page['title']); ?></h1>
         <div class="page-body">
             <?php echo (string) $aisle_page['text']; ?>
         </div>
