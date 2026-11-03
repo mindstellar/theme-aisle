@@ -465,7 +465,9 @@
     var t = quote.totals;
     if (elTop && elTopTotal) { elTopTotal.textContent = amountText(t.total); elTop.hidden = false; }
     elTotals.appendChild(row(labels.subtotal, amountText(t.subtotal)));
-    if (ships()) elTotals.appendChild(row(labels.delivery, amountNum(t.shipping) > 0 ? amountText(t.shipping) : T.free));
+    if (ships() && Array.isArray(quote.shipping_methods) && quote.shipping_methods.length) {
+      elTotals.appendChild(row(labels.delivery, amountNum(t.shipping) > 0 ? amountText(t.shipping) : T.free));
+    }
     var mine = couponLine();
     if (mine) elTotals.appendChild(elCouponOk);
     (quote.discounts || []).forEach(function (d) {
