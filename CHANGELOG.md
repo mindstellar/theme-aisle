@@ -5,6 +5,7 @@
 ### New
 - The order page shows a Processing step, a Partly shipped note and one block per parcel with its tracking link.
 - The Invoice button opens the numbered invoice when the shop issues one, and credit notes are listed under the order.
+- Checkout shows the extra fields the shop asks for, such as a buyer tax number, and fills them from the last order.
 
 ## 1.2.0
 
