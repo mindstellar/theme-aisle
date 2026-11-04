@@ -314,6 +314,7 @@
         skuEl.textContent = r.sku ? fmt(text.sku, '', r.sku) : '';
       }
       if (notify) notify.hidden = r.in_stock;
+      [notify, drop].forEach(function (b) { if (b) followed(b, !!done[b === notify ? 'stock' : 'price'][r.id]); });
       syncBuy(r);
 
       if (!initial && changedPhoto) photo(r);
@@ -354,6 +355,16 @@
       return !!(u && u.getAttribute('content'));
     }
 
+    // A followed button says so and cannot be pressed again, per variant.
+    var done = { stock: {}, price: {} };
+    function followed(btn, on) {
+      var label = btn.querySelector('span');
+      if (!btn.dataset.idle && label) btn.dataset.idle = label.textContent;
+      if (label) label.textContent = on ? (btn.dataset.done || btn.dataset.idle) : btn.dataset.idle;
+      btn.disabled = on;
+      btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+    }
+
     function alertMe(kind) {
       if (!signedIn()) {
         location.href = info.dataset.login || '/';
@@ -372,10 +383,13 @@
         credentials: 'same-origin',
         body: JSON.stringify({ product: { listing: listing, variant: cur.id, kind: kind } })
       }).then(function (res) {
-        if (res.ok) { toast(res.status === 201 ? text.saved : text.exists); return; }
+        var variant = cur.id;
+        if (res.ok) { toast(res.status === 201 ? text.saved : text.exists); done[kind][variant] = true; followed(btn, true); return; }
         return res.json().catch(function () { return null; }).then(function (body) {
           var code = body && body.error && body.error.code;
-          toast(res.status === 409 || code === 'exists' ? text.exists : text.failed);
+          var exists = res.status === 409 || code === 'exists';
+          toast(exists ? text.exists : text.failed);
+          if (exists) { done[kind][variant] = true; followed(btn, true); }
         });
       }).catch(function () { toast(text.failed); }).then(function () { btn.removeAttribute('aria-busy'); });
     }

@@ -79,6 +79,8 @@ img { max-width: 100%; }
 .flashmessage { margin: 16px 0 0; padding: 12px 16px; border-radius: var(--r-m); background: var(--band); border: 1px solid var(--line); }
 .flashmessage.flashmessage-error { background: var(--brand-soft); border-color: var(--danger); }
 .flashmessage.flashmessage-ok { background: var(--ok-soft); border-color: var(--ok); }
+.flashmessage { position: relative; padding-inline-end: 40px; }
+.flashmessage .ico-close { position: absolute; inset-block-start: 10px; inset-inline-end: 12px; color: var(--muted); text-decoration: none; cursor: pointer; }
 
 /* Page sections shared by every view */
 .sec { padding-block: 36px; }

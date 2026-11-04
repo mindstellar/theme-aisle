@@ -49,14 +49,14 @@ msgid_plural "%d stars"
 msgstr[0] ""
 msgstr[1] ""
 
-#: common/card.php:93
-#: common/product/buy.php:24
-#: common/product/buy.php:53
+#: common/card.php:102
+#: common/product/buy.php:25
+#: common/product/buy.php:54
 msgid "%d%% off"
 msgstr ""
 
-#: common/product/buy.php:25
-#: common/product/buy.php:91
+#: common/product/buy.php:26
+#: common/product/buy.php:92
 msgid "%s, sold out"
 msgstr ""
 
@@ -93,7 +93,7 @@ msgstr ""
 msgid "A score and up to three customer quotes."
 msgstr ""
 
-#: functions.php:757
+#: functions.php:761
 msgid "A short line about the shop, under the logo."
 msgstr ""
 
@@ -101,7 +101,7 @@ msgstr ""
 msgid "A wide photo with a heading, a line of text and a button."
 msgstr ""
 
-#: cart/order-card.php:397
+#: cart/order-card.php:400
 #: common/header.php:57
 #: common/menu.php:57
 msgid "Account"
@@ -112,14 +112,14 @@ msgid "Add %s more for free delivery"
 msgstr ""
 
 #: cart/module.php:96
-#: common/card.php:75
-#: common/product/buy.php:130
-#: common/product/buy.php:165
+#: common/card.php:84
+#: common/product/buy.php:132
+#: common/product/buy.php:167
 msgid "Add to cart"
 msgstr ""
 
 #: cart/module.php:95
-#: common/product/buy.php:26
+#: common/product/buy.php:27
 msgid "Added"
 msgstr ""
 
@@ -127,7 +127,7 @@ msgstr ""
 msgid "Address"
 msgstr ""
 
-#: functions.php:696
+#: functions.php:700
 msgid "Aisle"
 msgstr ""
 
@@ -143,11 +143,11 @@ msgstr ""
 msgid "All your orders"
 msgstr ""
 
-#: common/product/buy.php:28
+#: common/product/buy.php:29
 msgid "Already set"
 msgstr ""
 
-#: functions.php:745
+#: functions.php:749
 msgid "Announcement bar"
 msgstr ""
 
@@ -188,11 +188,11 @@ msgstr ""
 msgid "Banner"
 msgstr ""
 
-#: functions.php:676
+#: functions.php:680
 msgid "Below the footer links."
 msgstr ""
 
-#: functions.php:712
+#: functions.php:716
 msgid "Brand colour"
 msgstr ""
 
@@ -202,7 +202,7 @@ msgstr ""
 msgid "Breadcrumb"
 msgstr ""
 
-#: functions.php:726
+#: functions.php:730
 msgid "Bricolage + Figtree (default)"
 msgstr ""
 
@@ -217,20 +217,20 @@ msgstr ""
 msgid "Button link"
 msgstr ""
 
-#: cart/order-card.php:342
+#: cart/order-card.php:345
 msgid "Buy again"
 msgstr ""
 
-#: common/product/buy.php:131
+#: common/product/buy.php:133
 msgid "Buy now"
 msgstr ""
 
-#: cart/order-card.php:348
+#: cart/order-card.php:351
 msgid "Cancel order"
 msgstr ""
 
 #: cart/order-card.php:128
-#: cart/order-card.php:379
+#: cart/order-card.php:382
 msgid "Cancelled"
 msgstr ""
 
@@ -246,7 +246,7 @@ msgstr ""
 msgid "Cash on delivery available"
 msgstr ""
 
-#: functions.php:749
+#: functions.php:753
 msgid "Catalogue"
 msgstr ""
 
@@ -292,7 +292,7 @@ msgstr ""
 msgid "Choose a star rating or write a review"
 msgstr ""
 
-#: common/card.php:78
+#: common/card.php:87
 msgid "Choose options"
 msgstr ""
 
@@ -327,7 +327,7 @@ msgstr ""
 
 #: common/header.php:52
 #: common/menu.php:18
-#: functions.php:701
+#: functions.php:705
 msgid "Colour scheme"
 msgstr ""
 
@@ -340,11 +340,11 @@ msgstr ""
 msgid "Contact us"
 msgstr ""
 
-#: common/product/buy.php:153
+#: common/product/buy.php:155
 msgid "Copy link"
 msgstr ""
 
-#: common/product/buy.php:29
+#: common/product/buy.php:30
 msgid "Could not save that, try again"
 msgstr ""
 
@@ -373,12 +373,12 @@ msgstr ""
 msgid "Create an account"
 msgstr ""
 
-#: cart/order-card.php:357
+#: cart/order-card.php:360
 msgid "Credit note %1$s, %2$s"
 msgstr ""
 
 #: common/menu.php:21
-#: functions.php:705
+#: functions.php:709
 msgid "Dark"
 msgstr ""
 
@@ -427,7 +427,7 @@ msgstr ""
 msgid "Download"
 msgstr ""
 
-#: common/product/buy.php:157
+#: common/product/buy.php:159
 msgid "E-mail"
 msgstr ""
 
@@ -476,33 +476,33 @@ msgstr ""
 msgid "Filters"
 msgstr ""
 
-#: functions.php:752
+#: functions.php:756
 msgid "Filters by option"
 msgstr ""
 
-#: functions.php:703
+#: functions.php:707
 msgid "Follow the visitor's device"
 msgstr ""
 
-#: functions.php:724
+#: functions.php:728
 msgid "Fonts"
 msgstr ""
 
-#: functions.php:675
-#: functions.php:756
+#: functions.php:679
+#: functions.php:760
 #: sections.php:448
 msgid "Footer"
 msgstr ""
 
-#: functions.php:757
+#: functions.php:761
 msgid "Footer note"
 msgstr ""
 
-#: functions.php:716
+#: functions.php:720
 msgid "Forest"
 msgstr ""
 
-#: functions.php:727
+#: functions.php:731
 msgid "Fraunces + Inter"
 msgstr ""
 
@@ -523,11 +523,11 @@ msgstr ""
 msgid "Full name"
 msgstr ""
 
-#: functions.php:808
+#: functions.php:812
 msgid "Full width"
 msgstr ""
 
-#: cart/order-card.php:351
+#: cart/order-card.php:354
 msgid "Get help"
 msgstr ""
 
@@ -573,7 +573,7 @@ msgstr ""
 msgid "Home page"
 msgstr ""
 
-#: functions.php:679
+#: functions.php:683
 msgid "Home page sections"
 msgstr ""
 
@@ -585,27 +585,27 @@ msgstr ""
 msgid "How many (4 to 12)"
 msgstr ""
 
-#: cart/order-card.php:326
+#: cart/order-card.php:329
 msgid "How to pay"
 msgstr ""
 
 #: common/chips.php:26
 #: common/filters.php:46
-#: common/product/buy.php:120
+#: common/product/buy.php:121
 #: common/product/buy.php:21
 msgid "In stock"
 msgstr ""
 
 #: cart/checkout.php:100
-#: cart/order-card.php:308
+#: cart/order-card.php:311
 msgid "Includes %1$s %2$s"
 msgstr ""
 
-#: cart/order-card.php:339
+#: cart/order-card.php:342
 msgid "Invoice"
 msgstr ""
 
-#: cart/order-card.php:382
+#: cart/order-card.php:385
 msgid "Items added to your cart"
 msgstr ""
 
@@ -623,7 +623,7 @@ msgstr ""
 msgid "Language"
 msgstr ""
 
-#: functions.php:740
+#: functions.php:744
 msgid "Large"
 msgstr ""
 
@@ -636,12 +636,12 @@ msgid "Left"
 msgstr ""
 
 #: cart/module.php:101
-#: common/product/buy.php:126
+#: common/product/buy.php:128
 msgid "Less"
 msgstr ""
 
 #: common/menu.php:20
-#: functions.php:704
+#: functions.php:708
 msgid "Light"
 msgstr ""
 
@@ -649,7 +649,7 @@ msgstr ""
 msgid "Line under the score"
 msgstr ""
 
-#: common/product/buy.php:151
+#: common/product/buy.php:153
 msgid "Link copied"
 msgstr ""
 
@@ -665,23 +665,23 @@ msgstr ""
 msgid "Listing number for the card (0 shows the first deal)"
 msgstr ""
 
-#: functions.php:733
+#: functions.php:737
 msgid "Logo"
 msgstr ""
 
-#: functions.php:739
+#: functions.php:743
 msgid "Logo height"
 msgstr ""
 
-#: functions.php:735
+#: functions.php:739
 msgid "Logo on dark"
 msgstr ""
 
-#: functions.php:698
+#: functions.php:702
 msgid "Look"
 msgstr ""
 
-#: functions.php:717
+#: functions.php:721
 msgid "Marigold"
 msgstr ""
 
@@ -689,7 +689,7 @@ msgstr ""
 msgid "Max"
 msgstr ""
 
-#: functions.php:740
+#: functions.php:744
 msgid "Medium"
 msgstr ""
 
@@ -703,7 +703,7 @@ msgid "Min"
 msgstr ""
 
 #: cart/module.php:102
-#: common/product/buy.php:128
+#: common/product/buy.php:130
 msgid "More"
 msgstr ""
 
@@ -759,11 +759,11 @@ msgstr ""
 msgid "Nothing saved yet."
 msgstr ""
 
-#: common/product/buy.php:132
+#: common/product/buy.php:134
 msgid "Notify me when it is back"
 msgstr ""
 
-#: functions.php:715
+#: functions.php:719
 msgid "Ocean"
 msgstr ""
 
@@ -792,7 +792,7 @@ msgstr ""
 msgid "One category"
 msgstr ""
 
-#: functions.php:753
+#: functions.php:757
 msgid ""
 "One line per option, with its values after a colon. Example: Colour: "
 "Sunflower, Cherry, Navy"
@@ -802,24 +802,24 @@ msgstr ""
 msgid "One product with a heading and a few words beside it."
 msgstr ""
 
-#: functions.php:746
+#: functions.php:750
 msgid "One short line above the header. Leave empty to hide the bar."
 msgstr ""
 
 #: cart/checkout.php:72
 #: cart/module.php:100
-#: common/card.php:100
-#: common/product/buy.php:116
-#: common/product/buy.php:22
+#: common/card.php:109
+#: common/product/buy.php:117
+#: common/product/buy.php:23
 msgid "Only %d left"
 msgstr ""
 
-#: common/product/buy.php:116
-#: common/product/buy.php:23
+#: common/product/buy.php:117
+#: common/product/buy.php:24
 msgid "Only %d left in %s"
 msgstr ""
 
-#: functions.php:735
+#: functions.php:739
 msgid "Optional. Used when the dark scheme is on."
 msgstr ""
 
@@ -831,7 +831,7 @@ msgstr ""
 msgid "Order %s"
 msgstr ""
 
-#: cart/order-card.php:380
+#: cart/order-card.php:383
 msgid "Order cancelled"
 msgstr ""
 
@@ -847,8 +847,8 @@ msgstr ""
 msgid "Ordered"
 msgstr ""
 
-#: common/card.php:98
-#: common/product/buy.php:112
+#: common/card.php:107
+#: common/product/buy.php:113
 #: common/product/buy.php:20
 msgid "Out of stock"
 msgstr ""
@@ -886,7 +886,7 @@ msgstr ""
 msgid "Pay for or cancel an unpaid bank transfer order first."
 msgstr ""
 
-#: cart/order-card.php:333
+#: cart/order-card.php:336
 msgid "Pay now"
 msgstr ""
 
@@ -929,7 +929,7 @@ msgstr ""
 msgid "Placing your order…"
 msgstr ""
 
-#: functions.php:718
+#: functions.php:722
 msgid "Plum"
 msgstr ""
 
@@ -1001,7 +1001,7 @@ msgstr ""
 msgid "Qty %d"
 msgstr ""
 
-#: common/product/buy.php:125
+#: common/product/buy.php:127
 msgid "Quantity"
 msgstr ""
 
@@ -1017,7 +1017,7 @@ msgstr ""
 msgid "Quote %d: text"
 msgstr ""
 
-#: functions.php:714
+#: functions.php:718
 msgid "Raspberry"
 msgstr ""
 
@@ -1030,7 +1030,7 @@ msgstr ""
 msgid "Rated %s out of 5"
 msgstr ""
 
-#: cart/order-card.php:339
+#: cart/order-card.php:342
 msgid "Receipt"
 msgstr ""
 
@@ -1060,7 +1060,7 @@ msgstr ""
 msgid "Results for “%s”"
 msgstr ""
 
-#: cart/order-card.php:351
+#: cart/order-card.php:354
 msgid "Return an item"
 msgstr ""
 
@@ -1085,7 +1085,7 @@ msgstr ""
 msgid "Save"
 msgstr ""
 
-#: common/card.php:81
+#: common/card.php:90
 msgid "Save %s"
 msgstr ""
 
@@ -1139,7 +1139,7 @@ msgstr ""
 msgid "Send review"
 msgstr ""
 
-#: common/product/buy.php:151
+#: common/product/buy.php:153
 msgid "Share"
 msgstr ""
 
@@ -1193,13 +1193,13 @@ msgstr ""
 msgid "Showing %1$d of %2$d"
 msgstr ""
 
-#: functions.php:758
+#: functions.php:762
 msgid ""
 "Shown as small tags under the footer note, separated by commas. Example: "
 "Visa, Mastercard, PayPal"
 msgstr ""
 
-#: functions.php:733
+#: functions.php:737
 msgid "Shown in the header and footer. Without it the shop name is used."
 msgstr ""
 
@@ -1224,7 +1224,12 @@ msgstr ""
 msgid "Skip to content"
 msgstr ""
 
-#: functions.php:740
+#: common/product/buy.php:125
+#: common/product/buy.php:22
+msgid "SKU %s"
+msgstr ""
+
+#: functions.php:744
 msgid "Small"
 msgstr ""
 
@@ -1274,7 +1279,7 @@ msgstr ""
 msgid "System"
 msgstr ""
 
-#: functions.php:728
+#: functions.php:732
 msgid "System fonts"
 msgstr ""
 
@@ -1294,7 +1299,7 @@ msgstr ""
 msgid "Tax is worked out once you enter your address."
 msgstr ""
 
-#: common/product/buy.php:142
+#: common/product/buy.php:144
 msgid "Tell me if the price drops"
 msgstr ""
 
@@ -1339,11 +1344,11 @@ msgstr ""
 msgid "The first deal"
 msgstr ""
 
-#: functions.php:730
+#: functions.php:734
 msgid "The fonts are served from your site. System fonts load no font file."
 msgstr ""
 
-#: functions.php:809
+#: functions.php:813
 msgid "The page uses the whole width of the content area."
 msgstr ""
 
@@ -1357,7 +1362,7 @@ msgid ""
 "search or pick a category."
 msgstr ""
 
-#: functions.php:680
+#: functions.php:684
 msgid "The sections of the home page, top to bottom."
 msgstr ""
 
@@ -1387,7 +1392,7 @@ msgstr ""
 msgid "This page is not loading right now."
 msgstr ""
 
-#: cart/order-card.php:383
+#: cart/order-card.php:386
 msgid "Those items are no longer available"
 msgstr ""
 
@@ -1406,18 +1411,19 @@ msgstr ""
 #: cart/checkout.php:112
 #: cart/checkout.php:96
 #: cart/order-card.php:209
+#: cart/order-card.php:304
 msgid "Total"
 msgstr ""
 
 #: cart/order-card.php:291
-#: cart/order-card.php:336
+#: cart/order-card.php:339
 msgid "Track parcel"
 msgstr ""
 
 #: 404.php:26
 #: cart/checkout.php:83
 #: common/footer.php:73
-#: functions.php:174
+#: functions.php:178
 msgid "Try again"
 msgstr ""
 
@@ -1425,7 +1431,7 @@ msgstr ""
 msgid "Up to four short promises with an icon, such as free delivery."
 msgstr ""
 
-#: functions.php:707
+#: functions.php:711
 msgid "Visitors can still switch it with the button in the header."
 msgstr ""
 
@@ -1434,11 +1440,11 @@ msgid "Waiting"
 msgstr ""
 
 #: common/footer.php:29
-#: functions.php:758
+#: functions.php:762
 msgid "Ways to pay"
 msgstr ""
 
-#: cart/order-card.php:381
+#: cart/order-card.php:384
 msgid "We could not cancel this order. It may have been paid already."
 msgstr ""
 
@@ -1446,7 +1452,7 @@ msgstr ""
 msgid "We could not find that order in your account."
 msgstr ""
 
-#: functions.php:174
+#: functions.php:178
 msgid "We could not load this just now."
 msgstr ""
 
@@ -1458,7 +1464,7 @@ msgstr ""
 msgid "We could not price your cart. Please try again."
 msgstr ""
 
-#: cart/order-card.php:384
+#: cart/order-card.php:387
 msgid "We could not start the payment. Try again in a moment."
 msgstr ""
 
@@ -1470,18 +1476,26 @@ msgstr ""
 msgid "We will be back soon"
 msgstr ""
 
-#: common/product/buy.php:27
+#: common/product/buy.php:28
 msgid "We will e-mail you"
+msgstr ""
+
+#: common/product/buy.php:144
+msgid "We will e-mail you if the price drops"
+msgstr ""
+
+#: common/product/buy.php:134
+msgid "We will e-mail you when it is back"
 msgstr ""
 
 #: common/header.php:53
 #: common/menu.php:59
-#: functions.php:110
+#: functions.php:114
 #: wishlist.php:59
 msgid "Wishlist"
 msgstr ""
 
-#: cart/order-card.php:345
+#: cart/order-card.php:348
 #: common/product/reviews.php:120
 #: common/product/reviews.php:78
 msgid "Write a review"
@@ -1495,7 +1509,7 @@ msgstr ""
 msgid "Yes"
 msgstr ""
 
-#: cart/order-card.php:348
+#: cart/order-card.php:351
 msgid "Yes, cancel the order"
 msgstr ""
 
