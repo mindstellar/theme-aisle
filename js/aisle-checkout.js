@@ -131,8 +131,8 @@
   var couponMsg = '';
   /* A refused order's message, kept while the quote is fetched again. */
   var placeErr = '';
-  /* The state the shown quote was priced for. */
-  var quotedState = '';
+  /* The country and state the shown quote was priced for. */
+  var quotedPlace = null;
   var fieldMsg = { postcode: false, country: false };
   var timer = 0;
   /* The saved address chosen in core's address picker; '' for a typed one. */
@@ -248,7 +248,7 @@
     }
     ctl = new AbortController();
     var mine = ++seq;
-    var forState = ships() ? value('state') : '';
+    var forPlace = ships() ? place() : '';
     var url = new URL(endpoint(c, 'cart/quote'), location.href);
     url.searchParams.set('lines', list.map(function (l) { return l.v + ':' + l.q; }).join(','));
     if (shipping) url.searchParams.set('shipping', shipping);
@@ -276,7 +276,7 @@
       quote = d;
       fieldDefs = cleanFieldDefs(d.checkout_fields);
       loadPrefill();
-      quotedState = forState;
+      quotedPlace = forPlace;
       showAlert(placeErr);
       placeErr = '';
       takeFieldProblems(d);
@@ -504,8 +504,9 @@
     if (couponMsg) elCouponIn.setAttribute('aria-invalid', 'true'); else elCouponIn.removeAttribute('aria-invalid');
   }
 
-  /* Which tax applies can hang on the state, so a delivery quote names no tax until it is known. */
-  function taxKnown() { return !ships() || (!!quotedState && quotedState === value('state')); }
+  /* Which tax applies hangs on the country and state; a country with no state field sends none. */
+  function place() { return /^[A-Za-z]{2}$/.test(value('country')) ? value('country').toUpperCase() + '|' + value('state') : ''; }
+  function taxKnown() { return !ships() || (!!quotedPlace && quotedPlace === place()); }
 
   /* "Includes GST ₹76.12" from the taxes already inside the prices. */
   function paintTaxNote() {

@@ -56,6 +56,8 @@
 .osum dt { overflow-wrap: anywhere; min-width: 0; }
 .osum dt { color: var(--muted); }
 .osum dd { margin: 0; }
+.osum .osum-total { padding-top: 8px; margin-top: 2px; border-top: 1px solid var(--line); font-weight: 600; }
+.osum .osum-total dt { color: var(--ink); }
 .parcels { display: grid; gap: 10px; }
 .parcels-note { margin: 0; font-size: 14px; color: var(--muted); }
 .parcel { display: grid; gap: 4px; justify-items: start; padding: 12px 14px; border-radius: var(--r-m); background: var(--band); font-size: 14px; }

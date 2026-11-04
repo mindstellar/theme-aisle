@@ -295,10 +295,13 @@ if (!function_exists('aisle_order_card')) {
             </div>
         <?php } ?>
 
-        <?php if ($extra !== []) { ?>
+        <?php if ($extra !== [] || ($total !== '' && empty($opts['link']))) { ?>
             <dl class="osum">
                 <?php foreach ($extra as $line) { ?>
                     <div><dt><?php echo osc_esc_html((string) ($line['title'] ?? '')); ?></dt><dd class="num"><?php echo osc_esc_html((string) ($line['amount']['formatted'] ?? '')); ?></dd></div>
+                <?php } ?>
+                <?php if ($total !== '') { ?>
+                    <div class="osum-total"><dt><?php _e('Total', 'aisle'); ?></dt><dd class="num"><?php echo osc_esc_html($total); ?></dd></div>
                 <?php } ?>
             </dl>
         <?php } ?>
