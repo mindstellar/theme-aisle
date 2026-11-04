@@ -1,7 +1,7 @@
 .page { max-width: 760px; margin-inline: auto; padding-bottom: 72px; }
 .layout-full-width .page { max-width: none; }
 .page h1 { font-size: clamp(30px, 5vw, 44px); font-weight: 800; margin-block: 10px 24px; overflow-wrap: anywhere; }
-.page-body { font-size: 17px; line-height: 1.65; color: var(--ink); overflow-wrap: anywhere; }
+.page-body { display: flow-root; font-size: 17px; line-height: 1.65; color: var(--ink); overflow-wrap: anywhere; }
 .page-body > * + * { margin-top: 1em; }
 .page-body h2 { font-size: 26px; margin-top: 1.8em; }
 .page-body h3 { font-size: 20px; margin-top: 1.5em; }
@@ -20,5 +20,13 @@
 .page:has(.page-builder) { max-width: 1240px; }
 .page-builder > * + * { margin-top: 48px; }
 .page-builder .osc-rich-text { max-width: 68ch; }
+.page-builder .osc-rich-text--wide { max-width: none; }
+.page-builder .osc-rich-text--center { margin-inline: auto; }
+.page-builder .osc-rich-text { display: flow-root; }
+.page-builder .osc-rich-text img { max-width: 100%; height: auto; }
+.page-builder .osc-img-left { float: left; margin: 0 1.5em 1em 0; max-width: 50%; }
+.page-builder .osc-img-right { float: right; margin: 0 0 1em 1.5em; max-width: 50%; }
+.page-builder .osc-img-center { display: block; margin: 0 auto 1em; }
+@media (max-width: 639.98px) { .page-body :is(.osc-img-left, .osc-img-right), .page-body img[style*="float"] { float: none !important; display: block; margin: 0 auto 1rem !important; max-width: 100% !important; } }
 .page-body a.osc-button--primary { color: var(--brand-ink); text-decoration: none; }
 .page-body a.osc-button--secondary { color: var(--ink); text-decoration: none; }
