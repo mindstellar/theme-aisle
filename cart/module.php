@@ -43,6 +43,15 @@ function aisle_order_placed_url(int $orderId): string
     return $url . (str_contains($url, '?') ? '&' : '?') . 'placed=1';
 }
 
+// Order e-mails link to the buyer's order page (core 7.1 and later).
+if (class_exists('mindstellar\\billing\\event\\OrderUrlResolving')) {
+    osc_add_filter('billing_order_url', static function (\mindstellar\billing\event\OrderUrlResolving $event): void {
+        if ($event->orderId() > 0) {
+            $event->setUrl((string) osc_route_url('aisle-order', ['id' => $event->orderId()]));
+        }
+    });
+}
+
 // A core without the typed event calls the filter with ($url, $orderId).
 if (class_exists('mindstellar\\billing\\event\\OrderReturnUrlResolving')) {
     osc_add_filter('billing_order_return_url', static function (\mindstellar\billing\event\OrderReturnUrlResolving $event): void {
