@@ -58,6 +58,7 @@ if (!function_exists('aisle_variant_state')) {
                 'price'    => is_numeric($v['price'] ?? null) ? aisle_money((string) $v['price'], $cur) : (string) ($price['formatted'] ?? ''),
                 'was'      => $off >= 1 ? aisle_money((string) $v['compare_at'], $cur) : '',
                 'off'      => $off,
+                'sku'      => is_scalar($v['sku'] ?? null) ? (string) $v['sku'] : '',
                 'in_stock' => ($v['in_stock'] ?? true) !== false,
                 'low'      => is_numeric($v['low_stock'] ?? null) ? (int) $v['low_stock'] : 0,
                 'photo'    => $photo,

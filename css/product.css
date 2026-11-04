@@ -27,6 +27,7 @@ button.mainimg { display: block; width: 100%; padding: 0; border: 0; font: inher
 .stock.ok { color: var(--ok); }
 .stock.lowq { color: var(--warn); }
 .stock.out { color: var(--muted); }
+.sku { margin: 0; font-size: 12px; color: var(--muted); }
 .share { display: flex; position: relative; }
 .share-menu { position: absolute; top: calc(100% + 6px); left: 0; z-index: 40; display: grid; min-width: 180px; padding: 6px; background: var(--raised); border: 1px solid var(--line); border-radius: var(--r-m); box-shadow: var(--shadow-float); }
 .share-menu > * { display: block; width: 100%; padding: 9px 12px; border: 0; border-radius: 8px; background: none; font: inherit; font-size: 14px; color: inherit; text-align: start; text-decoration: none; cursor: pointer; }

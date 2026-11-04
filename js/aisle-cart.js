@@ -576,6 +576,9 @@
     node.appendChild(mid);
 
     var price = el('b', 'num' + (soldOut ? ' struck' : ''), amountText(q.amount));
+    if (q.compare_at && !soldOut && amountNum(q.compare_at) > amountNum(q.amount)) {
+      price.appendChild(el('s', 'old num', amountText(q.compare_at)));
+    }
     node.appendChild(price);
     return node;
   }

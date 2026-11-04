@@ -152,6 +152,7 @@
     var priceEl = info.querySelector('[data-price]');
     var wasEl = info.querySelector('[data-was]');
     var offEl = info.querySelector('[data-off]');
+    var skuEl = info.querySelector('[data-sku]');
     var notify = info.querySelector('[data-notify]');
     var drop = info.querySelector('[data-pricedrop]');
     var deal = document.querySelector('[data-deal]');
@@ -307,6 +308,10 @@
         var use = stock.querySelector('use');
         if (use) use.setAttribute('href', '#i-' + icon);
         text2(stock, msg);
+      }
+      if (skuEl) {
+        skuEl.hidden = !r.sku;
+        skuEl.textContent = r.sku ? fmt(text.sku, '', r.sku) : '';
       }
       if (notify) notify.hidden = r.in_stock;
       syncBuy(r);

@@ -19,6 +19,7 @@ $aisle_row   = $aisle_state['rows'][$aisle_state['default']] ?? null;
 $aisle_i18n  = [
     'out'     => __('Out of stock', 'aisle'),
     'ok'      => __('In stock', 'aisle'),
+    'sku'     => __('SKU %s', 'aisle'),
     'low'     => __('Only %d left', 'aisle'),
     'lowin'   => __('Only %d left in %s', 'aisle'),
     'off'     => str_replace('%%', '%', __('%d%% off', 'aisle')),
@@ -121,6 +122,7 @@ $aisle_cat = is_array($aisle_listing['category'] ?? null) ? $aisle_listing['cate
         }
         ?>
         <p class="stock <?php echo $aisle_cls; ?>" data-stock aria-live="polite"><?php echo aisle_icon($aisle_ic, true); ?><span class="num"><?php echo osc_esc_html($aisle_txt); ?></span></p>
+        <p class="sku" data-sku<?php echo $aisle_row['sku'] === '' ? ' hidden' : ''; ?>><?php echo osc_esc_html($aisle_row['sku'] !== '' ? sprintf(__('SKU %s', 'aisle'), $aisle_row['sku']) : ''); ?></p>
         <div class="buy" data-buy>
             <div class="qty" data-qty role="group" aria-label="<?php echo osc_esc_html(__('Quantity', 'aisle')); ?>">
                 <button type="button" data-qty-minus aria-label="<?php echo osc_esc_html(__('Less', 'aisle')); ?>"><?php echo aisle_icon('minus', true); ?></button>

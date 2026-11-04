@@ -49,6 +49,10 @@ $gone = aisle_card(['title' => 'Hat', 'url' => '/hat', 'product' => ['variants' 
 $checks['one variant in stock quick-adds']        = str_contains($one, 'data-quick-add="5"') && !str_contains($one, 'Choose options');
 $checks['several variants link to the product']   = str_contains($many, 'href="/tee"') && str_contains($many, 'Choose options') && !str_contains($many, 'data-quick-add');
 $checks['all variants sold out has no button']    = !str_contains($gone, 'quick');
+$mixed = aisle_card(['title' => 'Cap', 'url' => '/cap', 'product' => ['variants' => [['id' => 1, 'in_stock' => true, 'low_stock' => 3], ['id' => 2, 'in_stock' => true]]]]);
+$allLow = aisle_card(['title' => 'Cup', 'url' => '/cup', 'product' => ['variants' => [['id' => 3, 'in_stock' => true, 'low_stock' => 3], ['id' => 4, 'in_stock' => true, 'low_stock' => 2]]]]);
+$checks['one low variant of several shows no note'] = !str_contains($mixed, 'Only ');
+$checks['all variants low shows the total']         = str_contains($allLow, 'Only 5 left');
 $failed = 0;
 foreach ($checks as $what => $ok) {
     if (!$ok) {

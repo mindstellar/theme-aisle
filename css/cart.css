@@ -30,11 +30,12 @@
 .line.fresh { animation: fresh 1.6s var(--ease); }
 @keyframes fresh { 0%, 40% { background: var(--brand-soft); } 100% { background: transparent; } }
 .line img { width: 72px; height: 88px; object-fit: cover; border-radius: 10px; background: var(--band); }
-.line .ln-t { font-weight: 700; text-decoration: none; }
+.line .ln-t { display: block; font-weight: 700; text-decoration: none; }
+.line .old { display: block; color: var(--muted); font-size: 12px; font-weight: 400; text-decoration: line-through; }
 .line .v { color: var(--muted); font-size: 13px; }
 .line .v.sold, .line .v.low { color: var(--warn); font-weight: 600; margin-top: 4px; }
 .line .struck { color: var(--muted); text-decoration: line-through; }
-.line .qty { margin-top: 8px; }
+.line .qty { display: flex; width: fit-content; margin-top: 8px; }
 .line .qty button { width: 32px; height: 32px; }
 .line .rm { background: none; border: 0; color: var(--muted); font-size: 13px; text-decoration: underline; padding: 4px 0; min-height: 24px; margin-top: 2px; display: block; }
 .line .rm:active { color: var(--ink); }

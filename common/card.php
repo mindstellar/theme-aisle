@@ -37,8 +37,17 @@ if (!function_exists('aisle_card')) {
         $on_sale = $was > $now && $now > 0 && ($variant['on_sale'] ?? true) !== false;
         $off     = $on_sale ? (int) round((1 - $now / $was) * 100) : 0;
 
-        $low_raw  = $variant['low_stock'] ?? $listing['product']['low_stock'] ?? null;
-        $low_left = is_numeric($low_raw) ? (int) $low_raw : 0;
+        // A low count is for the whole product: every variant on sale is low, and the note adds them up.
+        $low_left = 0;
+        $selling  = array_filter(is_array($variants) ? $variants : [], static fn ($row): bool => is_array($row) && ($row['in_stock'] ?? true) !== false);
+        if ($selling !== []) {
+            $lows = array_map(static fn (array $row): int => is_numeric($row['low_stock'] ?? null) ? (int) $row['low_stock'] : 0, $selling);
+            if (min($lows) > 0) {
+                $low_left = array_sum($lows);
+            }
+        } elseif (is_numeric($listing['product']['low_stock'] ?? null)) {
+            $low_left = (int) $listing['product']['low_stock'];
+        }
         $out      = $variants !== [] && ($variant['in_stock'] ?? true) === false;
 
         if (!function_exists('aisle_stars')) {
