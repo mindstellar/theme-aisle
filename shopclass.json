@@ -1,10 +1,13 @@
 {
-    "modes": ["shop"],
+    "modes": [
+        "shop"
+    ],
+    "order_url": "index.php?page=custom&route=aisle-order&id={id}",
     "plugins": {
         "required": {},
         "recommended": {
             "shipping": "^0.3.0",
-            "tax": "^0.1.0",
+            "tax": ">=0.1.0",
             "promotions": "^0.2.0",
             "shop-emails": "^0.1.0",
             "analytics": "^0.1.0",
