@@ -80,7 +80,8 @@ img { max-width: 100%; }
 .flashmessage.flashmessage-error { background: var(--brand-soft); border-color: var(--danger); }
 .flashmessage.flashmessage-ok { background: var(--ok-soft); border-color: var(--ok); }
 .flashmessage { position: relative; padding-inline-end: 40px; }
-.flashmessage .ico-close { position: absolute; inset-block-start: 10px; inset-inline-end: 12px; color: var(--muted); text-decoration: none; cursor: pointer; }
+.flashmessage .ico-close { position: absolute; inset-block-start: 50%; inset-inline-end: 8px; transform: translateY(-50%); width: 28px; height: 28px; padding: 0; border-radius: var(--r-pill); color: var(--muted); text-decoration: none; cursor: pointer; }
+.flashmessage .ico-close:hover, .flashmessage .ico-close:active { color: var(--ink); transform: translateY(-50%); }
 
 /* Page sections shared by every view */
 .sec { padding-block: 36px; }

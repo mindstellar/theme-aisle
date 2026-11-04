@@ -155,6 +155,7 @@
     var skuEl = info.querySelector('[data-sku]');
     var notify = info.querySelector('[data-notify]');
     var drop = info.querySelector('[data-pricedrop]');
+    var done = { stock: {}, price: {} };
     var deal = document.querySelector('[data-deal]');
     var cur = null;
 
@@ -356,7 +357,6 @@
     }
 
     // A followed button says so and cannot be pressed again, per variant.
-    var done = { stock: {}, price: {} };
     function followed(btn, on) {
       var label = btn.querySelector('span');
       if (!btn.dataset.idle && label) btn.dataset.idle = label.textContent;

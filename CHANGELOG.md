@@ -7,6 +7,11 @@
 - The Invoice button opens the numbered invoice when the shop issues one, and credit notes are listed under the order.
 - Checkout shows the extra fields the shop asks for, such as a buyer tax number, and fills them from the last order.
 
+### Fixed
+- Opening checkout with a saved address no longer places the order by itself; Enter in an address field does not place it either.
+- The product page's back-in-stock and price-drop buttons work again.
+- The flash message's close button no longer touches the text.
+
 ## 1.2.0
 
 ### Changed

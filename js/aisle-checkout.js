@@ -248,7 +248,7 @@
     }
     ctl = new AbortController();
     var mine = ++seq;
-    var forPlace = ships() ? place() : '';
+    var forPlace = ships() ? taxPlace() : '';
     var url = new URL(endpoint(c, 'cart/quote'), location.href);
     url.searchParams.set('lines', list.map(function (l) { return l.v + ':' + l.q; }).join(','));
     if (shipping) url.searchParams.set('shipping', shipping);
@@ -505,8 +505,8 @@
   }
 
   /* Which tax applies hangs on the country and state; a country with no state field sends none. */
-  function place() { return /^[A-Za-z]{2}$/.test(value('country')) ? value('country').toUpperCase() + '|' + value('state') : ''; }
-  function taxKnown() { return !ships() || (!!quotedPlace && quotedPlace === place()); }
+  function taxPlace() { return /^[A-Za-z]{2}$/.test(value('country')) ? value('country').toUpperCase() + '|' + value('state') : ''; }
+  function taxKnown() { return !ships() || (!!quotedPlace && quotedPlace === taxPlace()); }
 
   /* "Includes GST ₹76.12" from the taxes already inside the prices. */
   function paintTaxNote() {
@@ -873,6 +873,12 @@
     if (!validate()) return;
     if (placeBlocked(placeState(false))) { paint(); return; }
     place();
+  });
+
+  /* Enter in an address field does not place the order; only the Place order button does. */
+  form.addEventListener('keydown', function (e) {
+    var t = e.target;
+    if (e.key === 'Enter' && t && t.tagName === 'INPUT' && t.type !== 'submit' && t.type !== 'button') e.preventDefault();
   });
 
   form.addEventListener('click', function (e) {
