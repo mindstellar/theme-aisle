@@ -17,7 +17,7 @@
  * Usage:  OSC_CORE=/path/to/shopclass/ php tests/seed-home-sections.php
  */
 
-$core = rtrim((string) (getenv('OSC_CORE') ?: dirname(__DIR__, 2) . '/osclass'), '/') . '/';
+$core = rtrim((string) (getenv('OSC_CORE') ?: dirname(__DIR__, 2) . '/shopclass'), '/') . '/';
 require_once $core . 'tests/lib/scratchdb.php';
 require_once $core . 'tests/lib/harness.php';
 
