@@ -31,6 +31,10 @@ function aisle_money(string $amount, ?string $currency): string
 {
     return '€' . $amount;
 }
+function aisle_price(?array $price): string
+{
+    return (string) ($price['formatted'] ?? '');
+}
 require_once AISLE_DIR . '/common/card.php';
 
 $html = aisle_card([
@@ -61,6 +65,8 @@ $vp = aisle_card(['title' => 'Mat', 'url' => '/mat', 'price' => ['amount' => '30
 $vs = aisle_card(['title' => 'Mat', 'url' => '/mat', 'price' => ['amount' => '30', 'formatted' => '€30', 'currency' => 'EUR'], 'product' => ['variants' => [['id' => 1, 'price' => '20', 'compare_at' => '30'], ['id' => 2, 'price' => '25']]]]);
 $checks['lowest variant price shows with From']  = str_contains($vp, 'From €15') && !str_contains($vp, 'class="deal');
 $checks['sale shows when the shown variant is on sale'] = str_contains($vs, 'From €20') && str_contains($vs, '33% off');
+$plain = aisle_card(['title' => 'Rug', 'url' => '/rug', 'price' => ['amount' => '40', 'formatted' => '€40', 'currency' => 'EUR']]);
+$checks['no variant prices shows the product price'] = str_contains($plain, '<b>€40</b>');
 $failed = 0;
 foreach ($checks as $what => $ok) {
     if (!$ok) {
