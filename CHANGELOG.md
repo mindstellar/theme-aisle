@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.3.1
+
+### Fixed
+- Cards, the wishlist and alerts show the lowest variant price, "From €15", when variants have their own prices.
+- The star count says ratings, so it matches the reviews listed.
+- Cash on delivery orders say "You pay when it arrives" instead of the bank-transfer text.
+- Cancelling an order hides How to pay and the address at once.
+- Order e-mails sent from the admin use the friendly order link.
+
 ## 1.3.0
 
 ### New
