@@ -44,7 +44,7 @@
     if (typeof window.aisleCart.open === 'function') window.aisleCart.open();
   }
 
-  /* The card after a cancel: the pill says Cancelled and the tracker and actions go. */
+  /* The card after a cancel: the pill says Cancelled and the tracker, address, pay info and actions go. */
   function markCancelled(card) {
     card.setAttribute('data-status', 'cancelled');
     var pill = card.querySelector('[data-status-pill]');
@@ -55,6 +55,7 @@
     }
     var track = card.querySelector('[data-track]');
     if (track) track.remove();
+    card.querySelectorAll('.order-howto, [data-address]').forEach(function (n) { n.remove(); });
     card.querySelectorAll('[data-cancel-order], [data-pay-order]').forEach(function (b) { b.remove(); });
   }
 

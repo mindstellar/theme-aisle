@@ -32,9 +32,21 @@ if (!function_exists('aisle_card')) {
         $variants = $listing['product']['variants'] ?? [];
         $variant  = is_array($variants) && isset($variants[0]) && is_array($variants[0]) ? $variants[0] : [];
 
-        $now     = $price !== null ? (float) ($price['amount'] ?? 0) : 0.0;
-        $was     = isset($variant['compare_at']) && is_numeric($variant['compare_at']) ? (float) $variant['compare_at'] : 0.0;
-        $on_sale = $was > $now && $now > 0 && ($variant['on_sale'] ?? true) !== false;
+        $cur = is_array($price) ? ($price['currency'] ?? null) : null;
+        $now = $price !== null ? (float) ($price['amount'] ?? 0) : 0.0;
+
+        // The card opens at the cheapest variant, as the product page does; "From" shows when the prices differ.
+        $lead  = $variant;
+        $from  = false;
+        $priced = array_filter(is_array($variants) ? $variants : [], static fn ($row): bool => is_array($row) && is_numeric($row['price'] ?? null) && (float) $row['price'] > 0);
+        if ($priced !== []) {
+            usort($priced, static fn (array $a, array $b): int => (float) $a['price'] <=> (float) $b['price']);
+            $lead = $priced[0];
+            $now  = (float) $lead['price'];
+            $from = count($priced) > 1 && (float) end($priced)['price'] > $now;
+        }
+        $was     = isset($lead['compare_at']) && is_numeric($lead['compare_at']) ? (float) $lead['compare_at'] : 0.0;
+        $on_sale = $was > $now && $now > 0 && ($lead['on_sale'] ?? true) !== false;
         $off     = $on_sale ? (int) round((1 - $now / $was) * 100) : 0;
 
         // A low count is for the whole product: every variant on sale is low, and the note adds them up.
@@ -96,9 +108,9 @@ if (!function_exists('aisle_card')) {
     <?php } ?>
     <?php if ($price !== null) { ?>
         <div class="price">
-            <b><?php echo aisle_price($price); ?></b>
+            <b><?php echo $priced !== [] ? '<span class="num">' . osc_esc_html($from ? sprintf(__('From %s', 'aisle'), aisle_money((string) $now, $cur)) : aisle_money((string) $now, $cur)) . '</span>' : aisle_price($price); ?></b>
             <?php if ($on_sale) { ?>
-                <s class="num"><?php echo osc_esc_html(aisle_money((string) $variant['compare_at'], $price['currency'] ?? null)); ?></s>
+                <s class="num"><?php echo osc_esc_html(aisle_money((string) $lead['compare_at'], $cur)); ?></s>
                 <span class="off num"><?php echo osc_esc_html(sprintf(__('%d%% off', 'aisle'), $off)); ?></span>
             <?php } ?>
         </div>

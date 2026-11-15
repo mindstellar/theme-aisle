@@ -3,6 +3,7 @@
         "shop"
     ],
     "order_url": "index.php?page=custom&route=aisle-order&id={id}",
+    "order_url_friendly": "orders/{id}",
     "plugins": {
         "required": {},
         "recommended": {

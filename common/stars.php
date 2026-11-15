@@ -28,7 +28,7 @@ if (!function_exists('aisle_stars_row')) {
 if (!function_exists('aisle_stars')) {
     /**
      * Five stars (filled to the rounded average), the average, and the count.
-     * With $link the count reads "N reviews" and links to the reviews band; without, "(N)".
+     * With $link the count reads "N ratings" and links to the reviews band; without, "(N)".
      * Empty when there is no average.
      */
     function aisle_stars(?float $average, ?int $count = null, bool $link = false): string
@@ -42,7 +42,7 @@ if (!function_exists('aisle_stars')) {
 
         if ($count !== null && $count > 0) {
             if ($link) {
-                $out .= '<a href="#reviews" class="num">' . osc_esc_html(sprintf(_n('%d review', '%d reviews', $count, 'aisle'), $count)) . '</a>';
+                $out .= '<a href="#reviews" class="num">' . osc_esc_html(sprintf(_n('%d rating', '%d ratings', $count, 'aisle'), $count)) . '</a>';
             } else {
                 $out .= '<span class="num">(' . $count . ')</span>';
             }
