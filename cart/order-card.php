@@ -27,6 +27,23 @@ if (!function_exists('aisle_order_card')) {
     }
 
     /**
+     * The thank-you line after checkout: paid, cash on delivery, or waiting for a transfer.
+     *
+     * @param array<string,mixed> $order an order as the API sends it
+     */
+    function aisle_order_thanks(array $order): string
+    {
+        if (aisle_order_paid($order)) {
+            return __('Thank you, your order is placed.', 'aisle');
+        }
+        $gateway = is_array($order['gateway'] ?? null) ? (string) ($order['gateway']['id'] ?? '') : '';
+
+        return $gateway === 'cod'
+            ? __('Thank you, your order is placed. You pay when it arrives.', 'aisle')
+            : __('Thank you, your order is placed. We will start on it when payment arrives.', 'aisle');
+    }
+
+    /**
      * What the cards need beyond the orders: each listing's variants (for Buy again) and the
      * files the signed-in buyer may download. One listings request however many orders there are.
      *
@@ -320,7 +337,7 @@ if (!function_exists('aisle_order_card')) {
                 ? array_filter([(string) ($a['name'] ?? ''), osc_address_text(array_diff_key($a, ['name' => 1, 'phone' => 1]))])
                 : array_filter([(string) ($a['name'] ?? ''), (string) ($a['line1'] ?? ''), (string) ($a['line2'] ?? ''), trim(($a['city'] ?? '') . ' ' . ($a['postcode'] ?? '')), (string) ($a['state'] ?? '')]);
             ?>
-            <p class="oaddr"><?php echo aisle_icon('pin', true); ?><span><?php echo osc_esc_html(implode(', ', $addr)); ?></span></p>
+            <p class="oaddr" data-address><?php echo aisle_icon('pin', true); ?><span><?php echo osc_esc_html(implode(', ', $addr)); ?></span></p>
         <?php } ?>
 
         <?php $payInfo = trim((string) ($order['pay_instructions'] ?? ''));

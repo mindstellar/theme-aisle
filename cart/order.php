@@ -55,7 +55,7 @@ $aisle_order = is_array($aisle_body['data'] ?? null) ? $aisle_body['data'] : nul
                 ?>
                 <h1><?php echo osc_esc_html(sprintf(__('Order %s', 'aisle'), (string) $aisle_order['number'])); ?></h1>
                 <?php if (Params::getParamInt('placed') === 1) { ?>
-                    <p class="acct-thanks" role="status"><?php echo aisle_icon('check', true); ?><span><?php echo osc_esc_html($aisle_paid ? __('Thank you, your order is placed.', 'aisle') : __('Thank you, your order is placed. We will start on it when payment arrives.', 'aisle')); ?></span></p>
+                    <p class="acct-thanks" role="status"><?php echo aisle_icon('check', true); ?><span><?php echo osc_esc_html(aisle_order_thanks($aisle_order)); ?></span></p>
                 <?php } ?>
                 <div data-orders>
                     <?php echo aisle_order_card($aisle_order, aisle_order_extras([$aisle_order])); ?>
