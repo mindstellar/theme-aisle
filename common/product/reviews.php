@@ -85,7 +85,7 @@ if (!function_exists('aisle_review_item')) {
                     <span class="score num"><?php echo osc_esc_html(number_format($aisle_ravg, 1, '.', '')); ?></span>
                     <div>
                         <?php echo aisle_stars_row((int) round($aisle_ravg), number_format($aisle_ravg, 1, '.', '')); ?>
-                        <p class="num"><?php echo osc_esc_html(sprintf(_n('%d review', '%d reviews', $aisle_rcount, 'aisle'), $aisle_rcount)); ?></p>
+                        <p class="num"><?php echo osc_esc_html(sprintf(_n('%d rating', '%d ratings', $aisle_rcount, 'aisle'), $aisle_rcount)); ?></p>
                     </div>
                 </div>
                 <div class="bars num">
