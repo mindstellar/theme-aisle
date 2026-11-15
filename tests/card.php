@@ -27,6 +27,10 @@ function _e(string $text, string $domain = ''): void
 {
     echo $text;
 }
+function aisle_money(string $amount, ?string $currency): string
+{
+    return '€' . $amount;
+}
 require_once AISLE_DIR . '/common/card.php';
 
 $html = aisle_card([
@@ -53,6 +57,10 @@ $mixed = aisle_card(['title' => 'Cap', 'url' => '/cap', 'product' => ['variants'
 $allLow = aisle_card(['title' => 'Cup', 'url' => '/cup', 'product' => ['variants' => [['id' => 3, 'in_stock' => true, 'low_stock' => 3], ['id' => 4, 'in_stock' => true, 'low_stock' => 2]]]]);
 $checks['one low variant of several shows no note'] = !str_contains($mixed, 'Only ');
 $checks['all variants low shows the total']         = str_contains($allLow, 'Only 5 left');
+$vp = aisle_card(['title' => 'Mat', 'url' => '/mat', 'price' => ['amount' => '30', 'formatted' => '€30', 'currency' => 'EUR'], 'product' => ['variants' => [['id' => 1, 'price' => '20', 'compare_at' => '30'], ['id' => 2, 'price' => '15']]]]);
+$vs = aisle_card(['title' => 'Mat', 'url' => '/mat', 'price' => ['amount' => '30', 'formatted' => '€30', 'currency' => 'EUR'], 'product' => ['variants' => [['id' => 1, 'price' => '20', 'compare_at' => '30'], ['id' => 2, 'price' => '25']]]]);
+$checks['lowest variant price shows with From']  = str_contains($vp, 'From €15') && !str_contains($vp, 'class="deal');
+$checks['sale shows when the shown variant is on sale'] = str_contains($vs, 'From €20') && str_contains($vs, '33% off');
 $failed = 0;
 foreach ($checks as $what => $ok) {
     if (!$ok) {
