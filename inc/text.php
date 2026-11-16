@@ -19,11 +19,13 @@ const AISLE_TEXT_KEYS = ['announcement', 'footer_note'];
 
 /**
  * A per-language text: the visitor's language, then the site default, then the old single value, then $default.
+ * In the customiser preview a drafted language wins over the stored one.
  */
 function aisle_text_setting(string $name, string $default = ''): string
 {
     foreach ([osc_current_user_locale(), osc_language()] as $code) {
-        $value = trim((string) osc_get_preference($name . $code, 'aisle'));
+        $value = function_exists('osc_customiser_draft_value') ? osc_customiser_draft_value('aisle', $name, $code) : null;
+        $value = trim((string) ($value ?? osc_get_preference($name . $code, 'aisle')));
         if ($value !== '') {
             return $value;
         }
@@ -58,4 +60,7 @@ function aisle_migrate_text(): void
     }
 }
 
-osc_add_hook('init', 'aisle_migrate_text', 1);
+// Admin requests only: until then the front end reads the old value through aisle_text_setting().
+if (defined('OC_ADMIN') && OC_ADMIN === true) {
+    osc_add_hook('init', 'aisle_migrate_text', 1);
+}

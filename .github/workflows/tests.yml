@@ -50,6 +50,9 @@ jobs:
         run: php tests/seed-home-sections.php
 
       - name: Per-language text
+        env:
+          OSC_CORE: ${{ github.workspace }}/core/
+          DRIFT_DB_PORT: '33061'
         run: php tests/text-per-language.php
 
       - name: Link checks
