@@ -438,7 +438,7 @@ function aisle_customiser_support(): void
         ],
         'settings'  => [
             'page'   => 'aisle',
-            'fields' => ['brand', 'scheme', 'font', 'logo', 'logo_dark', 'announcement', 'footer_note'],
+            'fields' => ['brand', 'scheme', 'font', 'logo', 'logo_dark'],
         ],
         'swatches'  => ['brand' => defined('OC_ADMIN') && OC_ADMIN === true ? aisle_brand_swatches() : []],
         'live'      => ['brand' => 'data-brand', 'scheme' => 'data-theme', 'font' => 'data-font'],

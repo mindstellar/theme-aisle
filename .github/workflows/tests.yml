@@ -49,6 +49,9 @@ jobs:
           DRIFT_DB_PORT: '33061'
         run: php tests/seed-home-sections.php
 
+      - name: Per-language text
+        run: php tests/text-per-language.php
+
       - name: Link checks
         run: php tests/safe-url.php
 
