@@ -23,16 +23,9 @@ const AISLE_TEXT_KEYS = ['announcement', 'footer_note'];
  */
 function aisle_text_setting(string $name, string $default = ''): string
 {
-    foreach ([osc_current_user_locale(), osc_language()] as $code) {
-        $value = function_exists('osc_customiser_draft_value') ? osc_customiser_draft_value('aisle', $name, $code) : null;
-        $value = trim((string) ($value ?? osc_get_preference($name . $code, 'aisle')));
-        if ($value !== '') {
-            return $value;
-        }
-    }
-    $old = trim((string) osc_get_preference($name, 'aisle'));
+    $value = trim(osc_settings_text_value($name, 'aisle', osc_current_user_locale()));
 
-    return $old !== '' ? $old : $default;
+    return $value !== '' ? $value : $default;
 }
 
 /**
