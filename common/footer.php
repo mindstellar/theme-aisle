@@ -10,11 +10,11 @@
 
 declare(strict_types=1);
 
-$aisle_site  = (string) osc_get_preference('pageTitle');
+$aisle_site  = (string) osc_page_title();
 $aisle_shop  = array_slice(aisle_menu('main'), 0, 7);
 $aisle_pages = aisle_menu('footer');
 $aisle_note  = aisle_text_setting('footer_note', __('Everyday things for your home, kitchen and wardrobe, packed with care and sent to your door.', 'aisle'));
-$aisle_pay   = array_values(array_filter(array_map('trim', explode(',', (string) aisle_setting('payment_methods', ''))), static fn (string $m): bool => $m !== ''));
+$aisle_pay   = array_values(array_filter(array_map('trim', explode(',', aisle_text_setting('payment_methods'))), static fn (string $m): bool => $m !== ''));
 ?>
 </main>
 <footer class="foot" id="foot">

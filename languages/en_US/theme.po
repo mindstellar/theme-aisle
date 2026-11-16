@@ -526,7 +526,7 @@ msgstr "From %s"
 msgid "Full name"
 msgstr "Full name"
 
-#: functions.php:815
+#: functions.php:816
 msgid "Full width"
 msgstr "Full width"
 
@@ -1357,7 +1357,7 @@ msgstr "The first deal"
 msgid "The fonts are served from your site. System fonts load no font file."
 msgstr "The fonts are served from your site. System fonts load no font file."
 
-#: functions.php:816
+#: functions.php:817
 msgid "The page uses the whole width of the content area."
 msgstr "The page uses the whole width of the content area."
 

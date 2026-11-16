@@ -15,7 +15,7 @@ if (!defined('ABS_PATH')) {
 }
 
 /** The owner-typed texts that hold one value per language, stored as the key plus the locale code. */
-const AISLE_TEXT_KEYS = ['announcement', 'footer_note'];
+const AISLE_TEXT_KEYS = ['announcement', 'footer_note', 'payment_methods'];
 
 /**
  * A per-language text: the visitor's language, then the site default, then the old single value, then $default.

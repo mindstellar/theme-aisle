@@ -9,7 +9,7 @@
  */
 
 /**
- * The announcement bar and footer note are one value per language, saved by core's settings page
+ * The announcement bar, footer note and ways to pay are one value per language, saved by core's settings page
  * and read back per visitor language; the old single value moves to every language on an admin
  * request only; the customiser edits them per language and its preview shows the drafted language.
  *
@@ -150,6 +150,34 @@ pin('...and the settings page reads it per language', ['en_US' => 'Old line', 'h
 $run = static fn (string $where): string => (string) shell_exec(escapeshellarg(PHP_BINARY) . ' ' . escapeshellarg(__FILE__) . ' --hook ' . $where);
 pin('the move is hooked on admin requests', 'hooked', $run('admin'));
 pin('...and not on the front end', 'none', $run('front'));
+
+harness_section('ways to pay and the site name');
+
+$_POST = [
+    'scheme' => 'system', 'brand' => 'raspberry', 'font' => 'bricolage-figtree', 'logo_height' => '32',
+    'payment_methodsen_US' => 'Visa, Cash on delivery', 'payment_methodshi_IN' => 'Visa, Nakad',
+];
+Params::init();
+pin('the save is accepted', [], osc_settings_save('aisle')['errors']);
+osc_reset_preferences();
+pin('ways to pay are stored per language', ['Visa, Cash on delivery', 'Visa, Nakad'], [$stored('payment_methodsen_US'), $stored('payment_methodshi_IN')]);
+pin('a Hindi visitor reads the Hindi ways to pay', 'Visa, Nakad', $as('hi_IN', static fn () => aisle_text_setting('payment_methods')));
+Preference::getInstance()->replace('payment_methods', 'UPI', 'aisle', 'STRING');
+osc_set_preference('payment_methodshi_IN', '', 'aisle');
+osc_reset_preferences();
+aisle_migrate_text();
+pin('the move copies the old ways to pay to an empty language only', ['Visa, Cash on delivery', 'UPI', null], [$stored('payment_methodsen_US'), $stored('payment_methodshi_IN'), $stored('payment_methods')]);
+
+foreach (['aisle_setting', 'aisle_image_url', 'aisle_logo'] as $fn) {
+    aisle_test_load_function($root . '/functions.php', $fn);
+}
+Preference::getInstance()->replace('pageTitleen_US', 'Corner Shop', 'osclass', 'STRING');
+Preference::getInstance()->replace('pageTitlehi_IN', 'Nukkad Dukaan', 'osclass', 'STRING');
+osc_reset_preferences();
+// This test runs as an admin request, where the screen's language is the admin's.
+Session::getInstance()->_setEphemeral('adminLocale', 'hi_IN');
+check('the logo shows the site name in the screen\'s language', str_contains(aisle_logo(), 'Nukkad Dukaan'));
+Session::getInstance()->_dropEphemeral('adminLocale');
 
 harness_section('the customiser');
 

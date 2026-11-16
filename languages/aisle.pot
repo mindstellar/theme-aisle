@@ -524,7 +524,7 @@ msgstr ""
 msgid "Full name"
 msgstr ""
 
-#: functions.php:815
+#: functions.php:816
 msgid "Full width"
 msgstr ""
 
@@ -1351,7 +1351,7 @@ msgstr ""
 msgid "The fonts are served from your site. System fonts load no font file."
 msgstr ""
 
-#: functions.php:816
+#: functions.php:817
 msgid "The page uses the whole width of the content area."
 msgstr ""
 
