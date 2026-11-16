@@ -12,6 +12,7 @@
  * The announcement bar, footer note and ways to pay are one value per language, saved by core's settings page
  * and read back per visitor language; the old single value moves to every language on an admin
  * request only; the customiser edits them per language and its preview shows the drafted language.
+ * The home sections' texts are per language too, read through core's widget render.
  *
  * DB-backed, on a scratch database through the core's test helpers.
  * Usage:  SHOPCLASS_CORE=/path/to/shopclass/ php tests/text-per-language.php
@@ -44,7 +45,7 @@ foreach (['osc_base_url' => 'return "http://localhost/";', 'osc_plugins_path' =>
         eval('function ' . $fn . '(...$args) { ' . $body . ' }');
     }
 }
-foreach (['__' => 'return $text;', '_m' => 'return $text;'] as $fn => $body) {
+foreach (['__' => 'return $text;', '_m' => 'return $text;', '_e' => 'echo $text;'] as $fn => $body) {
     if (!function_exists($fn)) {
         eval('function ' . $fn . '($text, $domain = "") { ' . $body . ' }');
     }
@@ -192,6 +193,51 @@ if ($rf === null || $rf->getNumberOfParameters() < 3) {
     pin('the preview shows the drafted language', 'Draft line', $as('hi_IN', static fn () => aisle_text_setting('announcement')));
     pin('...and the stored text for a language not drafted', 'Old line', $as('en_US', static fn () => aisle_text_setting('announcement')));
     unset($GLOBALS['osc_customiser_preview']);
+}
+
+harness_section('home sections');
+
+if (!method_exists(\mindstellar\widgets\WidgetConfig::class, 'locales')) {
+    echo "skipped: this core's sections have no translated fields\n";
+} else {
+    aisle_register_sections();
+    if (!function_exists('aisle_is_preview')) {
+        aisle_test_load_function($root . '/functions.php', 'aisle_is_preview');
+    }
+    $translated = [];
+    $single     = [];
+    foreach (osc_widget_types() as $id => $type) {
+        if (!str_starts_with($id, 'aisle.')) {
+            continue;
+        }
+        foreach ($type['fields'] as $field) {
+            if (\mindstellar\widgets\WidgetConfig::locales($field) !== []) {
+                $translated[] = $id . ':' . $field['name'];
+            } elseif (in_array($field['type'], ['text', 'textarea'], true)) {
+                $single[] = $id . ':' . $field['name'];
+            }
+        }
+    }
+    pin('33 section texts are set per language', 33, count($translated));
+    pin('...links and the score stay one value', ['aisle.hero:cta_url', 'aisle.hero:cta2_url', 'aisle.banner:button_url', 'aisle.reviews:score'], $single);
+
+    $type   = osc_widget_types()['aisle.newsletter'];
+    $config = \mindstellar\widgets\WidgetConfig::fromPosted($type, ['headingen_US' => 'Join us', 'headinghi_IN' => 'Judiye', 'texthi_IN' => 'Har hafte'], []);
+    $render = static function (array $config): string {
+        ob_start();
+        osc_render_widget(['pk_i_id' => 1, 's_type' => 'aisle.newsletter', 's_config' => json_encode($config), 's_content' => '']);
+
+        return (string) ob_get_clean();
+    };
+    // This test runs as an admin request, where the screen's language is the admin's.
+    Session::getInstance()->_setEphemeral('adminLocale', 'hi_IN');
+    $hindi = $render($config);
+    check('a Hindi visitor reads the Hindi heading and text', str_contains($hindi, 'Judiye') && str_contains($hindi, 'Har hafte'));
+    Session::getInstance()->_setEphemeral('adminLocale', 'en_US');
+    check('an English visitor reads the English heading', str_contains($render($config), 'Join us'));
+    Session::getInstance()->_setEphemeral('adminLocale', 'hi_IN');
+    check('a section saved before reads its single heading in Hindi', str_contains($render(['heading' => 'Old heading']), 'Old heading'));
+    Session::getInstance()->_dropEphemeral('adminLocale');
 }
 
 exit(harness_result());
