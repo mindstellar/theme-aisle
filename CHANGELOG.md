@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.4.0
+
+### New
+- Home section texts, ways to pay, the announcement and the footer note are set per language; the old single values move to every language.
+- The logo, footer, menu and maintenance page use the site title of the visitor's language.
+
 ## 1.3.1
 
 ### Fixed
