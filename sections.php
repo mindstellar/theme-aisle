@@ -240,12 +240,12 @@ function aisle_register_sections(): void
         'locations'   => ['home'],
         'render'      => $render('hero'),
         'fields'      => [
-            ['name' => 'title', 'label' => __('Heading (put *stars* around the word to colour)', 'aisle'), 'type' => 'text'],
-            ['name' => 'text', 'label' => __('Text', 'aisle'), 'type' => 'textarea'],
+            ['name' => 'title', 'label' => __('Heading (put *stars* around the word to colour)', 'aisle'), 'type' => 'text', 'translate' => true],
+            ['name' => 'text', 'label' => __('Text', 'aisle'), 'type' => 'textarea', 'translate' => true],
             ['name' => 'image', 'label' => __('Photo', 'aisle'), 'type' => 'image'],
-            ['name' => 'cta_label', 'label' => __('Button label', 'aisle'), 'type' => 'text'],
+            ['name' => 'cta_label', 'label' => __('Button label', 'aisle'), 'type' => 'text', 'translate' => true],
             ['name' => 'cta_url', 'label' => __('Button link', 'aisle'), 'type' => 'text'],
-            ['name' => 'cta2_label', 'label' => __('Second button label', 'aisle'), 'type' => 'text'],
+            ['name' => 'cta2_label', 'label' => __('Second button label', 'aisle'), 'type' => 'text', 'translate' => true],
             ['name' => 'cta2_url', 'label' => __('Second button link', 'aisle'), 'type' => 'text'],
             [
                 'name'    => 'tag',
@@ -259,9 +259,9 @@ function aisle_register_sections(): void
                 ],
             ],
             ['name' => 'tag_listing', 'label' => $shop ? __('Product number for the card (0 shows the first deal)', 'aisle') : __('Listing number for the card (0 shows the first deal)', 'aisle'), 'type' => 'number'],
-            ['name' => 'perk_1', 'label' => __('Short promise 1', 'aisle'), 'type' => 'text'],
-            ['name' => 'perk_2', 'label' => __('Short promise 2', 'aisle'), 'type' => 'text'],
-            ['name' => 'perk_3', 'label' => __('Short promise 3', 'aisle'), 'type' => 'text'],
+            ['name' => 'perk_1', 'label' => __('Short promise 1', 'aisle'), 'type' => 'text', 'translate' => true],
+            ['name' => 'perk_2', 'label' => __('Short promise 2', 'aisle'), 'type' => 'text', 'translate' => true],
+            ['name' => 'perk_3', 'label' => __('Short promise 3', 'aisle'), 'type' => 'text', 'translate' => true],
         ],
     ]);
 
@@ -272,7 +272,7 @@ function aisle_register_sections(): void
         'locations'   => ['home'],
         'render'      => $render('categories'),
         'fields'      => [
-            ['name' => 'title', 'label' => __('Heading', 'aisle'), 'type' => 'text'],
+            ['name' => 'title', 'label' => __('Heading', 'aisle'), 'type' => 'text', 'translate' => true],
             ['name' => 'count', 'label' => __('How many (3 to 12)', 'aisle'), 'type' => 'number', 'default' => 7],
         ],
     ]);
@@ -284,7 +284,7 @@ function aisle_register_sections(): void
         'locations'   => ['home'],
         'render'      => $render('products'),
         'fields'      => [
-            ['name' => 'title', 'label' => __('Heading', 'aisle'), 'type' => 'text'],
+            ['name' => 'title', 'label' => __('Heading', 'aisle'), 'type' => 'text', 'translate' => true],
             [
                 'name'    => 'source',
                 'label'   => __('Show', 'aisle'),
@@ -305,14 +305,14 @@ function aisle_register_sections(): void
                 'default' => 'grid',
                 'options' => ['grid' => __('Grid', 'aisle'), 'rail' => __('Scrolling row', 'aisle')],
             ],
-            ['name' => 'link_label', 'label' => __('Link text', 'aisle'), 'type' => 'text'],
+            ['name' => 'link_label', 'label' => __('Link text', 'aisle'), 'type' => 'text', 'translate' => true],
         ],
     ]);
 
     $promise = [];
     foreach ([1 => 'truck', 2 => 'return', 3 => 'cash', 4 => 'shield'] as $n => $icon) {
-        $promise[] = ['name' => $n . '_title', 'label' => sprintf(__('Promise %d: title', 'aisle'), $n), 'type' => 'text'];
-        $promise[] = ['name' => $n . '_text', 'label' => sprintf(__('Promise %d: text', 'aisle'), $n), 'type' => 'text'];
+        $promise[] = ['name' => $n . '_title', 'label' => sprintf(__('Promise %d: title', 'aisle'), $n), 'type' => 'text', 'translate' => true];
+        $promise[] = ['name' => $n . '_text', 'label' => sprintf(__('Promise %d: text', 'aisle'), $n), 'type' => 'text', 'translate' => true];
         $promise[] = [
             'name'    => $n . '_icon',
             'label'   => sprintf(__('Promise %d: icon', 'aisle'), $n),
@@ -338,9 +338,9 @@ function aisle_register_sections(): void
         'render'      => $render('banner'),
         'fields'      => [
             ['name' => 'image', 'label' => __('Photo', 'aisle'), 'type' => 'image'],
-            ['name' => 'heading', 'label' => __('Heading', 'aisle'), 'type' => 'text'],
-            ['name' => 'text', 'label' => __('Text', 'aisle'), 'type' => 'text'],
-            ['name' => 'button_label', 'label' => __('Button label', 'aisle'), 'type' => 'text'],
+            ['name' => 'heading', 'label' => __('Heading', 'aisle'), 'type' => 'text', 'translate' => true],
+            ['name' => 'text', 'label' => __('Text', 'aisle'), 'type' => 'text', 'translate' => true],
+            ['name' => 'button_label', 'label' => __('Button label', 'aisle'), 'type' => 'text', 'translate' => true],
             ['name' => 'button_url', 'label' => __('Button link', 'aisle'), 'type' => 'text'],
             [
                 'name'    => 'align',
@@ -360,18 +360,18 @@ function aisle_register_sections(): void
         'render'      => $render('featured'),
         'fields'      => [
             ['name' => 'listing', 'label' => $shop ? __('Product number', 'aisle') : __('Listing number', 'aisle'), 'type' => 'number'],
-            ['name' => 'heading', 'label' => __('Heading', 'aisle'), 'type' => 'text'],
-            ['name' => 'text', 'label' => __('Text', 'aisle'), 'type' => 'textarea'],
+            ['name' => 'heading', 'label' => __('Heading', 'aisle'), 'type' => 'text', 'translate' => true],
+            ['name' => 'text', 'label' => __('Text', 'aisle'), 'type' => 'textarea', 'translate' => true],
         ],
     ]);
 
     $reviews = [
         ['name' => 'score', 'label' => __('Score, for example 4.7', 'aisle'), 'type' => 'text'],
-        ['name' => 'score_line', 'label' => __('Line under the score', 'aisle'), 'type' => 'text'],
+        ['name' => 'score_line', 'label' => __('Line under the score', 'aisle'), 'type' => 'text', 'translate' => true],
     ];
     foreach ([1, 2, 3] as $n) {
-        $reviews[] = ['name' => $n . '_text', 'label' => sprintf(__('Quote %d: text', 'aisle'), $n), 'type' => 'textarea'];
-        $reviews[] = ['name' => $n . '_name', 'label' => sprintf(__('Quote %d: name and city', 'aisle'), $n), 'type' => 'text'];
+        $reviews[] = ['name' => $n . '_text', 'label' => sprintf(__('Quote %d: text', 'aisle'), $n), 'type' => 'textarea', 'translate' => true];
+        $reviews[] = ['name' => $n . '_name', 'label' => sprintf(__('Quote %d: name and city', 'aisle'), $n), 'type' => 'text', 'translate' => true];
         $reviews[] = ['name' => $n . '_stars', 'label' => sprintf(__('Quote %d: stars (1 to 5)', 'aisle'), $n), 'type' => 'number', 'default' => 5];
     }
     osc_register_widget('aisle.reviews', [
@@ -390,9 +390,9 @@ function aisle_register_sections(): void
         'locations'   => ['home'],
         'render'      => $render('newsletter'),
         'fields'      => [
-            ['name' => 'heading', 'label' => __('Heading', 'aisle'), 'type' => 'text'],
-            ['name' => 'text', 'label' => __('Text', 'aisle'), 'type' => 'text'],
-            ['name' => 'button_label', 'label' => __('Button label', 'aisle'), 'type' => 'text'],
+            ['name' => 'heading', 'label' => __('Heading', 'aisle'), 'type' => 'text', 'translate' => true],
+            ['name' => 'text', 'label' => __('Text', 'aisle'), 'type' => 'text', 'translate' => true],
+            ['name' => 'button_label', 'label' => __('Button label', 'aisle'), 'type' => 'text', 'translate' => true],
         ],
     ]);
 }

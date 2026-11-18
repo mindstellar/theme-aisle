@@ -10,7 +10,7 @@
 
 declare(strict_types=1);
 
-$aisle_site   = (string) osc_get_preference('pageTitle');
+$aisle_site   = (string) osc_page_title();
 $aisle_note   = function_exists('osc_sanitize_maintenance_message') ? osc_sanitize_maintenance_message(osc_get_preference('maintenance_message')) : '';
 $aisle_scheme = function_exists('aisle_scheme') ? aisle_scheme() : '';
 $aisle_brand  = function_exists('aisle_brand') ? aisle_brand() : '';

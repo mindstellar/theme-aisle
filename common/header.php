@@ -11,7 +11,7 @@
 declare(strict_types=1);
 
 $aisle_brand  = aisle_brand();
-$aisle_note   = trim((string) aisle_setting('announcement', ''));
+$aisle_note   = aisle_text_setting('announcement');
 $aisle_main   = aisle_menu('main');
 $aisle_query  = osc_is_search_page() ? (string) osc_search_pattern() : '';
 $aisle_account = osc_is_web_user_logged_in() ? osc_user_dashboard_url() : osc_user_login_url();

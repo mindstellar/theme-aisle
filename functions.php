@@ -56,6 +56,7 @@ osc_add_theme_support('core-styles', false);
 require_once AISLE_DIR . '/common/card.php';
 require_once AISLE_DIR . '/cart/module.php';
 require_once AISLE_DIR . '/sections.php';
+require_once AISLE_DIR . '/inc/text.php';
 
 if (!OC_ADMIN) {
     osc_add_filter('scripts_defer', static fn () => true);
@@ -564,7 +565,7 @@ function aisle_image_url(string $key, string $variant = 'preview'): string
  */
 function aisle_logo(): string
 {
-    $site = (string) osc_get_preference('pageTitle');
+    $site = (string) osc_page_title();
     $home = osc_esc_html(osc_base_url());
     $img  = aisle_image_url('logo');
     if ($img === '') {
@@ -748,7 +749,8 @@ function aisle_register_settings(): void
             'announcement',
             __('Announcement bar', 'aisle'),
             __('One short line above the header. Leave empty to hide the bar.', 'aisle')
-        );
+        )
+            ->translate();
 
     $form->group(__('Catalogue', 'aisle'))
         ->textarea(
@@ -759,7 +761,9 @@ function aisle_register_settings(): void
 
     $form->group(__('Footer', 'aisle'))
         ->text('footer_note', __('Footer note', 'aisle'), __('A short line about the shop, under the logo.', 'aisle'))
+            ->translate()
         ->text('payment_methods', __('Ways to pay', 'aisle'), __('Shown as small tags under the footer note, separated by commas. Example: Visa, Mastercard, PayPal', 'aisle'))
+            ->translate()
         ->register();
 }
 osc_add_hook('init', 'aisle_register_settings');

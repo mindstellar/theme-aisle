@@ -73,7 +73,7 @@ if (!function_exists('aisle_seo_context')) {
 }
 
 [$aisle_for, $aisle_seo_id, $aisle_seo_q] = aisle_seo_context();
-$aisle_site = (string) osc_get_preference('pageTitle');
+$aisle_site = (string) osc_page_title();
 $aisle_seo  = null;
 if ($aisle_for !== '') {
     $aisle_seo = aisle_api('seo', array_filter(['for' => $aisle_for, 'id' => $aisle_seo_id, 'q' => $aisle_seo_q], static fn ($v): bool => $v !== ''));

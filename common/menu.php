@@ -45,7 +45,7 @@ $aisle_menu_i18n  = [
     <div class="menu-scrim" data-menu-close></div>
     <div class="menu-panel" role="dialog" aria-modal="true" aria-label="<?php echo osc_esc_html(__('Menu', 'aisle')); ?>">
         <div class="menu-head">
-            <span><?php echo osc_esc_html((string) osc_get_preference('pageTitle')); ?></span>
+            <span><?php echo osc_esc_html((string) osc_page_title()); ?></span>
             <button class="iconbtn" type="button" data-menu-close aria-label="<?php echo osc_esc_html(__('Close', 'aisle')); ?>"><?php echo aisle_icon('x'); ?></button>
         </div>
         <a class="sale" href="<?php echo osc_esc_html(osc_search_url(['sale' => 1])); ?>"><?php _e('Deals', 'aisle'); ?></a>

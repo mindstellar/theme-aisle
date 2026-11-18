@@ -93,7 +93,7 @@ msgstr "A product I choose"
 msgid "A score and up to three customer quotes."
 msgstr "A score and up to three customer quotes."
 
-#: functions.php:761
+#: functions.php:763
 msgid "A short line about the shop, under the logo."
 msgstr "A short line about the shop, under the logo."
 
@@ -127,7 +127,7 @@ msgstr "Added"
 msgid "Address"
 msgstr "Address"
 
-#: functions.php:700
+#: functions.php:701
 msgid "Aisle"
 msgstr "Aisle"
 
@@ -139,7 +139,7 @@ msgstr "All"
 msgid "All products"
 msgstr "All products"
 
-#: cart/order.php:63
+#: cart/order.php:61
 msgid "All your orders"
 msgstr "All your orders"
 
@@ -147,7 +147,7 @@ msgstr "All your orders"
 msgid "Already set"
 msgstr "Already set"
 
-#: functions.php:749
+#: functions.php:750
 msgid "Announcement bar"
 msgstr "Announcement bar"
 
@@ -188,11 +188,11 @@ msgstr "Back to the shop"
 msgid "Banner"
 msgstr "Banner"
 
-#: functions.php:680
+#: functions.php:681
 msgid "Below the footer links."
 msgstr "Below the footer links."
 
-#: functions.php:716
+#: functions.php:717
 msgid "Brand colour"
 msgstr "Brand colour"
 
@@ -202,7 +202,7 @@ msgstr "Brand colour"
 msgid "Breadcrumb"
 msgstr "Breadcrumb"
 
-#: functions.php:730
+#: functions.php:731
 msgid "Bricolage + Figtree (default)"
 msgstr "Bricolage + Figtree (default)"
 
@@ -246,7 +246,7 @@ msgstr "Cash"
 msgid "Cash on delivery available"
 msgstr "Cash on delivery available"
 
-#: functions.php:753
+#: functions.php:755
 msgid "Catalogue"
 msgstr "Catalogue"
 
@@ -327,7 +327,7 @@ msgstr "Close filters"
 
 #: common/header.php:52
 #: common/menu.php:18
-#: functions.php:705
+#: functions.php:706
 msgid "Colour scheme"
 msgstr "Colour scheme"
 
@@ -378,7 +378,7 @@ msgid "Credit note %1$s, %2$s"
 msgstr "Credit note %1$s, %2$s"
 
 #: common/menu.php:21
-#: functions.php:709
+#: functions.php:710
 msgid "Dark"
 msgstr "Dark"
 
@@ -478,33 +478,33 @@ msgstr "File"
 msgid "Filters"
 msgstr "Filters"
 
-#: functions.php:756
+#: functions.php:758
 msgid "Filters by option"
 msgstr "Filters by option"
 
-#: functions.php:707
+#: functions.php:708
 msgid "Follow the visitor's device"
 msgstr "Follow the visitor's device"
 
-#: functions.php:728
+#: functions.php:729
 msgid "Fonts"
 msgstr "Fonts"
 
-#: functions.php:679
-#: functions.php:760
+#: functions.php:680
+#: functions.php:762
 #: sections.php:448
 msgid "Footer"
 msgstr "Footer"
 
-#: functions.php:761
+#: functions.php:763
 msgid "Footer note"
 msgstr "Footer note"
 
-#: functions.php:720
+#: functions.php:721
 msgid "Forest"
 msgstr "Forest"
 
-#: functions.php:731
+#: functions.php:732
 msgid "Fraunces + Inter"
 msgstr "Fraunces + Inter"
 
@@ -526,7 +526,7 @@ msgstr "From %s"
 msgid "Full name"
 msgstr "Full name"
 
-#: functions.php:812
+#: functions.php:816
 msgid "Full width"
 msgstr "Full width"
 
@@ -576,7 +576,7 @@ msgstr "Home"
 msgid "Home page"
 msgstr "Home page"
 
-#: functions.php:683
+#: functions.php:684
 msgid "Home page sections"
 msgstr "Home page sections"
 
@@ -626,7 +626,7 @@ msgstr "Keep shopping"
 msgid "Language"
 msgstr "Language"
 
-#: functions.php:744
+#: functions.php:745
 msgid "Large"
 msgstr "Large"
 
@@ -644,7 +644,7 @@ msgid "Less"
 msgstr "Less"
 
 #: common/menu.php:20
-#: functions.php:708
+#: functions.php:709
 msgid "Light"
 msgstr "Light"
 
@@ -668,23 +668,23 @@ msgstr "Listing number"
 msgid "Listing number for the card (0 shows the first deal)"
 msgstr "Listing number for the card (0 shows the first deal)"
 
-#: functions.php:737
+#: functions.php:738
 msgid "Logo"
 msgstr "Logo"
 
-#: functions.php:743
+#: functions.php:744
 msgid "Logo height"
 msgstr "Logo height"
 
-#: functions.php:739
+#: functions.php:740
 msgid "Logo on dark"
 msgstr "Logo on dark"
 
-#: functions.php:702
+#: functions.php:703
 msgid "Look"
 msgstr "Look"
 
-#: functions.php:721
+#: functions.php:722
 msgid "Marigold"
 msgstr "Marigold"
 
@@ -692,7 +692,7 @@ msgstr "Marigold"
 msgid "Max"
 msgstr "Max"
 
-#: functions.php:744
+#: functions.php:745
 msgid "Medium"
 msgstr "Medium"
 
@@ -766,7 +766,7 @@ msgstr "Nothing saved yet."
 msgid "Notify me when it is back"
 msgstr "Notify me when it is back"
 
-#: functions.php:719
+#: functions.php:720
 msgid "Ocean"
 msgstr "Ocean"
 
@@ -795,7 +795,7 @@ msgstr "On the way"
 msgid "One category"
 msgstr "One category"
 
-#: functions.php:757
+#: functions.php:759
 msgid ""
 "One line per option, with its values after a colon. Example: Colour: "
 "Sunflower, Cherry, Navy"
@@ -807,7 +807,7 @@ msgstr ""
 msgid "One product with a heading and a few words beside it."
 msgstr "One product with a heading and a few words beside it."
 
-#: functions.php:750
+#: functions.php:751
 msgid "One short line above the header. Leave empty to hide the bar."
 msgstr "One short line above the header. Leave empty to hide the bar."
 
@@ -824,7 +824,7 @@ msgstr "Only %d left"
 msgid "Only %d left in %s"
 msgstr "Only %d left in %s"
 
-#: functions.php:739
+#: functions.php:740
 msgid "Optional. Used when the dark scheme is on."
 msgstr "Optional. Used when the dark scheme is on."
 
@@ -832,7 +832,7 @@ msgstr "Optional. Used when the dark scheme is on."
 msgid "Order"
 msgstr "Order"
 
-#: cart/order.php:56
+#: cart/order.php:54
 msgid "Order %s"
 msgstr "Order %s"
 
@@ -934,7 +934,7 @@ msgstr "Placed"
 msgid "Placing your order…"
 msgstr "Placing your order…"
 
-#: functions.php:722
+#: functions.php:723
 msgid "Plum"
 msgstr "Plum"
 
@@ -1022,7 +1022,7 @@ msgstr "Quote %d: stars (1 to 5)"
 msgid "Quote %d: text"
 msgstr "Quote %d: text"
 
-#: functions.php:718
+#: functions.php:719
 msgid "Raspberry"
 msgstr "Raspberry"
 
@@ -1198,7 +1198,7 @@ msgstr "Show products"
 msgid "Showing %1$d of %2$d"
 msgstr "Showing %1$d of %2$d"
 
-#: functions.php:762
+#: functions.php:765
 msgid ""
 "Shown as small tags under the footer note, separated by commas. Example: "
 "Visa, Mastercard, PayPal"
@@ -1206,7 +1206,7 @@ msgstr ""
 "Shown as small tags under the footer note, separated by commas. Example: "
 "Visa, Mastercard, PayPal"
 
-#: functions.php:737
+#: functions.php:738
 msgid "Shown in the header and footer. Without it the shop name is used."
 msgstr "Shown in the header and footer. Without it the shop name is used."
 
@@ -1236,7 +1236,7 @@ msgstr "Skip to content"
 msgid "SKU %s"
 msgstr "SKU %s"
 
-#: functions.php:744
+#: functions.php:745
 msgid "Small"
 msgstr "Small"
 
@@ -1286,7 +1286,7 @@ msgstr "Subtotal"
 msgid "System"
 msgstr "System"
 
-#: functions.php:732
+#: functions.php:733
 msgid "System fonts"
 msgstr "System fonts"
 
@@ -1353,11 +1353,11 @@ msgstr "That payment method is not available. Pick another."
 msgid "The first deal"
 msgstr "The first deal"
 
-#: functions.php:734
+#: functions.php:735
 msgid "The fonts are served from your site. System fonts load no font file."
 msgstr "The fonts are served from your site. System fonts load no font file."
 
-#: functions.php:813
+#: functions.php:817
 msgid "The page uses the whole width of the content area."
 msgstr "The page uses the whole width of the content area."
 
@@ -1373,7 +1373,7 @@ msgstr ""
 "The product may have sold out or moved, or the link may be mistyped. Try a "
 "search or pick a category."
 
-#: functions.php:684
+#: functions.php:685
 msgid "The sections of the home page, top to bottom."
 msgstr "The sections of the home page, top to bottom."
 
@@ -1436,7 +1436,7 @@ msgstr "Track parcel"
 #: 404.php:26
 #: cart/checkout.php:83
 #: common/footer.php:73
-#: functions.php:178
+#: functions.php:179
 msgid "Try again"
 msgstr "Try again"
 
@@ -1444,7 +1444,7 @@ msgstr "Try again"
 msgid "Up to four short promises with an icon, such as free delivery."
 msgstr "Up to four short promises with an icon, such as free delivery."
 
-#: functions.php:711
+#: functions.php:712
 msgid "Visitors can still switch it with the button in the header."
 msgstr "Visitors can still switch it with the button in the header."
 
@@ -1453,7 +1453,7 @@ msgid "Waiting"
 msgstr "Waiting"
 
 #: common/footer.php:29
-#: functions.php:762
+#: functions.php:765
 msgid "Ways to pay"
 msgstr "Ways to pay"
 
@@ -1465,7 +1465,7 @@ msgstr "We could not cancel this order. It may have been paid already."
 msgid "We could not find that order in your account."
 msgstr "We could not find that order in your account."
 
-#: functions.php:178
+#: functions.php:179
 msgid "We could not load this just now."
 msgstr "We could not load this just now."
 
@@ -1503,7 +1503,7 @@ msgstr "We will e-mail you when it is back"
 
 #: common/header.php:53
 #: common/menu.php:59
-#: functions.php:114
+#: functions.php:115
 #: wishlist.php:59
 msgid "Wishlist"
 msgstr "Wishlist"
