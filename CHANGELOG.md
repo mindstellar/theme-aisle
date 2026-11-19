@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+### Changed
+- Needs Shopclass 7.1.0.beta11 or newer, for its `listing_row_price` filter.
+
 ### Fixed
 - The price-drop alert on the Alerts page shows the lowest variant price, "From €15", like the cards.
 
