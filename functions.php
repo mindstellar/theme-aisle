@@ -118,6 +118,20 @@ if (!OC_ADMIN) {
     });
 }
 
+if (!OC_ADMIN) {
+    // The price-drop alert row shows the price the cards do, "From €15" for differing variant prices.
+    osc_add_filter('listing_row_price', static function ($text, $item = [], $context = '') {
+        if ($context !== 'alert' || !is_array($item) || (int) ($item['pk_i_id'] ?? 0) < 1) {
+            return $text;
+        }
+        $body = aisle_api('listings', ['ids' => (int) $item['pk_i_id'], 'limit' => 1, 'fields' => AISLE_CARD_FIELDS]);
+        $row  = $body['data'][0] ?? null;
+        $line = is_array($row) ? aisle_listing_price_text($row) : '';
+
+        return $line !== '' ? $line : $text;
+    }, 5, 3);
+}
+
 /**
  * Read one API route as the visitor. Returns the body on 200, otherwise null; the first
  * failure of a request is written to the error log.

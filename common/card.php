@@ -12,6 +12,53 @@ declare(strict_types=1);
 
 if (!function_exists('aisle_card')) {
     /**
+     * What a listing sells for: the cheapest variant that has its own price, with `from` set
+     * when the variants differ. Without variant prices it is the listing's own price.
+     *
+     * @param array<string,mixed> $listing an API listing with `product` fields
+     *
+     * @return array{currency:?string,now:float,from:bool,priced:array<int,array<string,mixed>>,lead:?array<string,mixed>}
+     */
+    function aisle_listing_price(array $listing): array
+    {
+        $price    = is_array($listing['price'] ?? null) ? $listing['price'] : null;
+        $variants = $listing['product']['variants'] ?? [];
+        $priced   = array_filter(is_array($variants) ? $variants : [], static fn ($row): bool => is_array($row) && is_numeric($row['price'] ?? null) && (float) $row['price'] > 0);
+        $out      = [
+            'currency' => is_array($price) ? ($price['currency'] ?? null) : null,
+            'now'      => $price !== null ? (float) ($price['amount'] ?? 0) : 0.0,
+            'from'     => false,
+            'priced'   => $priced,
+            'lead'     => null,
+        ];
+        if ($priced !== []) {
+            usort($priced, static fn (array $a, array $b): int => (float) $a['price'] <=> (float) $b['price']);
+            $out['priced'] = $priced;
+            $out['lead']   = $priced[0];
+            $out['now']    = (float) $priced[0]['price'];
+            $out['from']   = count($priced) > 1 && (float) end($priced)['price'] > $out['now'];
+        }
+
+        return $out;
+    }
+
+    /**
+     * The price line of a listing as text, "From €15" when its variants differ; empty when it has no price.
+     *
+     * @param array<string,mixed> $listing
+     */
+    function aisle_listing_price_text(array $listing): string
+    {
+        $shown = aisle_listing_price($listing);
+        if ($shown['priced'] === []) {
+            return is_array($listing['price'] ?? null) ? aisle_price($listing['price']) : '';
+        }
+        $money = aisle_money((string) $shown['now'], $shown['currency']);
+
+        return $shown['from'] ? sprintf(__('From %s', 'aisle'), $money) : $money;
+    }
+
+    /**
      * One product card from one API listing. Ask the API for `include=product` so the deal tag,
      * was-price and stock line can show; without it the card shows the price only.
      *
@@ -32,19 +79,12 @@ if (!function_exists('aisle_card')) {
         $variants = $listing['product']['variants'] ?? [];
         $variant  = is_array($variants) && isset($variants[0]) && is_array($variants[0]) ? $variants[0] : [];
 
-        $cur = is_array($price) ? ($price['currency'] ?? null) : null;
-        $now = $price !== null ? (float) ($price['amount'] ?? 0) : 0.0;
-
-        // The card opens at the cheapest variant, as the product page does; "From" shows when the prices differ.
-        $lead  = $variant;
-        $from  = false;
-        $priced = array_filter(is_array($variants) ? $variants : [], static fn ($row): bool => is_array($row) && is_numeric($row['price'] ?? null) && (float) $row['price'] > 0);
-        if ($priced !== []) {
-            usort($priced, static fn (array $a, array $b): int => (float) $a['price'] <=> (float) $b['price']);
-            $lead = $priced[0];
-            $now  = (float) $lead['price'];
-            $from = count($priced) > 1 && (float) end($priced)['price'] > $now;
-        }
+        $shown  = aisle_listing_price($listing);
+        $cur    = $shown['currency'];
+        $now    = $shown['now'];
+        $lead   = $shown['lead'] ?? $variant;
+        $from   = $shown['from'];
+        $priced = $shown['priced'];
         $was     = isset($lead['compare_at']) && is_numeric($lead['compare_at']) ? (float) $lead['compare_at'] : 0.0;
         $on_sale = $was > $now && $now > 0 && ($lead['on_sale'] ?? true) !== false;
         $off     = $on_sale ? (int) round((1 - $now / $was) * 100) : 0;

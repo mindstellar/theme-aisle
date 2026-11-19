@@ -67,6 +67,9 @@ $checks['lowest variant price shows with From']  = str_contains($vp, 'From €15
 $checks['sale shows when the shown variant is on sale'] = str_contains($vs, 'From €20') && str_contains($vs, '33% off');
 $plain = aisle_card(['title' => 'Rug', 'url' => '/rug', 'price' => ['amount' => '40', 'formatted' => '€40', 'currency' => 'EUR']]);
 $checks['no variant prices shows the product price'] = str_contains($plain, '<b>€40</b>');
+$alert = ['price' => ['amount' => '20', 'currency' => 'EUR', 'formatted' => '€20'], 'product' => ['variants' => [['id' => 1, 'price' => '15'], ['id' => 2, 'price' => '26']]]];
+$checks['alert price line uses the card price code'] = aisle_listing_price_text($alert) === 'From €15';
+$checks['alert price line without variant prices is the listing price'] = aisle_listing_price_text($plain === '' ? [] : ['price' => ['amount' => '40', 'formatted' => '€40', 'currency' => 'EUR']]) === '€40';
 $failed = 0;
 foreach ($checks as $what => $ok) {
     if (!$ok) {
