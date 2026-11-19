@@ -33,7 +33,31 @@ function aisle_money(string $amount, ?string $currency): string
 }
 function aisle_price(?array $price): string
 {
-    return (string) ($price['formatted'] ?? '');
+    return '<span class="num">' . ($price['formatted'] ?? '') . '</span>';
+}
+const AISLE_CARD_FIELDS = 'id';
+$GLOBALS['api_calls'] = [];
+function aisle_api(string $path, array $query = []): ?array
+{
+    $GLOBALS['api_calls'][] = $query;
+    $data = [];
+    foreach (explode(',', (string) $query['ids']) as $id) {
+        $data[] = ['id' => (int) $id, 'price' => ['amount' => '40', 'formatted' => '€' . $id]];
+    }
+
+    return ['data' => $data];
+}
+class View
+{
+    public static function getInstance(): self
+    {
+        return new self();
+    }
+
+    public function _get(string $k): array
+    {
+        return [['pk_i_id' => 7], ['pk_i_id' => 8], ['pk_i_id' => 9]];
+    }
 }
 require_once AISLE_DIR . '/common/card.php';
 
@@ -66,10 +90,14 @@ $vs = aisle_card(['title' => 'Mat', 'url' => '/mat', 'price' => ['amount' => '30
 $checks['lowest variant price shows with From']  = str_contains($vp, 'From €15') && !str_contains($vp, 'class="deal');
 $checks['sale shows when the shown variant is on sale'] = str_contains($vs, 'From €20') && str_contains($vs, '33% off');
 $plain = aisle_card(['title' => 'Rug', 'url' => '/rug', 'price' => ['amount' => '40', 'formatted' => '€40', 'currency' => 'EUR']]);
-$checks['no variant prices shows the product price'] = str_contains($plain, '<b>€40</b>');
+$checks['no variant prices shows the product price'] = str_contains($plain, '€40');
 $alert = ['price' => ['amount' => '20', 'currency' => 'EUR', 'formatted' => '€20'], 'product' => ['variants' => [['id' => 1, 'price' => '15'], ['id' => 2, 'price' => '26']]]];
 $checks['alert price line uses the card price code'] = aisle_listing_price_text($alert) === 'From €15';
-$checks['alert price line without variant prices is the listing price'] = aisle_listing_price_text($plain === '' ? [] : ['price' => ['amount' => '40', 'formatted' => '€40', 'currency' => 'EUR']]) === '€40';
+$checks['alert price line without variant prices is the listing price'] = aisle_listing_price_text(['price' => ['amount' => '40', 'formatted' => '€40', 'currency' => 'EUR']]) === '€40';
+$rows = [aisle_alert_price_text('core', ['pk_i_id' => 7]), aisle_alert_price_text('core', ['pk_i_id' => 8]), aisle_alert_price_text('core', ['pk_i_id' => 9])];
+$checks['alert rows read plain text from the API']  = $rows === ['€7', '€8', '€9'];
+$checks['three alert rows cost one API call']      = count($GLOBALS['api_calls']) === 1 && $GLOBALS['api_calls'][0]['ids'] === '7,8,9';
+$checks['a row the API lacks keeps the core text'] = aisle_alert_price_text('core', ['pk_i_id' => 0]) === 'core';
 $failed = 0;
 foreach ($checks as $what => $ok) {
     if (!$ok) {

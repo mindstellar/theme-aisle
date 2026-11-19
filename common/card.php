@@ -51,11 +51,43 @@ if (!function_exists('aisle_card')) {
     {
         $shown = aisle_listing_price($listing);
         if ($shown['priced'] === []) {
-            return is_array($listing['price'] ?? null) ? aisle_price($listing['price']) : '';
+            return (string) ($listing['price']['formatted'] ?? '');
         }
         $money = aisle_money((string) $shown['now'], $shown['currency']);
 
         return $shown['from'] ? sprintf(__('From %s', 'aisle'), $money) : $money;
+    }
+
+    /**
+     * The price line for one alert row. The first row loads every listing in the page's list with one
+     * API call; later rows read from that. Returns $text when the API has nothing better.
+     *
+     * @param array<string,mixed> $item
+     */
+    function aisle_alert_price_text(string $text, array $item): string
+    {
+        static $rows = null;
+        $id = (int) ($item['pk_i_id'] ?? 0);
+        if ($id < 1) {
+            return $text;
+        }
+        if ($rows === null) {
+            $ids = [$id];
+            foreach ((array) \View::getInstance()->_get('items') as $other) {
+                $ids[] = (int) (is_array($other) ? ($other['pk_i_id'] ?? 0) : 0);
+            }
+            $ids  = array_slice(array_values(array_unique(array_filter($ids))), 0, 50);
+            $body = aisle_api('listings', ['ids' => implode(',', $ids), 'limit' => count($ids), 'fields' => AISLE_CARD_FIELDS]);
+            $rows = [];
+            foreach ((array) ($body['data'] ?? []) as $row) {
+                if (is_array($row) && isset($row['id'])) {
+                    $rows[(int) $row['id']] = $row;
+                }
+            }
+        }
+        $line = isset($rows[$id]) ? aisle_listing_price_text($rows[$id]) : '';
+
+        return $line !== '' ? $line : $text;
     }
 
     /**
